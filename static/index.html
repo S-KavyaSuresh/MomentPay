@@ -1,0 +1,1189 @@
+<!-- <!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MomentPay · give together</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#070b1a;--txt:#eef1ff;--mute:#9ba5c9;--line:rgba(255,255,255,.13);--glass:rgba(255,255,255,.06);--gold:#ffcf5c;--teal:#3de0c4;--vio:#8b7bff;--rose:#ff7eb6;--g:linear-gradient(135deg,#3de0c4,#8b7bff)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ink);color:var(--txt);font:15px/1.55 Manrope,system-ui,sans-serif;min-height:100vh;overflow-x:hidden}
+body:before,body:after{content:"";position:fixed;width:60vmax;height:60vmax;border-radius:50%;filter:blur(100px);opacity:.33;z-index:-1;animation:drift 22s ease-in-out infinite alternate}
+body:before{background:var(--teal);top:-28vmax;left:-18vmax}body:after{background:var(--vio);bottom:-28vmax;right:-18vmax;animation-delay:-9s}
+@keyframes drift{to{transform:translate(8vmax,6vmax) scale(1.15)}}@keyframes rise{from{opacity:0;transform:translateY(22px)}}@keyframes pop{from{opacity:0;transform:scale(.85) translateY(10px)}}
+@keyframes float{50%{transform:translateY(-10px) rotate(3deg)}}@keyframes spin{50%{transform:rotateY(180deg)}}@keyframes flow{to{background-position:0 0,300% 0}}@keyframes pulse{50%{transform:scale(1.25);opacity:.6}}@keyframes shim{to{background-position:-200% 0}}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:700;margin:.1em 0;line-height:1.08;letter-spacing:-.015em}
+.big{font-size:clamp(2.4rem,6vw,4.2rem)}.sub{color:var(--mute);font-size:1.1rem;max-width:34em}.mute{color:var(--mute)}
+#view{max-width:1120px;margin:0 auto;padding:18px 18px 90px}#view.in>*{animation:rise .65s cubic-bezier(.2,.8,.2,1) both}#view.in>*:nth-child(2){animation-delay:.07s}#view.in>*:nth-child(3){animation-delay:.14s}
+nav{display:flex;justify-content:space-between;align-items:center;padding:6px 0 18px}.logo{font:700 1.4rem Fraunces,serif;display:flex;gap:10px;align-items:center;cursor:pointer}.logo i{width:30px;height:30px;border-radius:50%;background:var(--g);box-shadow:0 0 24px var(--teal);animation:pulse 3s infinite}
+.glass{background:var(--glass);border:1px solid var(--line);border-radius:22px;backdrop-filter:blur(18px);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s,border-color .35s}
+.lift{cursor:pointer;overflow:hidden}.lift:hover{transform:translateY(-8px);box-shadow:0 26px 60px -22px rgba(61,224,196,.45);border-color:rgba(61,224,196,.55)}
+.pad{padding:20px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px;margin-top:18px}
+.cov{height:104px;display:grid;place-items:center;font-size:48px;background:linear-gradient(135deg,hsl(var(--h) 65% 38%),hsl(calc(var(--h) + 70) 70% 28%))}.cov span{display:inline-block;animation:float 4.5s ease-in-out infinite;transition:transform .45s cubic-bezier(.2,1.6,.4,1)}.lift:hover .cov span{transform:scale(1.3) rotate(-10deg)}
+.btn{position:relative;overflow:hidden;border:0;border-radius:14px;padding:12px 20px;font:800 14px Manrope,sans-serif;color:#06121a;background:var(--g);cursor:pointer;transition:transform .2s,box-shadow .3s;margin:4px 6px 4px 0}
+.btn:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 12px 32px -8px rgba(61,224,196,.65)}.btn:active{transform:scale(.96)}
+.btn:after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.55) 50%,transparent 70%);transform:translateX(-130%);transition:transform .7s}.btn:hover:after{transform:translateX(130%)}
+.btn.ghost{background:transparent;color:var(--txt);border:1px solid var(--line)}.btn.gold{background:linear-gradient(135deg,var(--gold),var(--rose))}.btn.sm{padding:8px 14px}
+.link{background:none;border:0;color:var(--teal);cursor:pointer;font:700 14px Manrope;padding:4px 0}.link:hover{text-decoration:underline}
+input,textarea,select{width:100%;padding:12px 14px;margin:6px 0;border:1px solid var(--line);border-radius:14px;background:rgba(5,8,22,.55);color:var(--txt);font:inherit;transition:border-color .25s,box-shadow .25s}
+input:focus,textarea:focus,select:focus{outline:0;border-color:var(--teal);box-shadow:0 0 0 4px rgba(61,224,196,.18)}textarea{min-height:130px;resize:vertical}select option{color:#000}
+label{font-weight:700;display:block;margin-top:12px}.chk{display:flex;gap:8px;align-items:center;font-weight:500}.chk input{width:auto;margin:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0}.chip{border:1px solid var(--line);background:var(--glass);color:var(--txt);border-radius:99px;padding:6px 14px;cursor:pointer;font:600 13px Manrope;transition:all .2s}.chip:hover,.chip.on{background:var(--g);color:#06121a;transform:translateY(-2px);border-color:transparent}
+.tag{font-size:12px;font-weight:700;padding:3px 10px;border-radius:99px;background:rgba(61,224,196,.16);color:var(--teal)}.tag.g{background:rgba(255,207,92,.16);color:var(--gold)}.tag.r{background:rgba(255,126,126,.18);color:#ff9a9a}
+.ava{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;font:800 12px Manrope;color:#fff;border:2px solid var(--ink);margin-right:-8px;flex:none}
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:40px;align-items:center;min-height:72vh}.floaters{position:relative;height:190px;margin-top:26px}
+.fl{position:absolute;padding:12px 16px;border-radius:16px;background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(14px);animation:float 6s ease-in-out infinite}.fl b{display:block;color:var(--gold)}.fl.a{left:0;top:0}.fl.b{left:200px;top:70px;animation-delay:-2s}.fl.c{left:30px;top:130px;animation-delay:-4s}
+.mv{display:grid;grid-template-columns:1fr 370px;gap:18px;align-items:start}
+.chat{display:flex;flex-direction:column;height:76vh;min-height:540px;overflow:hidden}.chead{display:flex;gap:14px;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line)}.chead .em{font-size:30px}
+.msgs{flex:1;overflow:auto;padding:16px;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth}.empty{margin:auto;text-align:center;color:var(--mute);max-width:260px}
+.b{max-width:78%;padding:9px 14px;border-radius:18px 18px 18px 4px;background:rgba(255,255,255,.09);animation:pop .4s cubic-bezier(.2,1.4,.4,1);word-wrap:break-word}.b time{display:block;font-size:11px;opacity:.55;text-align:right}.who{display:block;font-size:12px;font-weight:800;color:var(--teal)}
+.b.me{align-self:flex-end;border-radius:18px 18px 4px 18px;background:linear-gradient(135deg,#2cae9a,#6a5cf0)}.b.me .who{display:none}
+.b.ai{align-self:center;max-width:92%;border:1.5px solid transparent;background:linear-gradient(#0e1534,#0e1534) padding-box,linear-gradient(120deg,var(--teal),var(--vio),var(--rose),var(--teal)) border-box;background-size:auto,300% 100%;animation:pop .4s both,flow 7s linear infinite}.b.ai .who{color:var(--rose)}
+.pay{align-self:center;display:flex;gap:12px;align-items:center;padding:12px 18px;border-radius:18px;background:linear-gradient(135deg,rgba(255,207,92,.22),rgba(255,126,182,.14));border:1px solid rgba(255,207,92,.45);animation:pop .55s cubic-bezier(.2,1.5,.4,1);max-width:92%}.pay .coin{font-size:28px;animation:spin 2.6s ease-in-out infinite}.pay span{color:var(--mute);font-size:13px}
+.payd{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.2,.8,.2,1);border-top:0 solid var(--line);background:rgba(0,0,0,.2)}.payd.open{max-height:420px;border-top-width:1px}.payd>div{padding:14px 16px}
+.comp{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line)}.comp input{margin:0}
+.ring{display:grid;place-items:center;padding:20px;position:relative}.ring svg{width:170px;transform:rotate(-90deg)}.trk,.bar{fill:none;stroke-width:9}.trk{stroke:rgba(255,255,255,.1)}.bar{stroke:url(#gr);stroke-linecap:round;transition:stroke-dashoffset 1.4s cubic-bezier(.2,.8,.2,1)}
+.mid{position:absolute;text-align:center}.mid b{font:700 2rem Fraunces,serif;display:block}.mid span{font-size:12px;color:var(--mute)}
+.row{display:flex;gap:10px;align-items:center;padding:8px 0}.row .grow{flex:1}.mini{height:5px;border-radius:9px;background:rgba(255,255,255,.1);overflow:hidden;margin-top:4px}.mini i{display:block;height:100%;background:var(--g);transition:width 1s}
+.opt{border:1px solid var(--line);border-radius:16px;padding:14px;margin:12px 0;transition:border-color .25s,background .25s}.opt:hover{border-color:rgba(61,224,196,.5);background:rgba(61,224,196,.05)}
+.prod{display:flex;gap:12px;align-items:center;padding:10px;border:1px solid var(--line);border-radius:14px;margin:8px 0;transition:transform .25s}.prod:hover{transform:translateX(4px)}.prod img{width:54px;height:54px;object-fit:contain;background:#fff;border-radius:10px}.prod>div{flex:1;font-size:13px}.prod.best{border-color:var(--gold);background:rgba(255,207,92,.08)}
+.why{border-left:3px solid var(--gold);padding:8px 12px;background:rgba(255,207,92,.08);border-radius:8px;font-size:13px}
+.load{display:grid;place-items:center;gap:16px;min-height:50vh;color:var(--mute)}.orb{width:56px;height:56px;border-radius:50%;background:var(--g);animation:pulse 1.4s infinite;box-shadow:0 0 50px var(--teal)}
+.shimrow{height:52px;border-radius:14px;margin:8px 0;background:linear-gradient(90deg,rgba(255,255,255,.05) 25%,rgba(255,255,255,.14) 50%,rgba(255,255,255,.05) 75%);background-size:200% 100%;animation:shim 1.3s infinite}
+#toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,30px);background:#111a3a;border:1px solid var(--line);padding:12px 20px;border-radius:16px;opacity:0;pointer-events:none;transition:all .4s cubic-bezier(.2,1.4,.4,1);max-width:90vw;z-index:9;box-shadow:0 20px 50px -10px #000}#toast.on{opacity:1;transform:translate(-50%,0)}
+#toasts{position:fixed;top:78px;right:16px;z-index:20;display:flex;flex-direction:column;gap:10px;width:min(370px,92vw)}
+@media(max-width:640px){#toasts{top:116px}}
+nav>div{display:flex;align-items:center;flex-wrap:wrap;gap:4px;justify-content:flex-end}
+.tt{display:flex;gap:12px;align-items:flex-start;padding:13px 16px 15px;border-radius:16px;background:rgba(17,26,58,.94);border:1px solid var(--line);backdrop-filter:blur(16px);box-shadow:0 18px 40px -12px #000;animation:slideIn .5s cubic-bezier(.2,1.2,.4,1) both;cursor:pointer;position:relative;overflow:hidden;font-weight:600}
+.tt.out{animation:slideOut .4s ease both}.tt i{font-style:normal;font-size:21px}.tt:after{content:"";position:absolute;left:0;bottom:0;height:3px;background:var(--g);animation:life 5s linear forwards}
+@keyframes slideIn{from{opacity:0;transform:translateX(70px)}}@keyframes slideOut{to{opacity:0;transform:translateX(70px)}}@keyframes life{from{width:100%}to{width:0}}
+.bell{position:relative;display:inline-grid;place-items:center;flex:0 0 38px;width:38px;height:38px;padding:0;line-height:1;background:var(--glass);border:1px solid var(--line);border-radius:50%;cursor:pointer;font-size:17px;color:var(--txt);transition:transform .25s,border-color .25s;margin-right:10px;vertical-align:middle}.bell:hover{transform:rotate(-12deg) scale(1.1);border-color:var(--teal)}
+.bell b{position:absolute;top:-5px;right:-5px;min-width:17px;text-align:center;background:var(--rose);color:#fff;border:2px solid var(--ink);border-radius:99px;font-size:10px;line-height:14px;padding:0 4px;display:none;pointer-events:none}.bell.has b{display:block}.bell.ring{animation:ring .9s}
+@keyframes ring{20%{transform:rotate(20deg)}40%{transform:rotate(-16deg)}60%{transform:rotate(10deg)}80%{transform:rotate(-6deg)}}
+.nrow{display:flex;gap:14px;padding:16px 18px;border-bottom:1px solid var(--line);cursor:pointer;transition:background .2s,padding-left .2s}.nrow:hover{background:rgba(255,255,255,.05);padding-left:24px}.nrow.new{border-left:3px solid var(--teal);background:rgba(61,224,196,.05)}
+.dgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px}.opt2{transition:transform .35s,border-color .35s,box-shadow .35s}.opt2:hover{transform:translateY(-6px);border-color:rgba(61,224,196,.5);box-shadow:0 24px 50px -22px rgba(61,224,196,.5)}.opt2 .e{font-size:38px;margin-bottom:6px;display:inline-block;transition:transform .4s cubic-bezier(.2,1.6,.4,1)}.opt2:hover .e{transform:scale(1.25) rotate(-8deg)}
+#fx{position:fixed;inset:0;pointer-events:none;z-index:8}
+@media(max-width:900px){.mv,.hero{grid-template-columns:1fr}.chat{height:68vh}.floaters{display:none}}
+@media(prefers-reduced-motion:reduce){*,:before,:after{animation:none!important;transition:none!important}}
+</style></head>
+<body><div id="view"></div><div id="toasts"></div><canvas id="fx"></canvas>
+<script>
+const $=s=>document.querySelector(s),V=$('#view');
+let T=localStorage.t||'',ME=null,CFG={},D=null,SR=null,REC=null,US=[],LAST=0,SIG='',CUR=0,CURH='',VIEW='',NP=null,NMAX=-1,NUN=0,NITEMS=[],DSIG='',AIS=null,MEM={},MR=[],POLL=null,IDEAS=null,PPD=false;
+const money=n=>'$'+Number(n).toFixed(2),rnd=a=>a[Math.floor(Math.random()*a.length)];
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const PAYL=['Your value has safely changed hands.','The digital currents have carried your treasure through.','A successful handshake between balances.','Kindness, delivered at the speed of light.'];
+const PAYL_CALM=['Your contribution is safely in.','Steady hands, steady support. It has arrived.','One more person standing behind them.','Quietly, surely, it found its way there.'];
+const payLine=d=>rnd((d&&d.kind=='emergency')?PAYL_CALM:PAYL);
+const boomIf=d=>{if(!d||d.kind!='emergency')boom()};
+const LOAD=['Weaving your moment together…','Asking the coins to line up…','Warming up the group chat…','Polishing the pool…'];
+const toast=(t,icon='✨')=>{const c=$('#toasts'),e=document.createElement('div');e.className='tt';e.innerHTML=`<i>${icon}</i><div>${esc(t)}</div>`;const kill=()=>{e.classList.add('out');setTimeout(()=>e.remove(),400)};e.onclick=kill;c.appendChild(e);setTimeout(kill,5000);while(c.children.length>4)c.firstChild.remove()};
+const run=f=>async(...a)=>{try{await f(...a)}catch(e){toast('A small knot in the thread: '+e.message)}};
+const api=async(p,m='GET',b)=>{const r=await fetch('/api'+p,{method:m,headers:{'Content-Type':'application/json',Authorization:T},body:b?JSON.stringify(b):undefined});
+ const j=await r.json().catch(()=>({}));if(!r.ok)throw new Error(typeof j.detail==='string'?j.detail:'a field needs a little more love');return j};
+const go=h=>{V.innerHTML=h;V.classList.remove('in');void V.offsetWidth;V.classList.add('in');scrollTo(0,0);setPill();requestAnimationFrame(()=>document.querySelectorAll('.bar[data-o]').forEach(b=>b.style.strokeDashoffset=b.dataset.o))};
+const loading=()=>go(`<div class="load"><div class="orb"></div><p>${rnd(LOAD)}</p></div>`);
+const hue=s=>[...String(s)].reduce((a,c)=>a*31+c.charCodeAt(0),7)%360;
+const ava=n=>`<span class="ava" style="background:hsl(${hue(n)} 60% 45%)" title="${esc(n)}">${esc(String(n).split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase())}</span>`;
+const emo=m=>m.kind=='emergency'?'🆘':/birth/i.test(m.occasion)?'🎂':/house|home/i.test(m.occasion)?'🏡':/grad/i.test(m.occasion)?'🎓':/baby/i.test(m.occasion)?'👶':/wed|marr/i.test(m.occasion)?'💍':'🎁';
+const tm=t=>new Date(t.replace(' ','T')+'Z').toLocaleTimeString([],{hour:'numeric',minute:'2-digit'});
+function boom(){const c=$('#fx'),x=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;const P=[...Array(140)].map(()=>({x:innerWidth/2,y:innerHeight*.65,vx:(Math.random()-.5)*18,vy:-Math.random()*18-4,s:5+Math.random()*7,c:`hsl(${Math.random()*360} 90% 62%)`,r:Math.random()*6}));let f=0;(function t(){x.clearRect(0,0,c.width,c.height);P.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.45;p.r+=.2;x.fillStyle=p.c;x.save();x.translate(p.x,p.y);x.rotate(p.r);x.fillRect(-p.s/2,-p.s/2,p.s,p.s*.6);x.restore()});++f<120?requestAnimationFrame(t):x.clearRect(0,0,c.width,c.height)})()}
+
+const setPill=()=>{document.querySelectorAll('.aipill').forEach(e=>{e.className='tag aipill'+(AIS&&!AIS.ok?' r':'');e.textContent=!AIS?'Pip is waking…':AIS.ok?'✨ Pip is online':'⚠ Pip is offline';e.title=(AIS&&AIS.error)||''});const b=$('#aibanner');if(b&&AIS&&!AIS.ok)b.innerHTML=`<div class="glass pad" style="margin:14px 0;border-color:#ff8f8f"><b>Pip's AI isn't connected, so you only get plain templates.</b><p class="mute" style="margin:4px 0">${esc(AIS.error)}<br>Get a free key at aistudio.google.com (Gemini) or console.groq.com, add it to .env as GEMINI_API_KEY or GROQ_API_KEY, and restart the server.</p></div>`};
+async function boot(){fetch('/api/ai/status').then(r=>r.json()).then(r=>{AIS=r;setPill()}).catch(()=>{});CFG=await api('/config');if(T){try{ME=await api('/me')}catch{T=''}}ME?route():authView(0)}
+function route(){if(!NP)startN();const h=location.hash,m=h.match(/^#m(\d+)(\/decide)?/);h=='#notifications'?notifView():h=='#profile'?profileView():m?(m[2]?decideView(+m[1]):openM(+m[1])):home()}
+const nav=()=>`<nav><div class="logo" onclick="home()"><i></i>MomentPay</div><div><span class="tag aipill" style="margin-right:12px"></span><button type="button" class="bell ${NUN?'has':''}" onclick="notifView()" title="Notifications" aria-label="Notifications">🔔<b>${NUN>9?'9+':NUN}</b></button>${ava(ME.name)}<button class="link" style="margin-left:14px" onclick="profileView()">Profile</button><button class="link" style="margin-left:14px" onclick="logout()">Log out</button></div></nav>`;
+function logout(noPP){clearInterval(POLL);clearInterval(NP);NP=null;NUN=0;localStorage.t=T='';ME=null;if(!noPP&&localStorage.ppu)ppSignOut();authView(0)}
+
+function authView(reg){clearInterval(POLL);D=null;go(`<div class="hero"><div><div class="logo" style="margin-bottom:28px"><i></i>MomentPay</div>
+<h1 class="big">Some moments are too big for one wallet.</h1><p class="sub">Gather your people, give what you can, and let Pip weave the rest: the right words, the right gift, and fair-share refunds on whatever is left.</p>
+<div class="floaters"><div class="fl a">🏡 Priya's housewarming<b>$240 of $300</b></div><div class="fl b">🎓 A graduation surprise<b>$410 of $500</b></div><div class="fl c">💸 Rahul just gave $20</div></div></div>
+<section class="glass pad"><h2>${reg?'Join the circle':'Welcome back'}</h2><p class="mute">${reg?'Two minutes, and your people can find you.':'Your moments kept the lights on for you.'}</p>
+${reg?'<input id="n" placeholder="Your name">':''}<input id="e" type="email" placeholder="Email">${reg?'<input id="pe" type="email" placeholder="Your PayPal sandbox email (receives money owed to you)">':''}<input id="p" type="password" placeholder="Password">
+<button class="btn" onclick="auth(${reg})">${reg?'Create my account':'Step inside'}</button><br><button class="link" onclick="authView(${reg?0:1})">${reg?'Already one of us? Log in':'New here? Create an account'}</button></section></div>`)}
+const auth=run(async reg=>{const r=await api(reg?'/register':'/login','POST',{name:$('#n')?.value||'',email:$('#e').value,paypal_email:$('#pe')?.value||'',password:$('#p').value});T=r.token;localStorage.t=T;ME=await api('/me');ppGuard();route()});
+
+const profileView=run(async()=>{clearInterval(POLL);CUR=0;VIEW='p';D=null;setH('profile');const p=await api('/profile');
+ go(nav()+`<button class="link" onclick="home()">← Back</button><h1 style="font-size:2.4rem;margin:6px 0 14px">Your profile</h1><div class="dgrid">
+ <section class="glass pad"><h3>About you</h3><p class="mute" style="margin-top:2px">Your friends find you by name. Your PayPal email is where money owed to you arrives.</p>
+ <label>Name</label><input id="pf_n" value="${esc(p.name)}" maxlength="60">
+ <label>Login email</label><input id="pf_e" type="email" value="${esc(p.email)}">
+ <label>PayPal email</label><input id="pf_pe" type="email" value="${esc(p.paypal_email)}">
+ <label>Phone (optional)</label><input id="pf_ph" type="tel" value="${esc(p.phone)}" placeholder="+91 98765 43210">
+ <label>City (optional)</label><input id="pf_c" value="${esc(p.city)}" maxlength="60">
+ <label>A line about you (optional)</label><textarea id="pf_a" style="min-height:80px" maxlength="280">${esc(p.about)}</textarea>
+ <button class="btn" onclick="saveProfile()">Save changes</button></section>
+ <section class="glass pad" style="align-self:start"><h3>Delete account</h3><p class="mute">This removes your account and the moments you organised. It is blocked while money is still in play in any moment you are part of.</p>
+ <input id="pf_pw" type="password" placeholder="Your password to confirm"><button class="btn ghost" style="color:#ff9a9a;border-color:rgba(255,154,154,.45)" onclick="delAccount()">Delete my account</button></section></div>`)});
+const saveProfile=run(async()=>{await api('/profile','PUT',{name:$('#pf_n').value,email:$('#pf_e').value,paypal_email:$('#pf_pe').value,phone:$('#pf_ph').value,city:$('#pf_c').value,about:$('#pf_a').value});ME=await api('/me');toast('Profile saved.','✅');profileView()});
+const delAccount=run(async()=>{const pw=$('#pf_pw').value;if(!pw)throw new Error('type your password to confirm');if(!confirm('Delete your account for good? This cannot be undone.'))return;await api('/profile/delete','POST',{password:pw});logout(true);toast('Your account has been deleted. Take care.','👋')});
+
+const home=run(async()=>{clearInterval(POLL);CUR=0;VIEW='h';D=null;setH('');loading();const ms=await api('/moments');
+ go(nav()+`<div id="aibanner"></div><div style="display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:12px"><div><h1 class="big" style="font-size:clamp(2rem,4vw,3rem)">Good to see you, ${esc(ME.name.split(' ')[0])}.</h1><p class="sub">Your people, your moments, one warm place.</p></div><button class="btn gold" onclick="newView()">✨ Start a moment</button></div>`+
+ (ms.length?`<div class="grid">${ms.map(m=>`<div class="glass lift" style="position:relative" onclick="openM(${m.id})">${m.role=='Organiser'?`<button class="chip" style="position:absolute;top:10px;right:10px;z-index:2" title="Delete" onclick="event.stopPropagation();delM(${m.id})">🗑</button>`:''}<div class="cov" style="--h:${hue(m.occasion)}"><span>${emo(m)}</span></div><div class="pad"><span class="tag">${m.kind}</span> <span class="tag g">${m.status}</span>
+ <h3 style="margin-top:10px">${esc(m.occasion)}</h3><p class="mute" style="margin:2px 0 10px">${m.role} · ${money(m.collected)} of ${money(m.target)}</p><div class="mini"><i style="width:${Math.min(100,m.collected/m.target*100)}%"></i></div>
+ <p class="mute" style="margin:10px 0 0;font-size:13px">${esc(m.last||'Waiting for the first hello…')}</p></div></div>`).join('')}</div>`:
+ `<div class="glass pad" style="text-align:center;margin-top:30px;padding:60px 20px"><div style="font-size:54px;animation:float 4s infinite">🌊</div><h2>A quiet shore.</h2><p class="sub" style="margin:auto">Start a moment and let the tide bring your people in.</p></div>`))});
+
+const newView=run(async()=>{REC=null;US=[];MEM={};MR=[];
+ go(nav()+`<button class="link" onclick="home()">← Back to shore</button><section class="glass pad" style="max-width:680px;margin:10px auto"><h2>What are we gathering for?</h2><p class="mute">Tell Pip the story. The more specific you are, the better the words.</p>
+ <label>Who is it for?</label><input id="rq" placeholder="Search friends by name or email" oninput="srch()"><div id="rres" class="chips"></div><p id="rsel" class="mute">Nobody yet. <button class="link" onclick="pick(${ME.id})">It's for me</button></p>
+ <label>Kind of moment</label><select id="k" onchange="$('#sw').style.display=this.value=='occasion'?'flex':'none'"><option value="occasion">A special occasion</option><option value="emergency">An emergency fund</option></select>
+ <input id="o" placeholder="e.g. Priya's housewarming"><textarea id="d" style="min-height:80px" placeholder="What's happening? e.g. She just moved into her first flat and is obsessed with plants."></textarea>
+ <textarea id="c" style="min-height:80px" placeholder="Who is who? e.g. Rahul is her college roommate, Anita is her sister, Dev is a work friend."></textarea>
+ <input id="t" type="number" min="1" placeholder="Goal in USD (it's a target, never a demand)"><label id="sw" class="chk"><input type="checkbox" id="s" onchange="surChg()">🤫 It's a surprise. The recipient is never told.</label>
+ <label>Invite to the group chat</label><input id="mq" placeholder="Search a friend by name to add them" oninput="msrch()"><div id="mres" class="chips"></div><div id="msel" class="chips"><span class="mute">Nobody added yet.</span></div>
+ <button class="btn" id="go" onclick="create()">Ask Pip to write the message ✨</button></section>`)});
+const srch=run(async()=>{const v=$('#rq').value.trim();if(v.length<2){US=[];$('#rres').innerHTML='<span class="mute">Type at least 2 letters of their name.</span>';return}US=await api('/users?q_='+encodeURIComponent(v));$('#rres').innerHTML=US.map(x=>`<button class="chip" onclick="pick(${x.id})">${esc(x.name)} <span class="mute">${esc(x.email)}</span></button>`).join('')||'<span class="mute">No one by that name yet.</span>'});
+const msrch=run(async()=>{const v=$('#mq').value.trim();if(v.length<2){MR=[];$('#mres').innerHTML='<span class="mute">Type at least 2 letters of their name.</span>';return}MR=await api('/users?q_='+encodeURIComponent(v));$('#mres').innerHTML=MR.filter(x=>!MEM[x.id]&&!($('#s').checked&&x.id==REC)).map(x=>`<button class="chip" onclick="addMem(${x.id})">+ ${esc(x.name)} <span class="mute">${esc(x.email)}</span></button>`).join('')||'<span class="mute">No one by that name yet.</span>'});
+const memPaint=()=>$('#msel').innerHTML=Object.entries(MEM).map(([i,n])=>`<button class="chip on" onclick="delMem(${i})">${esc(n)} ✕</button>`).join('')||'<span class="mute">Nobody added yet.</span>';
+const addMem=id=>{const x=MR.find(u=>u.id==id);if(x&&$('#s').checked&&id==REC){toast("🤫 It's a surprise, so the recipient can't be in the group.");return}if(x){MEM[id]=x.name;$('#mq').value='';$('#mres').innerHTML='';memPaint()}};
+const delMem=id=>{delete MEM[id];memPaint()};
+function pick(id){REC=id;const x=id==ME.id?{name:ME.name+' (you)'}:US.find(u=>u.id==id);$('#rsel').innerHTML='💫 Recipient: <b>'+esc(x?x.name:'chosen')+'</b>';$('#rres').innerHTML='';surChg()}
+const create=run(async()=>{if(!REC)throw new Error('choose who this is for');
+ const b={recipient_id:REC,kind:$('#k').value,occasion:$('#o').value,description:$('#d').value,context:$('#c').value,target:parseFloat($('#t').value),surprise:$('#s').checked,member_ids:Object.keys(MEM).map(Number)};
+ const btn=$('#go');btn.disabled=true;btn.textContent='Pip is weaving your words…';
+ try{const r=await api('/moments','POST',b);openM(r.id);if(!r.ai)setTimeout(()=>toast("Pip's AI is offline ("+r.err+'). This draft is only a plain template.'),1500)}catch(e){btn.disabled=false;btn.textContent='Ask Pip to write the message ✨';throw e}});
+
+const bub=m=>{if(m.kind=='pay'){const[i,t,l]=m.body.split('|');return`<div class="pay"><div class="coin">${i}</div><div><b>${esc(t)}</b><br><span>${esc(l)}</span></div></div>`}
+ if(m.kind=='ai')return`<div class="b ai"><span class="who">✨ Pip</span>${esc(m.body).replace(/\n/g,'<br>')}</div>`;
+ return`<div class="b ${m.uid==ME.id?'me':''}"><span class="who">${esc(m.name)}</span>${esc(m.body).replace(/\n/g,'<br>')}<time>${tm(m.ts)}</time></div>`};
+const openM=run(async id=>{clearInterval(POLL);CUR=id;VIEW='m';loading();setH('m'+id);try{D=await api('/moments/'+id)}catch(e){CUR=0;D=null;history.replaceState(null,'','#');CURH='';toast('That moment has drifted out of reach: '+e.message);return home()}LAST=0;SIG=sigOf(D);PPD=false;IDEAS=null;SR=null;
+ const chatOK=(D.is_organiser||D.is_member||D.is_recipient)&&D.status!='draft';
+ go(nav()+`<button class="link" onclick="home()">← All moments</button><div class="mv"><div><section class="glass chat"><div class="chead"><div class="em">${emo(D)}</div><div style="flex:1"><h3 style="font-size:1.25rem">${esc(D.occasion)}</h3><span class="mute" style="font-size:13px">for ${esc(D.recipient_name)} · by ${esc(D.organiser_name)}</span></div><div style="display:flex;padding-right:8px">${[D.organiser_name,...D.crew].map(ava).join('')}</div></div>
+ <div class="msgs" id="msgs">${chatOK?'':`<div class="empty"><div style="font-size:44px;animation:float 4s infinite">💬</div><p>${D.status=='draft'?'Your group chat is still folded up. Send the message and it blooms open, with everyone inside.':'This chat belongs to the friends planning the moment.'}</p></div>`}</div>
+ <div class="payd" id="payd"><div><div class="chips">${[5,10,25,50].map(a=>`<button class="chip" onclick="$('#amt').value=${a}">$${a}</button>`).join('')}</div><input id="amt" type="number" min="1" placeholder="Any amount you like. Truly."><div id="pp"></div></div></div>
+ ${chatOK?`<div class="comp"><button class="btn gold sm" id="givebtn" onclick="togglePay()" style="display:none">💸 Give</button><input id="say" placeholder="Say something kind… or ask @pip anything" onkeydown="if(event.key=='Enter')sendChat()"><button class="btn sm" onclick="sendChat()">Send</button></div><div class="chips" style="padding:0 14px 12px">${D.is_organiser||D.is_recipient?`<button class="chip" onclick="suggestChat('thanks')">💛 Thank contributors</button>`:D.kind=='emergency'?`<button class="chip" onclick="suggestChat('support')">🤍 Send support</button>`:`<button class="chip" onclick="suggestChat('congratulate')">🎉 Congratulate recipient</button>`}</div>`:''}</section><div id="under" style="margin-top:18px"></div></div><aside id="side"></aside></div>`);
+ paintSide();if(D.status!='draft'){TICKMS=3000;scheduleTick()}});
+const togglePay=()=>{$('#payd').classList.toggle('open');if(!PPD){PPD=true;ppButtons(D.id)}};
+const sendChat=run(async()=>{
+    const input=$('#say');
+    const t=input.value.trim();
+    if(!t)return;
+
+    await api(`/moments/${D.id}/chat`,'POST',{text:t});
+
+    input.value='';
+    TICKMS=3000;
+    tick();
+});
+const suggestChat=run(async kind=>{
+    const b=document.querySelector('.chips button[onclick*="suggestChat"]');
+
+    if(b){
+        b.disabled=true;
+        b.textContent='Pip is writing…';
+    }
+
+    try{
+        const r=await api(`/moments/${D.id}/chat/suggest`,'POST',{kind});
+
+        $('#say').value=r.message;
+
+        await sendChat();
+
+        if(!r.ai){
+            toast('Pip used a thoughtful message template because AI is offline.');
+        }
+
+    }finally{
+        if(b){
+            b.disabled=false;
+            b.textContent=kind=='thanks'
+                ?'💛 Thank contributors'
+                :kind=='support'
+                ?'🤍 Send support'
+                :'🎉 Congratulate recipient';
+        }
+    }
+});
+const sigOf=d=>JSON.stringify([d.status,d.collected,d.leftover,d.recipient_choice,d.purchases.length,d.payouts.length]);
+let TICKMS=3000;
+function scheduleTick(){tick();POLL=setTimeout(scheduleTick,TICKMS)}
+async function tick(){if(!D||!$('#msgs')||document.hidden)return;let changed=false;try{const r=await api(`/pulse?moment=${D.id}&after=${LAST}`),ms=r.chat||[];if(r.top>NMAX||r.unread!=NUN)npoll();if(ms.length){changed=true;const b=$('#msgs'),near=b.scrollHeight-b.scrollTop-b.clientHeight<140;b.querySelector('.empty')?.remove();b.insertAdjacentHTML('beforeend',ms.map(bub).join(''));LAST=ms[ms.length-1].id;if(near||ms.some(m=>m.uid==ME.id))b.scrollTop=b.scrollHeight}
+ if(!ms.length&&LAST==0&&!$('#msgs .empty,#msgs .b,#msgs .pay'))$('#msgs').innerHTML='<div class="empty"><p>It\'s quiet in here. Be the first to say hello.</p></div>';
+ if(r.sig&&JSON.stringify(r.sig)!=SIG&&!$('#side').contains(document.activeElement)){changed=true;const d=await api('/moments/'+D.id);SIG=sigOf(d);D=d;paintSide()}}catch(e){}
+ // nothing new? check less often next time (up to every 9s); anything happening snaps it back to a brisk 3s.
+ TICKMS=changed?3000:Math.min(TICKMS*1.6,9000)}
+async function refresh(){D=await api('/moments/'+D.id);if(VIEW=='d'){if(D.leftover<=0||!['funded','asking','answered'].includes(D.status))return openM(D.id);paintDecide()}else{SIG=sigOf(D);paintSide();TICKMS=3000;tick()}}
+
+function paintSide(){const d=D,o=d.is_organiser,left=d.leftover,live=['funded','asking','answered'].includes(d.status),pct=Math.min(100,d.collected/d.target*100),C=2*Math.PI*54;
+ let under='';const gb=$('#givebtn');if(gb)gb.style.display=d.status=='active'&&!d.is_recipient?'':'none';
+ const realPct=Math.round(d.collected/d.target*100);
+ let h=`<div class="glass ring"><svg viewBox="0 0 120 120"><defs><linearGradient id="gr"><stop offset="0" stop-color="#3de0c4"/><stop offset="1" stop-color="#ffcf5c"/></linearGradient></defs><circle cx="60" cy="60" r="54" class="trk"/><circle cx="60" cy="60" r="54" class="bar" stroke-dasharray="${C}" style="stroke-dashoffset:${C}" data-o="${C*(1-pct/100)}"/></svg>
+ <div class="mid"><b>${realPct}%</b><span>${money(d.collected)} of ${money(d.target)}</span></div></div>`;
+ if(d.contributions.length)h+=`<div class="glass pad" style="margin-top:14px"><h3>Who's weaving this in</h3>${d.contributions.map(c=>`<div class="row">${ava(c.name)}<div class="grow" style="margin-left:12px"><b>${esc(c.name)}</b><div class="mini"><i style="width:${c.share}%"></i></div></div><span>${money(c.amount)}<br><span class="mute" style="font-size:12px">${c.share}%</span></span></div>`).join('')}</div>`;
+ if(d.status=='draft'&&o)h+=`<div class="glass pad" style="margin-top:14px"><h3>Pip's draft <span class="tag ${d.ai_ok?'':'r'}" style="font-size:11px">${d.ai_ok?'✨ written by AI':'⚠ template, AI offline'}</span></h3><p class="mute" style="margin:2px 0">Pick a voice, tweak the words, then open the chat.</p><div class="chips">${['warm','playful','heartfelt','urgent'].map(t=>`<button class="chip" onclick="regen('${t}')">${t}</button>`).join('')}</div>
+  <textarea id="msg">${esc(d.message)}</textarea><button class="btn" onclick="sendGroup()">Create group &amp; send 🚀</button><button class="btn ghost" onclick="copyMsg()">Copy for WhatsApp</button></div>`;
+ if(d.status=='active'&&o)h+=`<div class="glass pad" style="margin-top:14px"><p class="mute" style="margin-top:0">Happy with the pool? Close it and choose what happens next.</p><button class="btn ghost" onclick="act('close','The pool is sealed. Time to decide.')">Close the pool 🔒</button></div>`;
+ if(d.is_recipient&&!o&&d.status=='asking')h+=`<div class="glass pad" style="margin-top:14px"><h3>Your friends raised ${money(d.collected)} for you 💛</h3><p class="mute">Choose what would feel best.</p><button class="btn" onclick="answer('money')">Send me the money</button><input id="rs" placeholder="Or tell us what you'd love"><button class="btn ghost" onclick="answer('gift')">I'd love this instead</button></div>`;
+ if(o&&live&&left>0)h+=`<div class="glass pad" style="margin-top:14px;text-align:center"><div style="font-size:34px;animation:float 3s infinite">🎯</div><h3>${money(left)} ready to place</h3>${d.recipient_choice?`<p class="why">${d.recipient_choice=='money'?'The recipient asked for the money.':"They would love: "+esc(d.recipient_spec)}</p>`:''}<button class="btn" onclick="decideView(${d.id})">Choose what happens next →</button></div>`;
+ if(d.status=='done')h+=`<div class="glass pad" style="margin-top:14px;text-align:center"><div style="font-size:44px;animation:float 3s infinite">🌿</div><h3>All settled.</h3><p class="mute">Every thread tied off, every cent accounted for.</p></div>`;
+ if(d.purchases.length)under+=`<div class="glass pad"><h3>Bought</h3>${d.purchases.map(p=>`<div class="row"><div class="grow"><b>${esc(p.title)}</b><br><span class="mute" style="font-size:12px">${esc(p.store)} · ${esc(p.status)}${p.link?` · <a class="link" href="${esc(p.link)}" target="_blank" rel="noopener">view ↗</a>`:''}</span></div>${money(p.price)}</div>`).join('')}</div>`;
+ if(d.payouts.length)under+=`<div class="glass pad"><h3>Sent</h3>${d.payouts.map(p=>`<div class="row"><span class="grow">${p.kind=='refund'?'Returned to':'Sent to'} ${esc(p.name)} <span class="mute">(${p.status})</span></span>${money(p.amount)}</div>`).join('')}</div>`;
+ if(o)h+=`<button class="link" style="margin-top:14px;color:#ff9a9a" onclick="delM(${d.id})">🗑 Delete this moment</button>`;$('#side').innerHTML=h;{const un=$('#under');if(un)un.innerHTML=under?`<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;align-items:start">${under}</div>`:''}requestAnimationFrame(()=>document.querySelectorAll('.bar[data-o]').forEach(b=>b.style.strokeDashoffset=b.dataset.o))}
+const chipsIdeas=()=>IDEAS&&IDEAS.length?'<span class="mute" style="font-size:12px;width:100%">Pip\'s ideas:</span>'+IDEAS.map(i=>`<button class="chip" onclick="$('#spec').value='${esc(i)}'">${esc(i)}</button>`).join(''):'';
+const regen=run(async t=>{$('#msg').style.opacity=.4;try{const r=await api(`/moments/${D.id}/regenerate`,'POST',{tone:t});D.message=r.message;D.ai_ok=r.ai;paintSide();if(!r.ai)toast("Pip's AI is offline: "+r.err)}finally{if($('#msg'))$('#msg').style.opacity=1}});
+const delM=run(async id=>{if(!confirm("Delete this moment and its group chat? This can't be undone."))return;await api('/moments/'+id,'DELETE');toast('Gently folded away. The moment is gone.');home()});
+const surChg=()=>{if($('#s').checked&&MEM[REC]){delete MEM[REC];memPaint();toast('🤫 Surprise mode: the recipient was removed from the group.')}};
+const copyMsg=()=>{navigator.clipboard.writeText($('#msg').value);toast('Copied. Paste it anywhere your friends live.')};
+const sendGroup=run(async()=>{await api(`/moments/${D.id}/message`,'PUT',{message:$('#msg').value});await api(`/moments/${D.id}/send`,'POST');boomIf(D);toast(D.kind=='emergency'?'Your group is live. Pip is sharing the word.':'Your group is live. Pip is saying hello…');openM(D.id)});
+const act=(p,msg)=>run(async()=>{await api(`/moments/${D.id}/${p}`,'POST',{});toast(msg);if(p=='close')return decideView(D.id);if(p=='payout'||p=='refund')boomIf(D);await refresh()})();
+const answer=c=>run(async()=>{await api(`/moments/${D.id}/answer`,'POST',{choice:c,spec:$('#rs')?.value||''});toast('Thank you. Your friends will be delighted to know.');await refresh()})();
+const find=run(async()=>{$('#res').innerHTML='<div class="shimrow"></div><div class="shimrow"></div>';try{SR=await api(`/moments/${D.id}/search`,'POST',{spec:$('#spec').value,budget:parseFloat($('#bud').value)||0});$('#res').innerHTML=resHtml()}catch(e){$('#res').innerHTML='';throw e}});
+
+const buy=run(async i=>{const p=SR.candidates[i];await api(`/moments/${D.id}/buy`,'POST',{title:p.title,store:p.store,price:p.price,link:p.link||'',reasoning:i==SR.pick?SR.reasoning:'Chosen by the organiser'});boomIf(D);toast(payLine(D));SR=null;await refresh()});
+const ppLoad=()=>new Promise(r=>{if(window.paypal)return r();const s=document.createElement('script');s.src=`https://www.paypal.com/sdk/js?client-id=${CFG.client_id}&currency=USD`;s.onload=()=>{localStorage.ppu='1';localStorage.ppu_owner=T;r()};document.head.appendChild(s)});
+function ppSignOut(){localStorage.removeItem('ppu');localStorage.removeItem('ppu_owner');try{const w=window.open('https://www.sandbox.paypal.com/signout','ppout','width=420,height=560');if(!w)return false;let done=false;const finish=()=>{if(done)return;done=true;try{w.close()}catch(e){}};w.addEventListener?.('load',finish);setTimeout(finish,3500);return true}catch(e){return false}}
+// If a different MomentPay account just logged in, clear any lingering PayPal session right away (not lazily on next click), so nobody ever sees a prior person's PayPal login.
+function ppGuard(){if(localStorage.ppu&&localStorage.ppu_owner&&localStorage.ppu_owner!==T)ppSignOut()}
+async function ppButtons(id){if(!CFG.client_id){toast('Add PAYPAL_CLIENT_ID to .env to wake up payments.');return}await ppLoad();
+ paypal.Buttons({style:{shape:'pill',color:'gold'},createOrder:async()=>(await api('/paypal/create-order','POST',{moment_id:id,amount:parseFloat($('#amt').value)||0})).id,
+ onApprove:async d=>{const r=await api('/paypal/capture-order','POST',{moment_id:id,order_id:d.orderID});boomIf(D);toast(payLine(D)+(r.to_organiser?" Straight into the organiser's PayPal.":' Held safely in the MomentPay wallet.'));$('#payd').classList.remove('open');ppSignOut();await refresh()},onError:e=>toast('The currents hesitated: '+String(e).slice(0,220))}).render('#pp')}
+const setH=h=>{location.hash=h;CURH=location.hash};
+const ago=t=>{const d=new Date(t.replace(' ','T')+'Z'),s=(Date.now()-d)/1000;return s<60?'just now':s<3600?Math.floor(s/60)+'m ago':s<86400?Math.floor(s/3600)+'h ago':d.toLocaleDateString()};
+const setBell=()=>document.querySelectorAll('.bell').forEach(b=>{b.classList.toggle('has',NUN>0);b.querySelector('b').textContent=NUN>9?'9+':NUN});
+async function npoll(){if(!ME)return;try{const r=await api('/notifications');NITEMS=r.items;NUN=r.unread;const top=r.items.length?r.items[0].id:0;
+ if(NMAX<0)NMAX=top;else{const fresh=r.items.filter(n=>n.id>NMAX&&!(VIEW=='m'&&n.moment_id==CUR)).reverse();fresh.forEach(n=>toast(n.body+(n.title?' · '+n.title:''),n.icon||'🔔'));
+  if(r.items.some(n=>n.id>NMAX))document.querySelectorAll('.bell').forEach(b=>{b.classList.remove('ring');void b.offsetWidth;b.classList.add('ring')});NMAX=Math.max(NMAX,top)}
+ setBell();if(VIEW=='n'&&$('#nlist'))notifPaint()}catch(e){}}
+const startN=()=>{clearInterval(NP);NMAX=-1;npoll();NP=setInterval(()=>{const live=(VIEW=='m'&&D&&D.status!='draft')||VIEW=='d';if(!document.hidden&&!live)npoll()},10000)};
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&ME){npoll();if(VIEW=='m')tick()}});
+const notifPaint=()=>{$('#nlist').innerHTML=NITEMS.length?NITEMS.map(n=>`<div class="nrow ${n.seen?'':'new'}" onclick="${n.moment_id?`openM(${n.moment_id})`:''}"><div style="font-size:26px">${n.icon||'🔔'}</div><div style="flex:1"><b>${esc(n.body)}</b><br><span class="mute" style="font-size:13px">${esc(n.title||'A moment')} · ${ago(n.ts)}</span></div></div>`).join(''):
+ '<div class="empty" style="padding:60px 20px;text-align:center;margin:auto"><div style="font-size:46px;animation:float 4s infinite">🔔</div><p class="mute">All quiet on the shore. When something stirs in your moments, it will chime in here.</p></div>'};
+const readAll=run(async()=>{await api('/notifications/read','POST',{});await npoll()});
+const notifView=run(async()=>{clearInterval(POLL);CUR=0;VIEW='n';D=null;setH('notifications');await npoll();
+ go(nav()+`<button class="link" onclick="home()">← Back</button><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px"><h1 style="font-size:2.4rem">Notifications</h1><button class="btn ghost sm" onclick="readAll()">Mark all as read</button></div><div class="glass" id="nlist" style="margin-top:14px;overflow:hidden"></div>`);notifPaint();setTimeout(()=>VIEW=='n'&&readAll(),2500)});
+
+const decideView=run(async id=>{clearInterval(POLL);CUR=id;VIEW='d';setH(`m${id}/decide`);loading();D=await api('/moments/'+id);
+ if(!D.is_organiser||!['funded','asking','answered'].includes(D.status)||D.leftover<=0)return openM(id);
+ SR=null;IDEAS=null;paintDecide();
+ POLL=setInterval(async()=>{if(VIEW!='d'||document.hidden||$('#dec')?.contains(document.activeElement))return;try{const r=await api('/pulse?moment='+id);if(r.top>NMAX||r.unread!=NUN)npoll();if(!r.sig||JSON.stringify([r.sig[0],r.sig[2],r.sig[3]])==DSIG)return;const d=await api('/moments/'+id);D=d;if(d.leftover<=0)return openM(id);paintDecide()}catch(e){}},3000)});
+function paintDecide(){const d=D,left=d.leftover,rc=d.recipient_choice,sv=$('#spec')?.value,bv=$('#bud')?.value;DSIG=JSON.stringify([d.status,d.leftover,rc]);
+ if(!IDEAS&&d.kind!='emergency'){IDEAS=[];api(`/moments/${d.id}/ideas`).then(r=>{IDEAS=r;const e=$('#ideas');if(e)e.innerHTML=chipsIdeas()}).catch(()=>{})}
+ const emer=d.kind=='emergency';
+ go(nav()+`<div id="dec"><button class="link" onclick="openM(${d.id})">← Back to the moment</button>
+ <div style="text-align:center;margin:8px 0 30px"><span class="tag g">pool sealed</span><h1 class="big" style="font-size:clamp(2.2rem,5vw,3.4rem);margin-top:8px">${money(left)} to place.</h1>
+ <p class="sub" style="margin:6px auto">For ${esc(d.recipient_name)}'s ${esc(d.occasion)}. Choose how it reaches them.</p>
+ ${rc=='money'?'<p class="why" style="display:inline-block">💛 They asked for the money.</p>':''}${rc=='gift'?`<p class="why" style="display:inline-block">💛 They would love: ${esc(d.recipient_spec)}</p>`:''}</div>
+ <div class="dgrid">
+ <div class="glass pad opt2"><div class="e">💸</div><h3>Send the money</h3><p class="mute">Straight to ${esc(d.recipient_name)}'s PayPal, in one tap.</p><button class="btn" onclick="act('payout','${emer?PAYL_CALM[0]:PAYL[0]}')">Send ${money(left)}</button></div>
+ ${emer?'':`<div class="glass pad opt2"><div class="e">💌</div><h3>Ask ${esc(d.recipient_name)}</h3>${d.surprise?'<p class="mute">🤫 Surprise mode keeps this locked. They are never told.</p>':
+   `<p class="mute">Let them choose between money and something they truly want.</p>${d.status=='funded'?`<button class="btn ghost" onclick="act('ask','Question sent with a bow on it.')">Ask them</button>`:'<p class="why">Waiting for their answer…</p>'}`}</div>`}
+ <div class="glass pad opt2"><div class="e">🌿</div><h3>Return what's left</h3><p class="mute">Shared by how much each person gave.</p>${d.preview.map(p=>`<div class="row"><span class="grow">${esc(p.name)}</span><b>${money(p.amount)}</b></div>`).join('')}<button class="btn ghost" onclick="act('refund','${emer?"Every cent returned to those who gave.":"Every cent found its way home."}')">Return ${money(left)}</button></div>
+ ${emer?'':`<div class="glass pad" style="grid-column:1/-1"><div style="display:flex;gap:12px;align-items:center"><div class="e" style="font-size:34px">🛍️</div><div><h3>Let Pip shop for it</h3><p class="mute" style="margin:0">Pip searches stores, checks each match against your wish, and explains its pick.</p></div></div>
+  <div id="ideas" class="chips" style="margin-top:12px">${chipsIdeas()}</div>
+  <div style="display:grid;grid-template-columns:2fr 1fr;gap:10px"><input id="spec" placeholder="What should we get? e.g. scented candles, a good frying pan" value="${esc(rc=='gift'?d.recipient_spec:'')}"><input id="bud" type="number" placeholder="Budget (up to ${money(left)})"></div>
+  <button class="btn" onclick="find()">Search the stores ✨</button><div id="res"></div></div>`}</div></div>`);
+ if(!emer){if(sv!=null)$('#spec').value=sv;if(bv)$('#bud').value=bv;if(SR&&$('#res'))$('#res').innerHTML=resHtml()}}
+const prodHtml=(p,i)=>`<div class="prod ${i==SR.pick?'best':''}"><img src="${esc(p.image)}" alt=""><div><b>${esc(p.title)}</b><br><span class="mute">${esc(p.store)} · ${p.rating?`★${p.rating}${p.reviews?` (${p.reviews})`:''} · `:''}${p.discount?`<s>${money(p.list_price)}</s> `:''}${money(p.price)}${p.delivery?' · '+esc(p.delivery):''}${p.weak?' · weak match':''}</span>${p.link?`<br><a class="link" href="${esc(p.link)}" target="_blank" rel="noopener">View at store ↗</a>`:''}</div>${i>=0?`<button class="btn sm ${i==SR.pick?'gold':'ghost'}" onclick="buy(${i})">Buy</button>`:''}</div>`;
+const resHtml=()=>{const bd=`<span class="tag ${SR.source=='google'?'':'g'}">${SR.source=='google'?'🛒 Live Google Shopping':'🧪 Demo catalog'}</span> <span class="mute" style="font-size:13px">Budget ${money(SR.budget)}</span>`;
+ if(SR.over&&SR.over.length)return bd+`<p class="why">${esc(SR.note)}</p>`+SR.over.map(p=>prodHtml(p,-1)).join('');
+ if(!SR.candidates.length)return bd+`<p class="mute">${esc(SR.note||'Nothing matched.')}</p>`;
+ return bd+(SR.note?`<p class="mute" style="font-size:13px">${esc(SR.note)}</p>`:'')+`<p class="why"><b>✨ Why Pip chose this:</b> ${esc(SR.reasoning)}</p>`+SR.candidates.map((p,i)=>prodHtml(p,i)).join('')};
+addEventListener('hashchange',()=>{if(ME&&location.hash!==CURH){CURH=location.hash;route()}});
+boot();
+</script></body></html> -->
+<!-- <!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MomentPay · give together</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#070b1a;--txt:#eef1ff;--mute:#9ba5c9;--line:rgba(255,255,255,.13);--glass:rgba(255,255,255,.06);--gold:#ffcf5c;--teal:#3de0c4;--vio:#8b7bff;--rose:#ff7eb6;--g:linear-gradient(135deg,#3de0c4,#8b7bff)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ink);color:var(--txt);font:15px/1.55 Manrope,system-ui,sans-serif;min-height:100vh;overflow-x:hidden}
+body:before,body:after{content:"";position:fixed;width:60vmax;height:60vmax;border-radius:50%;filter:blur(100px);opacity:.33;z-index:-1;animation:drift 22s ease-in-out infinite alternate}
+body:before{background:var(--teal);top:-28vmax;left:-18vmax}body:after{background:var(--vio);bottom:-28vmax;right:-18vmax;animation-delay:-9s}
+@keyframes drift{to{transform:translate(8vmax,6vmax) scale(1.15)}}@keyframes rise{from{opacity:0;transform:translateY(22px)}}@keyframes pop{from{opacity:0;transform:scale(.85) translateY(10px)}}
+@keyframes float{50%{transform:translateY(-10px) rotate(3deg)}}@keyframes spin{50%{transform:rotateY(180deg)}}@keyframes flow{to{background-position:0 0,300% 0}}@keyframes pulse{50%{transform:scale(1.25);opacity:.6}}@keyframes shim{to{background-position:-200% 0}}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:700;margin:.1em 0;line-height:1.08;letter-spacing:-.015em}
+.big{font-size:clamp(2.4rem,6vw,4.2rem)}.sub{color:var(--mute);font-size:1.1rem;max-width:34em}.mute{color:var(--mute)}
+#view{max-width:1120px;margin:0 auto;padding:18px 18px 90px}#view.in>*{animation:rise .65s cubic-bezier(.2,.8,.2,1) both}#view.in>*:nth-child(2){animation-delay:.07s}#view.in>*:nth-child(3){animation-delay:.14s}
+nav{display:flex;justify-content:space-between;align-items:center;padding:6px 0 18px}.logo{font:700 1.4rem Fraunces,serif;display:flex;gap:10px;align-items:center;cursor:pointer}.logo i{width:30px;height:30px;border-radius:50%;background:var(--g);box-shadow:0 0 24px var(--teal);animation:pulse 3s infinite}
+.glass{background:var(--glass);border:1px solid var(--line);border-radius:22px;backdrop-filter:blur(18px);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s,border-color .35s}
+.lift{cursor:pointer;overflow:hidden}.lift:hover{transform:translateY(-8px);box-shadow:0 26px 60px -22px rgba(61,224,196,.45);border-color:rgba(61,224,196,.55)}
+.pad{padding:20px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px;margin-top:18px}
+.cov{height:104px;display:grid;place-items:center;font-size:48px;background:linear-gradient(135deg,hsl(var(--h) 65% 38%),hsl(calc(var(--h) + 70) 70% 28%))}.cov span{display:inline-block;animation:float 4.5s ease-in-out infinite;transition:transform .45s cubic-bezier(.2,1.6,.4,1)}.lift:hover .cov span{transform:scale(1.3) rotate(-10deg)}
+.btn{position:relative;overflow:hidden;border:0;border-radius:14px;padding:12px 20px;font:800 14px Manrope,sans-serif;color:#06121a;background:var(--g);cursor:pointer;transition:transform .2s,box-shadow .3s;margin:4px 6px 4px 0}
+.btn:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 12px 32px -8px rgba(61,224,196,.65)}.btn:active{transform:scale(.96)}
+.btn:after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.55) 50%,transparent 70%);transform:translateX(-130%);transition:transform .7s}.btn:hover:after{transform:translateX(130%)}
+.btn.ghost{background:transparent;color:var(--txt);border:1px solid var(--line)}.btn.gold{background:linear-gradient(135deg,var(--gold),var(--rose))}.btn.sm{padding:8px 14px}
+.link{background:none;border:0;color:var(--teal);cursor:pointer;font:700 14px Manrope;padding:4px 0}.link:hover{text-decoration:underline}
+input,textarea,select{width:100%;padding:12px 14px;margin:6px 0;border:1px solid var(--line);border-radius:14px;background:rgba(5,8,22,.55);color:var(--txt);font:inherit;transition:border-color .25s,box-shadow .25s}
+input:focus,textarea:focus,select:focus{outline:0;border-color:var(--teal);box-shadow:0 0 0 4px rgba(61,224,196,.18)}textarea{min-height:130px;resize:vertical}select option{color:#000}
+label{font-weight:700;display:block;margin-top:12px}.chk{display:flex;gap:8px;align-items:center;font-weight:500}.chk input{width:auto;margin:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0}.chip{border:1px solid var(--line);background:var(--glass);color:var(--txt);border-radius:99px;padding:6px 14px;cursor:pointer;font:600 13px Manrope;transition:all .2s}.chip:hover,.chip.on{background:var(--g);color:#06121a;transform:translateY(-2px);border-color:transparent}
+.tag{font-size:12px;font-weight:700;padding:3px 10px;border-radius:99px;background:rgba(61,224,196,.16);color:var(--teal)}.tag.g{background:rgba(255,207,92,.16);color:var(--gold)}.tag.r{background:rgba(255,126,126,.18);color:#ff9a9a}
+.ava{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;font:800 12px Manrope;color:#fff;border:2px solid var(--ink);margin-right:-8px;flex:none}
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:40px;align-items:center;min-height:72vh}.floaters{position:relative;height:190px;margin-top:26px}
+.fl{position:absolute;padding:12px 16px;border-radius:16px;background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(14px);animation:float 6s ease-in-out infinite}.fl b{display:block;color:var(--gold)}.fl.a{left:0;top:0}.fl.b{left:200px;top:70px;animation-delay:-2s}.fl.c{left:30px;top:130px;animation-delay:-4s}
+.mv{display:grid;grid-template-columns:1fr 370px;gap:18px;align-items:start}
+.chat{display:flex;flex-direction:column;height:76vh;min-height:540px;overflow:hidden}.chead{display:flex;gap:14px;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line)}.chead .em{font-size:30px}
+.msgs{flex:1;overflow:auto;padding:16px;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth}.empty{margin:auto;text-align:center;color:var(--mute);max-width:260px}
+.b{max-width:78%;padding:9px 14px;border-radius:18px 18px 18px 4px;background:rgba(255,255,255,.09);animation:pop .4s cubic-bezier(.2,1.4,.4,1);word-wrap:break-word}.b time{display:block;font-size:11px;opacity:.55;text-align:right}.who{display:block;font-size:12px;font-weight:800;color:var(--teal)}
+.b.me{align-self:flex-end;border-radius:18px 18px 4px 18px;background:linear-gradient(135deg,#2cae9a,#6a5cf0)}.b.me .who{display:none}
+.b.ai{align-self:center;max-width:92%;border:1.5px solid transparent;background:linear-gradient(#0e1534,#0e1534) padding-box,linear-gradient(120deg,var(--teal),var(--vio),var(--rose),var(--teal)) border-box;background-size:auto,300% 100%;animation:pop .4s both,flow 7s linear infinite}.b.ai .who{color:var(--rose)}
+.pay{align-self:center;display:flex;gap:12px;align-items:center;padding:12px 18px;border-radius:18px;background:linear-gradient(135deg,rgba(255,207,92,.22),rgba(255,126,182,.14));border:1px solid rgba(255,207,92,.45);animation:pop .55s cubic-bezier(.2,1.5,.4,1);max-width:92%}.pay .coin{font-size:28px;animation:spin 2.6s ease-in-out infinite}.pay span{color:var(--mute);font-size:13px}
+.payd{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.2,.8,.2,1);border-top:0 solid var(--line);background:rgba(0,0,0,.2)}.payd.open{max-height:420px;border-top-width:1px}.payd>div{padding:14px 16px}
+.comp{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line)}.comp input{margin:0}
+.ring{display:grid;place-items:center;padding:20px;position:relative}.ring svg{width:170px;transform:rotate(-90deg)}.trk,.bar{fill:none;stroke-width:9}.trk{stroke:rgba(255,255,255,.1)}.bar{stroke:url(#gr);stroke-linecap:round;transition:stroke-dashoffset 1.4s cubic-bezier(.2,.8,.2,1)}
+.mid{position:absolute;text-align:center}.mid b{font:700 2rem Fraunces,serif;display:block}.mid span{font-size:12px;color:var(--mute)}
+.row{display:flex;gap:10px;align-items:center;padding:8px 0}.row .grow{flex:1}.mini{height:5px;border-radius:9px;background:rgba(255,255,255,.1);overflow:hidden;margin-top:4px}.mini i{display:block;height:100%;background:var(--g);transition:width 1s}
+.opt{border:1px solid var(--line);border-radius:16px;padding:14px;margin:12px 0;transition:border-color .25s,background .25s}.opt:hover{border-color:rgba(61,224,196,.5);background:rgba(61,224,196,.05)}
+.prod{display:flex;gap:12px;align-items:center;padding:10px;border:1px solid var(--line);border-radius:14px;margin:8px 0;transition:transform .25s}.prod:hover{transform:translateX(4px)}.prod img{width:54px;height:54px;object-fit:contain;background:#fff;border-radius:10px}.prod>div{flex:1;font-size:13px}.prod.best{border-color:var(--gold);background:rgba(255,207,92,.08)}
+.why{border-left:3px solid var(--gold);padding:8px 12px;background:rgba(255,207,92,.08);border-radius:8px;font-size:13px}
+.load{display:grid;place-items:center;gap:16px;min-height:50vh;color:var(--mute)}.orb{width:56px;height:56px;border-radius:50%;background:var(--g);animation:pulse 1.4s infinite;box-shadow:0 0 50px var(--teal)}
+.shimrow{height:52px;border-radius:14px;margin:8px 0;background:linear-gradient(90deg,rgba(255,255,255,.05) 25%,rgba(255,255,255,.14) 50%,rgba(255,255,255,.05) 75%);background-size:200% 100%;animation:shim 1.3s infinite}
+#toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,30px);background:#111a3a;border:1px solid var(--line);padding:12px 20px;border-radius:16px;opacity:0;pointer-events:none;transition:all .4s cubic-bezier(.2,1.4,.4,1);max-width:90vw;z-index:9;box-shadow:0 20px 50px -10px #000}#toast.on{opacity:1;transform:translate(-50%,0)}
+#toasts{position:fixed;top:78px;right:16px;z-index:20;display:flex;flex-direction:column;gap:10px;width:min(370px,92vw)}
+@media(max-width:640px){#toasts{top:116px}}
+nav>div{display:flex;align-items:center;flex-wrap:wrap;gap:4px;justify-content:flex-end}
+.tt{display:flex;gap:12px;align-items:flex-start;padding:13px 16px 15px;border-radius:16px;background:rgba(17,26,58,.94);border:1px solid var(--line);backdrop-filter:blur(16px);box-shadow:0 18px 40px -12px #000;animation:slideIn .5s cubic-bezier(.2,1.2,.4,1) both;cursor:pointer;position:relative;overflow:hidden;font-weight:600}
+.tt.out{animation:slideOut .4s ease both}.tt i{font-style:normal;font-size:21px}.tt:after{content:"";position:absolute;left:0;bottom:0;height:3px;background:var(--g);animation:life 5s linear forwards}
+@keyframes slideIn{from{opacity:0;transform:translateX(70px)}}@keyframes slideOut{to{opacity:0;transform:translateX(70px)}}@keyframes life{from{width:100%}to{width:0}}
+.bell{position:relative;display:inline-grid;place-items:center;flex:0 0 38px;width:38px;height:38px;padding:0;line-height:1;background:var(--glass);border:1px solid var(--line);border-radius:50%;cursor:pointer;font-size:17px;color:var(--txt);transition:transform .25s,border-color .25s;margin-right:10px;vertical-align:middle}.bell:hover{transform:rotate(-12deg) scale(1.1);border-color:var(--teal)}
+.bell b{position:absolute;top:-5px;right:-5px;min-width:17px;text-align:center;background:var(--rose);color:#fff;border:2px solid var(--ink);border-radius:99px;font-size:10px;line-height:14px;padding:0 4px;display:none;pointer-events:none}.bell.has b{display:block}.bell.ring{animation:ring .9s}
+@keyframes ring{20%{transform:rotate(20deg)}40%{transform:rotate(-16deg)}60%{transform:rotate(10deg)}80%{transform:rotate(-6deg)}}
+.nrow{display:flex;gap:14px;padding:16px 18px;border-bottom:1px solid var(--line);cursor:pointer;transition:background .2s,padding-left .2s}.nrow:hover{background:rgba(255,255,255,.05);padding-left:24px}.nrow.new{border-left:3px solid var(--teal);background:rgba(61,224,196,.05)}
+.dgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px}.opt2{transition:transform .35s,border-color .35s,box-shadow .35s}.opt2:hover{transform:translateY(-6px);border-color:rgba(61,224,196,.5);box-shadow:0 24px 50px -22px rgba(61,224,196,.5)}.opt2 .e{font-size:38px;margin-bottom:6px;display:inline-block;transition:transform .4s cubic-bezier(.2,1.6,.4,1)}.opt2:hover .e{transform:scale(1.25) rotate(-8deg)}
+#fx{position:fixed;inset:0;pointer-events:none;z-index:8}
+@media(max-width:900px){.mv,.hero{grid-template-columns:1fr}.chat{height:68vh}.floaters{display:none}}
+@media(prefers-reduced-motion:reduce){*,:before,:after{animation:none!important;transition:none!important}}
+</style></head>
+<body><div id="view"></div><div id="toasts"></div><canvas id="fx"></canvas>
+<script>
+const $=s=>document.querySelector(s),V=$('#view');
+let T=localStorage.t||'',ME=null,CFG={},D=null,SR=null,REC=null,US=[],LAST=0,SIG='',CUR=0,CURH='',VIEW='',NP=null,NMAX=-1,NUN=0,NITEMS=[],DSIG='',AIS=null,MEM={},MR=[],POLL=null,IDEAS=null,PPD=false;
+const money=n=>'$'+Number(n).toFixed(2),rnd=a=>a[Math.floor(Math.random()*a.length)];
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const PAYL=['Your value has safely changed hands.','The digital currents have carried your treasure through.','A successful handshake between balances.','Kindness, delivered at the speed of light.'];
+const PAYL_CALM=['Your contribution is safely in.','Steady hands, steady support. It has arrived.','One more person standing behind them.','Quietly, surely, it found its way there.'];
+const payLine=d=>rnd((d&&d.kind=='emergency')?PAYL_CALM:PAYL);
+const boomIf=d=>{if(!d||d.kind!='emergency')boom()};
+const LOAD=['Weaving your moment together…','Asking the coins to line up…','Warming up the group chat…','Polishing the pool…'];
+const toast=(t,icon='✨')=>{const c=$('#toasts'),e=document.createElement('div');e.className='tt';e.innerHTML=`<i>${icon}</i><div>${esc(t)}</div>`;const kill=()=>{e.classList.add('out');setTimeout(()=>e.remove(),400)};e.onclick=kill;c.appendChild(e);setTimeout(kill,5000);while(c.children.length>4)c.firstChild.remove()};
+const run=f=>async(...a)=>{try{await f(...a)}catch(e){toast('A small knot in the thread: '+e.message)}};
+const api=async(p,m='GET',b)=>{const r=await fetch('/api'+p,{method:m,headers:{'Content-Type':'application/json',Authorization:T},body:b?JSON.stringify(b):undefined});
+ const j=await r.json().catch(()=>({}));if(!r.ok)throw new Error(typeof j.detail==='string'?j.detail:'a field needs a little more love');return j};
+const go=h=>{V.innerHTML=h;V.classList.remove('in');void V.offsetWidth;V.classList.add('in');scrollTo(0,0);setPill();requestAnimationFrame(()=>document.querySelectorAll('.bar[data-o]').forEach(b=>b.style.strokeDashoffset=b.dataset.o))};
+const loading=()=>go(`<div class="load"><div class="orb"></div><p>${rnd(LOAD)}</p></div>`);
+const hue=s=>[...String(s)].reduce((a,c)=>a*31+c.charCodeAt(0),7)%360;
+const ava=n=>`<span class="ava" style="background:hsl(${hue(n)} 60% 45%)" title="${esc(n)}">${esc(String(n).split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase())}</span>`;
+const emo=m=>m.kind=='emergency'?'🆘':/birth/i.test(m.occasion)?'🎂':/house|home/i.test(m.occasion)?'🏡':/grad/i.test(m.occasion)?'🎓':/baby/i.test(m.occasion)?'👶':/wed|marr/i.test(m.occasion)?'💍':'🎁';
+const tm=t=>new Date(t.replace(' ','T')+'Z').toLocaleTimeString([],{hour:'numeric',minute:'2-digit'});
+function boom(){const c=$('#fx'),x=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;const P=[...Array(140)].map(()=>({x:innerWidth/2,y:innerHeight*.65,vx:(Math.random()-.5)*18,vy:-Math.random()*18-4,s:5+Math.random()*7,c:`hsl(${Math.random()*360} 90% 62%)`,r:Math.random()*6}));let f=0;(function t(){x.clearRect(0,0,c.width,c.height);P.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.45;p.r+=.2;x.fillStyle=p.c;x.save();x.translate(p.x,p.y);x.rotate(p.r);x.fillRect(-p.s/2,-p.s/2,p.s,p.s*.6);x.restore()});++f<120?requestAnimationFrame(t):x.clearRect(0,0,c.width,c.height)})()}
+
+const setPill=()=>{document.querySelectorAll('.aipill').forEach(e=>{e.className='tag aipill'+(AIS&&!AIS.ok?' r':'');e.textContent=!AIS?'Pip is waking…':AIS.ok?'✨ Pip is online':'⚠ Pip is offline';e.title=(AIS&&AIS.error)||''});const b=$('#aibanner');if(b&&AIS&&!AIS.ok)b.innerHTML=`<div class="glass pad" style="margin:14px 0;border-color:#ff8f8f"><b>Pip's AI isn't connected, so you only get plain templates.</b><p class="mute" style="margin:4px 0">${esc(AIS.error)}<br>Get a free key at aistudio.google.com (Gemini) or console.groq.com, add it to .env as GEMINI_API_KEY or GROQ_API_KEY, and restart the server.</p></div>`};
+async function boot(){fetch('/api/ai/status').then(r=>r.json()).then(r=>{AIS=r;setPill()}).catch(()=>{});CFG=await api('/config');if(T){try{ME=await api('/me')}catch{T=''}}ME?route():authView(0)}
+function route(){if(!NP)startN();const h=location.hash,m=h.match(/^#m(\d+)(\/decide)?/);h=='#notifications'?notifView():h=='#profile'?profileView():m?(m[2]?decideView(+m[1]):openM(+m[1])):home()}
+const nav=()=>`<nav><div class="logo" onclick="home()"><i></i>MomentPay</div><div><span class="tag aipill" style="margin-right:12px"></span><button type="button" class="bell ${NUN?'has':''}" onclick="notifView()" title="Notifications" aria-label="Notifications">🔔<b>${NUN>9?'9+':NUN}</b></button>${ava(ME.name)}<button class="link" style="margin-left:14px" onclick="profileView()">Profile</button><button class="link" style="margin-left:14px" onclick="logout()">Log out</button></div></nav>`;
+function logout(noPP){clearInterval(POLL);clearInterval(NP);NP=null;NUN=0;localStorage.t=T='';ME=null;if(!noPP&&localStorage.ppu)ppSignOut();authView(0)}
+
+function authView(reg){clearInterval(POLL);D=null;go(`<div class="hero"><div><div class="logo" style="margin-bottom:28px"><i></i>MomentPay</div>
+<h1 class="big">Some moments are too big for one wallet.</h1><p class="sub">Gather your people, give what you can, and let Pip weave the rest: the right words, the right gift, and fair-share refunds on whatever is left.</p>
+<div class="floaters"><div class="fl a">🏡 Priya's housewarming<b>$240 of $300</b></div><div class="fl b">🎓 A graduation surprise<b>$410 of $500</b></div><div class="fl c">💸 Rahul just gave $20</div></div></div>
+<section class="glass pad"><h2>${reg?'Join the circle':'Welcome back'}</h2><p class="mute">${reg?'Two minutes, and your people can find you.':'Your moments kept the lights on for you.'}</p>
+${reg?'<input id="n" placeholder="Your name">':''}<input id="e" type="email" placeholder="Email">${reg?'<input id="pe" type="email" placeholder="Your PayPal sandbox email (receives money owed to you)">':''}<input id="p" type="password" placeholder="Password">
+<button class="btn" onclick="auth(${reg})">${reg?'Create my account':'Step inside'}</button><br><button class="link" onclick="authView(${reg?0:1})">${reg?'Already one of us? Log in':'New here? Create an account'}</button></section></div>`)}
+const auth=run(async reg=>{const r=await api(reg?'/register':'/login','POST',{name:$('#n')?.value||'',email:$('#e').value,paypal_email:$('#pe')?.value||'',password:$('#p').value});T=r.token;localStorage.t=T;ME=await api('/me');ppGuard();route()});
+
+const profileView=run(async()=>{clearInterval(POLL);CUR=0;VIEW='p';D=null;setH('profile');const p=await api('/profile');
+ go(nav()+`<button class="link" onclick="home()">← Back</button><h1 style="font-size:2.4rem;margin:6px 0 14px">Your profile</h1><div class="dgrid">
+ <section class="glass pad"><h3>About you</h3><p class="mute" style="margin-top:2px">Your friends find you by name. Your PayPal email is where money owed to you arrives.</p>
+ <label>Name</label><input id="pf_n" value="${esc(p.name)}" maxlength="60">
+ <label>Login email</label><input id="pf_e" type="email" value="${esc(p.email)}">
+ <label>PayPal email</label><input id="pf_pe" type="email" value="${esc(p.paypal_email)}">
+ <label>Phone (optional)</label><input id="pf_ph" type="tel" value="${esc(p.phone)}" placeholder="+91 98765 43210">
+ <label>City (optional)</label><input id="pf_c" value="${esc(p.city)}" maxlength="60">
+ <label>A line about you (optional)</label><textarea id="pf_a" style="min-height:80px" maxlength="280">${esc(p.about)}</textarea>
+ <button class="btn" onclick="saveProfile()">Save changes</button></section>
+ <section class="glass pad" style="align-self:start"><h3>Delete account</h3><p class="mute">This removes your account and the moments you organised. It is blocked while money is still in play in any moment you are part of.</p>
+ <input id="pf_pw" type="password" placeholder="Your password to confirm"><button class="btn ghost" style="color:#ff9a9a;border-color:rgba(255,154,154,.45)" onclick="delAccount()">Delete my account</button></section></div>`)});
+const saveProfile=run(async()=>{await api('/profile','PUT',{name:$('#pf_n').value,email:$('#pf_e').value,paypal_email:$('#pf_pe').value,phone:$('#pf_ph').value,city:$('#pf_c').value,about:$('#pf_a').value});ME=await api('/me');toast('Profile saved.','✅');profileView()});
+const delAccount=run(async()=>{const pw=$('#pf_pw').value;if(!pw)throw new Error('type your password to confirm');if(!confirm('Delete your account for good? This cannot be undone.'))return;await api('/profile/delete','POST',{password:pw});logout(true);toast('Your account has been deleted. Take care.','👋')});
+
+const home=run(async()=>{clearInterval(POLL);CUR=0;VIEW='h';D=null;setH('');loading();const ms=await api('/moments');
+ go(nav()+`<div id="aibanner"></div><div style="display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:12px"><div><h1 class="big" style="font-size:clamp(2rem,4vw,3rem)">Good to see you, ${esc(ME.name.split(' ')[0])}.</h1><p class="sub">Your people, your moments, one warm place.</p></div><button class="btn gold" onclick="newView()">✨ Start a moment</button></div>`+
+ (ms.length?`<div class="grid">${ms.map(m=>`<div class="glass lift" style="position:relative" onclick="openM(${m.id})">${m.role=='Organiser'?`<button class="chip" style="position:absolute;top:10px;right:10px;z-index:2" title="Delete" onclick="event.stopPropagation();delM(${m.id})">🗑</button>`:''}<div class="cov" style="--h:${hue(m.occasion)}"><span>${emo(m)}</span></div><div class="pad"><span class="tag">${m.kind}</span> <span class="tag g">${m.status}</span>
+ <h3 style="margin-top:10px">${esc(m.occasion)}</h3><p class="mute" style="margin:2px 0 10px">${m.role} · ${money(m.collected)} of ${money(m.target)}</p><div class="mini"><i style="width:${Math.min(100,m.collected/m.target*100)}%"></i></div>
+ <p class="mute" style="margin:10px 0 0;font-size:13px">${esc(m.last||'Waiting for the first hello…')}</p></div></div>`).join('')}</div>`:
+ `<div class="glass pad" style="text-align:center;margin-top:30px;padding:60px 20px"><div style="font-size:54px;animation:float 4s infinite">🌊</div><h2>A quiet shore.</h2><p class="sub" style="margin:auto">Start a moment and let the tide bring your people in.</p></div>`))});
+
+const newView=run(async()=>{REC=null;US=[];MEM={};MR=[];
+ go(nav()+`<button class="link" onclick="home()">← Back to shore</button><section class="glass pad" style="max-width:680px;margin:10px auto"><h2>What are we gathering for?</h2><p class="mute">Tell Pip the story. The more specific you are, the better the words.</p>
+ <label>Who is it for?</label><input id="rq" placeholder="Search friends by name or email" oninput="srch()"><div id="rres" class="chips"></div><p id="rsel" class="mute">Nobody yet. <button class="link" onclick="pick(${ME.id})">It's for me</button></p>
+ <label>Kind of moment</label><select id="k" onchange="$('#sw').style.display=this.value=='occasion'?'flex':'none'"><option value="occasion">A special occasion</option><option value="emergency">An emergency fund</option></select>
+ <input id="o" placeholder="e.g. Priya's housewarming"><textarea id="d" style="min-height:80px" placeholder="What's happening? e.g. She just moved into her first flat and is obsessed with plants."></textarea>
+ <textarea id="c" style="min-height:80px" placeholder="Who is who? e.g. Rahul is her college roommate, Anita is her sister, Dev is a work friend."></textarea>
+ <input id="t" type="number" min="1" placeholder="Goal in USD (it's a target, never a demand)"><label id="sw" class="chk"><input type="checkbox" id="s" onchange="surChg()">🤫 It's a surprise. The recipient is never told.</label>
+ <label>Invite to the group chat</label><input id="mq" placeholder="Search a friend by name to add them" oninput="msrch()"><div id="mres" class="chips"></div><div id="msel" class="chips"><span class="mute">Nobody added yet.</span></div>
+ <button class="btn" id="go" onclick="create()">Ask Pip to write the message ✨</button></section>`)});
+const srch=run(async()=>{const v=$('#rq').value.trim();if(v.length<2){US=[];$('#rres').innerHTML='<span class="mute">Type at least 2 letters of their name.</span>';return}US=await api('/users?q_='+encodeURIComponent(v));$('#rres').innerHTML=US.map(x=>`<button class="chip" onclick="pick(${x.id})">${esc(x.name)} <span class="mute">${esc(x.email)}</span></button>`).join('')||'<span class="mute">No one by that name yet.</span>'});
+const msrch=run(async()=>{const v=$('#mq').value.trim();if(v.length<2){MR=[];$('#mres').innerHTML='<span class="mute">Type at least 2 letters of their name.</span>';return}MR=await api('/users?q_='+encodeURIComponent(v));$('#mres').innerHTML=MR.filter(x=>!MEM[x.id]&&!($('#s').checked&&x.id==REC)).map(x=>`<button class="chip" onclick="addMem(${x.id})">+ ${esc(x.name)} <span class="mute">${esc(x.email)}</span></button>`).join('')||'<span class="mute">No one by that name yet.</span>'});
+const memPaint=()=>$('#msel').innerHTML=Object.entries(MEM).map(([i,n])=>`<button class="chip on" onclick="delMem(${i})">${esc(n)} ✕</button>`).join('')||'<span class="mute">Nobody added yet.</span>';
+const addMem=id=>{const x=MR.find(u=>u.id==id);if(x&&$('#s').checked&&id==REC){toast("🤫 It's a surprise, so the recipient can't be in the group.");return}if(x){MEM[id]=x.name;$('#mq').value='';$('#mres').innerHTML='';memPaint()}};
+const delMem=id=>{delete MEM[id];memPaint()};
+function pick(id){REC=id;const x=id==ME.id?{name:ME.name+' (you)'}:US.find(u=>u.id==id);$('#rsel').innerHTML='💫 Recipient: <b>'+esc(x?x.name:'chosen')+'</b>';$('#rres').innerHTML='';surChg()}
+const create=run(async()=>{if(!REC)throw new Error('choose who this is for');
+ const b={recipient_id:REC,kind:$('#k').value,occasion:$('#o').value,description:$('#d').value,context:$('#c').value,target:parseFloat($('#t').value),surprise:$('#s').checked,member_ids:Object.keys(MEM).map(Number)};
+ const btn=$('#go');btn.disabled=true;btn.textContent='Pip is weaving your words…';
+ try{const r=await api('/moments','POST',b);openM(r.id);if(!r.ai)setTimeout(()=>toast("Pip's AI is offline ("+r.err+'). This draft is only a plain template.'),1500)}catch(e){btn.disabled=false;btn.textContent='Ask Pip to write the message ✨';throw e}});
+
+const bub=m=>{if(m.kind=='pay'){const[i,t,l]=m.body.split('|');return`<div class="pay"><div class="coin">${i}</div><div><b>${esc(t)}</b><br><span>${esc(l)}</span></div></div>`}
+ if(m.kind=='ai')return`<div class="b ai"><span class="who">✨ Pip</span>${esc(m.body).replace(/\n/g,'<br>')}</div>`;
+ return`<div class="b ${m.uid==ME.id?'me':''}"><span class="who">${esc(m.name)}</span>${esc(m.body).replace(/\n/g,'<br>')}<time>${tm(m.ts)}</time></div>`};
+const openM=run(async id=>{clearInterval(POLL);CUR=id;VIEW='m';loading();setH('m'+id);try{D=await api('/moments/'+id)}catch(e){CUR=0;D=null;history.replaceState(null,'','#');CURH='';toast('That moment has drifted out of reach: '+e.message);return home()}LAST=0;SIG=sigOf(D);PPD=false;IDEAS=null;SR=null;
+ const chatOK=(D.is_organiser||D.is_member||D.is_recipient)&&D.status!='draft';
+ go(nav()+`<button class="link" onclick="home()">← All moments</button><div class="mv"><div><section class="glass chat"><div class="chead"><div class="em">${emo(D)}</div><div style="flex:1"><h3 style="font-size:1.25rem">${esc(D.occasion)}</h3><span class="mute" style="font-size:13px">for ${esc(D.recipient_name)} · by ${esc(D.organiser_name)}</span></div><div style="display:flex;padding-right:8px">${[D.organiser_name,...D.crew].map(ava).join('')}</div></div>
+ <div class="msgs" id="msgs">${chatOK?'':`<div class="empty"><div style="font-size:44px;animation:float 4s infinite">💬</div><p>${D.status=='draft'?'Your group chat is still folded up. Send the message and it blooms open, with everyone inside.':'This chat belongs to the friends planning the moment.'}</p></div>`}</div>
+ <div class="payd" id="payd"><div><div class="chips">${[5,10,25,50].map(a=>`<button class="chip" onclick="$('#amt').value=${a}">$${a}</button>`).join('')}</div><input id="amt" type="number" min="1" placeholder="Any amount you like. Truly."><div id="pp"></div></div></div>
+ ${chatOK?`<div class="comp"><button class="btn gold sm" id="givebtn" onclick="togglePay()" style="display:none">💸 Give</button><input id="say" placeholder="Say something kind… or ask @pip anything" onkeydown="if(event.key=='Enter')sendChat()"><button class="btn sm" onclick="sendChat()">Send</button></div><div class="chips" style="padding:0 14px 12px">${D.is_organiser||D.is_recipient?`<button class="chip" onclick="suggestChat('thanks')">💛 Thank contributors</button>`:D.kind=='emergency'?`<button class="chip" onclick="suggestChat('support')">🤍 Send support</button>`:`<button class="chip" onclick="suggestChat('congratulate')">🎉 Congratulate recipient</button>`}</div>`:''}</section><div id="under" style="margin-top:18px"></div></div><aside id="side"></aside></div>`);
+ paintSide();if(D.status!='draft'){TICKMS=3000;scheduleTick()}});
+const togglePay=()=>{$('#payd').classList.toggle('open');if(!PPD){PPD=true;ppButtons(D.id)}};
+const sendChat=run(async()=>{
+    const input=$('#say');
+    const t=input.value.trim();
+    if(!t)return;
+
+    await api(`/moments/${D.id}/chat`,'POST',{text:t});
+
+    input.value='';
+    TICKMS=3000;
+    tick();
+});
+const suggestChat=run(async kind=>{
+    const b=document.querySelector('.chips button[onclick*="suggestChat"]');
+
+    if(b){
+        b.disabled=true;
+        b.textContent='Pip is writing…';
+    }
+
+    try{
+        const r=await api(`/moments/${D.id}/chat/suggest`,'POST',{kind});
+
+        $('#say').value=r.message;
+
+        await sendChat();
+
+        if(!r.ai){
+            toast('Pip used a thoughtful message template because AI is offline.');
+        }
+
+    }finally{
+        if(b){
+            b.disabled=false;
+            b.textContent=kind=='thanks'
+                ?'💛 Thank contributors'
+                :kind=='support'
+                ?'🤍 Send support'
+                :'🎉 Congratulate recipient';
+        }
+    }
+});
+const sigOf=d=>JSON.stringify([d.status,d.collected,d.leftover,d.recipient_choice,d.purchases.length,d.payouts.length]);
+let TICKMS=3000;
+function scheduleTick(){tick();POLL=setTimeout(scheduleTick,TICKMS)}
+async function tick(){if(!D||!$('#msgs')||document.hidden)return;let changed=false;try{const r=await api(`/pulse?moment=${D.id}&after=${LAST}`),ms=r.chat||[];if(r.top>NMAX||r.unread!=NUN)npoll();if(ms.length){changed=true;const b=$('#msgs'),near=b.scrollHeight-b.scrollTop-b.clientHeight<140;b.querySelector('.empty')?.remove();b.insertAdjacentHTML('beforeend',ms.map(bub).join(''));LAST=ms[ms.length-1].id;if(near||ms.some(m=>m.uid==ME.id))b.scrollTop=b.scrollHeight}
+ if(!ms.length&&LAST==0&&!$('#msgs .empty,#msgs .b,#msgs .pay'))$('#msgs').innerHTML='<div class="empty"><p>It\'s quiet in here. Be the first to say hello.</p></div>';
+ if(r.sig&&JSON.stringify(r.sig)!=SIG&&!$('#side').contains(document.activeElement)){changed=true;const d=await api('/moments/'+D.id);SIG=sigOf(d);D=d;paintSide()}}catch(e){}
+ // nothing new? check less often next time (up to every 9s); anything happening snaps it back to a brisk 3s.
+ TICKMS=changed?3000:Math.min(TICKMS*1.6,9000)}
+async function refresh(){D=await api('/moments/'+D.id);if(VIEW=='d'){if(D.leftover<=0||!['funded','asking','answered'].includes(D.status))return openM(D.id);paintDecide()}else{SIG=sigOf(D);paintSide();TICKMS=3000;tick()}}
+
+function paintSide(){const d=D,o=d.is_organiser,left=d.leftover,live=['funded','asking','answered'].includes(d.status),pct=Math.min(100,d.collected/d.target*100),C=2*Math.PI*54;
+ let under='';const gb=$('#givebtn');if(gb)gb.style.display=d.status=='active'&&!d.is_recipient?'':'none';
+ const realPct=Math.round(d.collected/d.target*100);
+ let h=`<div class="glass ring"><svg viewBox="0 0 120 120"><defs><linearGradient id="gr"><stop offset="0" stop-color="#3de0c4"/><stop offset="1" stop-color="#ffcf5c"/></linearGradient></defs><circle cx="60" cy="60" r="54" class="trk"/><circle cx="60" cy="60" r="54" class="bar" stroke-dasharray="${C}" style="stroke-dashoffset:${C}" data-o="${C*(1-pct/100)}"/></svg>
+ <div class="mid"><b>${realPct}%</b><span>${money(d.collected)} of ${money(d.target)}</span></div></div>`;
+ if(d.contributions.length)h+=`<div class="glass pad" style="margin-top:14px"><h3>Who's weaving this in</h3>${d.contributions.map(c=>`<div class="row">${ava(c.name)}<div class="grow" style="margin-left:12px"><b>${esc(c.name)}</b><div class="mini"><i style="width:${c.share}%"></i></div></div><span>${money(c.amount)}<br><span class="mute" style="font-size:12px">${c.share}%</span></span></div>`).join('')}</div>`;
+ if(d.status=='draft'&&o)h+=`<div class="glass pad" style="margin-top:14px"><h3>Pip's draft <span class="tag ${d.ai_ok?'':'r'}" style="font-size:11px">${d.ai_ok?'✨ written by AI':'⚠ template, AI offline'}</span></h3><p class="mute" style="margin:2px 0">Pick a voice, tweak the words, then open the chat.</p><div class="chips">${['warm','playful','heartfelt','urgent'].map(t=>`<button class="chip" onclick="regen('${t}')">${t}</button>`).join('')}</div>
+  <textarea id="msg">${esc(d.message)}</textarea><button class="btn" onclick="sendGroup()">Create group &amp; send 🚀</button><button class="btn ghost" onclick="copyMsg()">Copy for WhatsApp</button></div>`;
+ if(d.status=='active'&&o)h+=`<div class="glass pad" style="margin-top:14px"><p class="mute" style="margin-top:0">Happy with the pool? Close it and choose what happens next.</p><button class="btn ghost" onclick="act('close','The pool is sealed. Time to decide.')">Close the pool 🔒</button></div>`;
+ if(d.is_recipient&&!o&&d.status=='asking')h+=`<div class="glass pad" style="margin-top:14px"><h3>Your friends raised ${money(d.collected)} for you 💛</h3><p class="mute">Choose what would feel best.</p><button class="btn" onclick="answer('money')">Send me the money</button><input id="rs" placeholder="Or tell us what you'd love"><button class="btn ghost" onclick="answer('gift')">I'd love this instead</button></div>`;
+ if(o&&live&&left>0)h+=`<div class="glass pad" style="margin-top:14px;text-align:center"><div style="font-size:34px;animation:float 3s infinite">🎯</div><h3>${money(left)} ready to place</h3>${d.recipient_choice?`<p class="why">${d.recipient_choice=='money'?'The recipient asked for the money.':"They would love: "+esc(d.recipient_spec)}</p>`:''}<button class="btn" onclick="decideView(${d.id})">Choose what happens next →</button></div>`;
+ if(d.status=='done')h+=`<div class="glass pad" style="margin-top:14px;text-align:center"><div style="font-size:44px;animation:float 3s infinite">🌿</div><h3>All settled.</h3><p class="mute">Every thread tied off, every cent accounted for.</p></div>`;
+ if(d.purchases.length)under+=`<div class="glass pad"><h3>Bought</h3>${d.purchases.map(p=>`<div class="row"><div class="grow"><b>${esc(p.title)}</b><br><span class="mute" style="font-size:12px">${esc(p.store)} · ${esc(p.status)}${p.link?` · <a class="link" href="${esc(p.link)}" target="_blank" rel="noopener">view ↗</a>`:''}</span></div>${money(p.price)}</div>`).join('')}</div>`;
+ if(d.payouts.length)under+=`<div class="glass pad"><h3>Sent</h3>${d.payouts.map(p=>`<div class="row"><span class="grow">${p.kind=='refund'?'Returned to':'Sent to'} ${esc(p.name)} <span class="mute">(${p.status})</span></span>${money(p.amount)}</div>`).join('')}</div>`;
+ if(o)h+=`<button class="link" style="margin-top:14px;color:#ff9a9a" onclick="delM(${d.id})">🗑 Delete this moment</button>`;$('#side').innerHTML=h;{const un=$('#under');if(un)un.innerHTML=under?`<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;align-items:start">${under}</div>`:''}requestAnimationFrame(()=>document.querySelectorAll('.bar[data-o]').forEach(b=>b.style.strokeDashoffset=b.dataset.o))}
+const chipsIdeas=()=>IDEAS&&IDEAS.length?'<span class="mute" style="font-size:12px;width:100%">Pip\'s ideas:</span>'+IDEAS.map(i=>`<button class="chip" onclick="$('#spec').value='${esc(i)}'">${esc(i)}</button>`).join(''):'';
+const regen=run(async t=>{$('#msg').style.opacity=.4;try{const r=await api(`/moments/${D.id}/regenerate`,'POST',{tone:t});D.message=r.message;D.ai_ok=r.ai;paintSide();if(!r.ai)toast("Pip's AI is offline: "+r.err)}finally{if($('#msg'))$('#msg').style.opacity=1}});
+const delM=run(async id=>{if(!confirm("Delete this moment and its group chat? This can't be undone."))return;await api('/moments/'+id,'DELETE');toast('Gently folded away. The moment is gone.');home()});
+const surChg=()=>{if($('#s').checked&&MEM[REC]){delete MEM[REC];memPaint();toast('🤫 Surprise mode: the recipient was removed from the group.')}};
+const copyMsg=()=>{navigator.clipboard.writeText($('#msg').value);toast('Copied. Paste it anywhere your friends live.')};
+const sendGroup=run(async()=>{await api(`/moments/${D.id}/message`,'PUT',{message:$('#msg').value});await api(`/moments/${D.id}/send`,'POST');boomIf(D);toast(D.kind=='emergency'?'Your group is live. Pip is sharing the word.':'Your group is live. Pip is saying hello…');openM(D.id)});
+const act=(p,msg)=>run(async()=>{await api(`/moments/${D.id}/${p}`,'POST',{});toast(msg);if(p=='close')return decideView(D.id);if(p=='payout'||p=='refund')boomIf(D);await refresh()})();
+const answer=c=>run(async()=>{await api(`/moments/${D.id}/answer`,'POST',{choice:c,spec:$('#rs')?.value||''});toast('Thank you. Your friends will be delighted to know.');await refresh()})();
+const find=run(async()=>{$('#res').innerHTML='<div class="shimrow"></div><div class="shimrow"></div>';try{SR=await api(`/moments/${D.id}/search`,'POST',{spec:$('#spec').value,budget:parseFloat($('#bud').value)||0});$('#res').innerHTML=resHtml()}catch(e){$('#res').innerHTML='';throw e}});
+
+const buy=run(async i=>{const p=SR.candidates[i];await api(`/moments/${D.id}/buy`,'POST',{title:p.title,store:p.store,price:p.price,link:p.link||'',reasoning:i==SR.pick?SR.reasoning:'Chosen by the organiser'});boomIf(D);toast(payLine(D));SR=null;await refresh()});
+const ppLoad=()=>new Promise(r=>{if(window.paypal)return r();const s=document.createElement('script');s.src=`https://www.paypal.com/sdk/js?client-id=${CFG.client_id}&currency=USD`;s.onload=()=>{localStorage.ppu='1';localStorage.ppu_owner=T;r()};document.head.appendChild(s)});
+function ppSignOut(){localStorage.removeItem('ppu');localStorage.removeItem('ppu_owner');try{const w=window.open('https://www.sandbox.paypal.com/signout','ppout','width=420,height=560');if(!w)return false;let done=false;const finish=()=>{if(done)return;done=true;try{w.close()}catch(e){}};w.addEventListener?.('load',finish);setTimeout(finish,3500);return true}catch(e){return false}}
+// If a different MomentPay account just logged in, clear any lingering PayPal session right away (not lazily on next click), so nobody ever sees a prior person's PayPal login.
+function ppGuard(){if(localStorage.ppu&&localStorage.ppu_owner&&localStorage.ppu_owner!==T)ppSignOut()}
+async function ppButtons(id){if(!CFG.client_id){toast('Add PAYPAL_CLIENT_ID to .env to wake up payments.');return}await ppLoad();
+ paypal.Buttons({style:{shape:'pill',color:'gold'},createOrder:async()=>(await api('/paypal/create-order','POST',{moment_id:id,amount:parseFloat($('#amt').value)||0})).id,
+ onApprove:async d=>{const r=await api('/paypal/capture-order','POST',{moment_id:id,order_id:d.orderID});boomIf(D);toast(payLine(D)+(r.to_organiser?" Straight into the organiser's PayPal.":' Held safely in the MomentPay wallet.'));$('#payd').classList.remove('open');ppSignOut();await refresh()},onError:e=>toast('The currents hesitated: '+String(e).slice(0,220))}).render('#pp')}
+const setH=h=>{location.hash=h;CURH=location.hash};
+const ago=t=>{const d=new Date(t.replace(' ','T')+'Z'),s=(Date.now()-d)/1000;return s<60?'just now':s<3600?Math.floor(s/60)+'m ago':s<86400?Math.floor(s/3600)+'h ago':d.toLocaleDateString()};
+const setBell=()=>document.querySelectorAll('.bell').forEach(b=>{b.classList.toggle('has',NUN>0);b.querySelector('b').textContent=NUN>9?'9+':NUN});
+async function npoll(){if(!ME)return;try{const r=await api('/notifications');NITEMS=r.items;NUN=r.unread;const top=r.items.length?r.items[0].id:0;
+ if(NMAX<0)NMAX=top;else{const fresh=r.items.filter(n=>n.id>NMAX&&!(VIEW=='m'&&n.moment_id==CUR)).reverse();fresh.forEach(n=>toast(n.body+(n.title?' · '+n.title:''),n.icon||'🔔'));
+  if(r.items.some(n=>n.id>NMAX))document.querySelectorAll('.bell').forEach(b=>{b.classList.remove('ring');void b.offsetWidth;b.classList.add('ring')});NMAX=Math.max(NMAX,top)}
+ setBell();if(VIEW=='n'&&$('#nlist'))notifPaint()}catch(e){}}
+const startN=()=>{clearInterval(NP);NMAX=-1;npoll();NP=setInterval(()=>{const live=(VIEW=='m'&&D&&D.status!='draft')||VIEW=='d';if(!document.hidden&&!live)npoll()},10000)};
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&ME){npoll();if(VIEW=='m')tick()}});
+const notifPaint=()=>{$('#nlist').innerHTML=NITEMS.length?NITEMS.map(n=>`<div class="nrow ${n.seen?'':'new'}" onclick="${n.moment_id?`openM(${n.moment_id})`:''}"><div style="font-size:26px">${n.icon||'🔔'}</div><div style="flex:1"><b>${esc(n.body)}</b><br><span class="mute" style="font-size:13px">${esc(n.title||'A moment')} · ${ago(n.ts)}</span></div></div>`).join(''):
+ '<div class="empty" style="padding:60px 20px;text-align:center;margin:auto"><div style="font-size:46px;animation:float 4s infinite">🔔</div><p class="mute">All quiet on the shore. When something stirs in your moments, it will chime in here.</p></div>'};
+const readAll=run(async()=>{await api('/notifications/read','POST',{});await npoll()});
+const notifView=run(async()=>{clearInterval(POLL);CUR=0;VIEW='n';D=null;setH('notifications');await npoll();
+ go(nav()+`<button class="link" onclick="home()">← Back</button><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px"><h1 style="font-size:2.4rem">Notifications</h1><button class="btn ghost sm" onclick="readAll()">Mark all as read</button></div><div class="glass" id="nlist" style="margin-top:14px;overflow:hidden"></div>`);notifPaint();setTimeout(()=>VIEW=='n'&&readAll(),2500)});
+
+const decideView=run(async id=>{clearInterval(POLL);CUR=id;VIEW='d';setH(`m${id}/decide`);loading();D=await api('/moments/'+id);
+ if(!D.is_organiser||!['funded','asking','answered'].includes(D.status)||D.leftover<=0)return openM(id);
+ SR=null;IDEAS=null;paintDecide();
+ POLL=setInterval(async()=>{if(VIEW!='d'||document.hidden||$('#dec')?.contains(document.activeElement))return;try{const r=await api('/pulse?moment='+id);if(r.top>NMAX||r.unread!=NUN)npoll();if(!r.sig||JSON.stringify([r.sig[0],r.sig[2],r.sig[3]])==DSIG)return;const d=await api('/moments/'+id);D=d;if(d.leftover<=0)return openM(id);paintDecide()}catch(e){}},3000)});
+function paintDecide(){const d=D,left=d.leftover,rc=d.recipient_choice,sv=$('#spec')?.value,bv=$('#bud')?.value;DSIG=JSON.stringify([d.status,d.leftover,rc]);
+ if(!IDEAS&&d.kind!='emergency'){IDEAS=[];api(`/moments/${d.id}/ideas`).then(r=>{IDEAS=r;const e=$('#ideas');if(e)e.innerHTML=chipsIdeas()}).catch(()=>{})}
+ const emer=d.kind=='emergency';
+ go(nav()+`<div id="dec"><button class="link" onclick="openM(${d.id})">← Back to the moment</button>
+ <div style="text-align:center;margin:8px 0 30px"><span class="tag g">pool sealed</span><h1 class="big" style="font-size:clamp(2.2rem,5vw,3.4rem);margin-top:8px">${money(left)} to place.</h1>
+ <p class="sub" style="margin:6px auto">For ${esc(d.recipient_name)}'s ${esc(d.occasion)}. Choose how it reaches them.</p>
+ ${rc=='money'?'<p class="why" style="display:inline-block">💛 They asked for the money.</p>':''}${rc=='gift'?`<p class="why" style="display:inline-block">💛 They would love: ${esc(d.recipient_spec)}</p>`:''}</div>
+ <div class="dgrid">
+ <div class="glass pad opt2"><div class="e">💸</div><h3>Send the money</h3><p class="mute">Straight to ${esc(d.recipient_name)}'s PayPal, in one tap.</p><button class="btn" onclick="act('payout','${emer?PAYL_CALM[0]:PAYL[0]}')">Send ${money(left)}</button></div>
+ ${emer?'':`<div class="glass pad opt2"><div class="e">💌</div><h3>Ask ${esc(d.recipient_name)}</h3>${d.surprise?'<p class="mute">🤫 Surprise mode keeps this locked. They are never told.</p>':
+   `<p class="mute">Let them choose between money and something they truly want.</p>${d.status=='funded'?`<button class="btn ghost" onclick="act('ask','Question sent with a bow on it.')">Ask them</button>`:'<p class="why">Waiting for their answer…</p>'}`}</div>`}
+ <div class="glass pad opt2"><div class="e">🌿</div><h3>Return what's left</h3><p class="mute">Shared by how much each person gave.</p>${d.preview.map(p=>`<div class="row"><span class="grow">${esc(p.name)}</span><b>${money(p.amount)}</b></div>`).join('')}<button class="btn ghost" onclick="act('refund','${emer?"Every cent returned to those who gave.":"Every cent found its way home."}')">Return ${money(left)}</button></div>
+ ${emer?'':`<div class="glass pad" style="grid-column:1/-1"><div style="display:flex;gap:12px;align-items:center"><div class="e" style="font-size:34px">🛍️</div><div><h3>Let Pip shop for it</h3><p class="mute" style="margin:0">Pip searches stores, checks each match against your wish, and explains its pick.</p></div></div>
+  <div id="ideas" class="chips" style="margin-top:12px">${chipsIdeas()}</div>
+  <div style="display:grid;grid-template-columns:2fr 1fr;gap:10px"><input id="spec" placeholder="What should we get? e.g. scented candles, a good frying pan" value="${esc(rc=='gift'?d.recipient_spec:'')}"><input id="bud" type="number" placeholder="Budget (up to ${money(left)})"></div>
+  <button class="btn" onclick="find()">Search the stores ✨</button><div id="res"></div></div>`}</div></div>`);
+ if(!emer){if(sv!=null)$('#spec').value=sv;if(bv)$('#bud').value=bv;if(SR&&$('#res'))$('#res').innerHTML=resHtml()}}
+const prodHtml=(p,i)=>`<div class="prod ${i==SR.pick?'best':''}"><img src="${esc(p.image)}" alt=""><div><b>${esc(p.title)}</b><br><span class="mute">${esc(p.store)} · ${p.rating?`★${p.rating}${p.reviews?` (${p.reviews})`:''} · `:''}${p.discount?`<s>${money(p.list_price)}</s> `:''}${money(p.price)}${p.delivery?' · '+esc(p.delivery):''}${p.weak?' · weak match':''}</span>${p.link?`<br><a class="link" href="${esc(p.link)}" target="_blank" rel="noopener">View at store ↗</a>`:''}</div>${i>=0?`<button class="btn sm ${i==SR.pick?'gold':'ghost'}" onclick="buy(${i})">Buy</button>`:''}</div>`;
+const resHtml=()=>{const bd=`<span class="tag ${SR.source=='google'?'':'g'}">${SR.source=='google'?'🛒 Live Google Shopping':'🧪 Demo catalog'}</span> <span class="mute" style="font-size:13px">Budget ${money(SR.budget)}</span>`;
+ if(SR.over&&SR.over.length)return bd+`<p class="why">${esc(SR.note)}</p>`+SR.over.map(p=>prodHtml(p,-1)).join('');
+ if(!SR.candidates.length)return bd+`<p class="mute">${esc(SR.note||'Nothing matched.')}</p>`;
+ return bd+(SR.note?`<p class="mute" style="font-size:13px">${esc(SR.note)}</p>`:'')+`<p class="why"><b>✨ Why Pip chose this:</b> ${esc(SR.reasoning)}</p>`+SR.candidates.map((p,i)=>prodHtml(p,i)).join('')};
+addEventListener('hashchange',()=>{if(ME&&location.hash!==CURH){CURH=location.hash;route()}});
+boot();
+</script></body></html> -->
+
+
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MomentPay · give together</title>
+<link rel="icon" type="image/png" href="/images/favicon.png"><link rel="apple-touch-icon" href="/images/momentpay-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#EEF5FC;--txt:#20344F;--mute:#71849A;--line:#E2EAF2;--glass:#FFFFFF;
+  --gold:#6386AA;--teal:#6386AA;--vio:#20344F;--rose:#8CA9C5;
+  --g:linear-gradient(135deg,#20344F 0%,#345574 100%);
+  --surface:#FFFFFF;--surface-soft:#F7FAFD;--shadow:0 12px 34px rgba(32,52,79,.08);
+  --shadow-hover:0 18px 42px rgba(32,52,79,.13);--radius:20px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;overflow-x:hidden;background:linear-gradient(180deg,#EEF5FC 0%,#F7FAFD 48%,#EEF5FC 100%);color:var(--txt);font:15px/1.6 Manrope,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+body:before,body:after{content:none}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}}
+@keyframes pop{from{opacity:0;transform:translateY(7px)}}
+@keyframes float{50%{transform:translateY(-5px)}}
+@keyframes spin{50%{transform:rotateY(180deg)}}
+@keyframes pulse{50%{transform:scale(1.08);opacity:.75}}
+@keyframes shim{to{background-position:-200% 0}}
+@keyframes slideIn{from{opacity:0;transform:translateX(22px)}}
+@keyframes slideOut{to{opacity:0;transform:translateX(22px)}}
+@keyframes life{from{width:100%}to{width:0}}
+@keyframes ring{20%{transform:rotate(12deg)}40%{transform:rotate(-10deg)}60%{transform:rotate(7deg)}80%{transform:rotate(-4deg)}}
+@keyframes flow{to{background-position:0 0,300% 0}}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:700;color:var(--txt);margin:.12em 0;line-height:1.13;letter-spacing:-.02em}
+h1{font-size:clamp(2rem,4vw,3.15rem)}h2{font-size:clamp(1.55rem,3vw,2.15rem)}h3{font-size:1.25rem}
+p{line-height:1.65}
+.big{font-size:clamp(2.35rem,5vw,3.8rem)}.sub{color:var(--mute);font-size:1.04rem;max-width:38em;line-height:1.7}.mute{color:var(--mute)}
+#view{width:min(1180px,100%);margin:0 auto;padding:22px 28px 84px}#view.in>*{animation:rise .42s ease both}#view.in>*:nth-child(2){animation-delay:.04s}#view.in>*:nth-child(3){animation-delay:.08s}
+nav{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:5px 0 22px;margin-bottom:10px;border-bottom:1px solid rgba(99,134,170,.16)}
+nav>div{display:flex;align-items:center;flex-wrap:wrap;gap:8px;justify-content:flex-end}
+.logo{font:700 1.45rem Fraunces,Georgia,serif;display:flex;gap:10px;align-items:center;cursor:pointer;color:var(--txt)}.logo i{width:32px;height:32px;border-radius:11px;background:var(--g);box-shadow:0 5px 14px rgba(32,52,79,.18);animation:none}
+.glass{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);backdrop-filter:none;transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}
+.lift{cursor:pointer;overflow:hidden}.lift:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover);border-color:#C6D7E7}
+.pad{padding:24px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:20px;margin-top:24px}
+.cov{height:128px;display:grid;place-items:center;font-size:48px;background:linear-gradient(135deg,#DDEAF6,#C8D9EA);border-bottom:1px solid var(--line)}.cov span{display:inline-block;animation:float 5s ease-in-out infinite;transition:transform .3s ease}.lift:hover .cov span{transform:scale(1.12) rotate(-5deg)}
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:8px;overflow:hidden;border:1px solid transparent;border-radius:12px;padding:11px 18px;min-height:42px;font:800 13px Manrope,sans-serif;letter-spacing:.01em;color:#fff;background:var(--g);cursor:pointer;transition:transform .18s ease,box-shadow .2s ease,background .2s ease;margin:4px 6px 4px 0;box-shadow:0 5px 12px rgba(32,52,79,.12)}
+.btn:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(32,52,79,.18)}.btn:active{transform:translateY(0)}.btn:disabled{opacity:.55;cursor:not-allowed;transform:none;box-shadow:none}.btn:after{content:none}
+.btn.ghost{background:#fff;color:var(--txt);border-color:#D7E2EC;box-shadow:none}.btn.ghost:hover{background:#F5F9FC;border-color:#AFC3D7}.btn.gold{background:#EAF1F8;color:#294866;border-color:#D5E2EF;box-shadow:none}.btn.gold:hover{background:#DFEAF5}.btn.sm{padding:8px 13px;min-height:34px;font-size:12px}
+.link{background:none;border:0;color:#426A91;cursor:pointer;font:700 14px Manrope;padding:6px 2px}.link:hover{color:#20344F;text-decoration:underline}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid rgba(99,134,170,.28);outline-offset:2px}
+input,textarea,select{width:100%;padding:12px 14px;margin:6px 0;border:1px solid #D8E3ED;border-radius:12px;background:#fff;color:var(--txt);font:inherit;box-shadow:inset 0 1px 2px rgba(32,52,79,.025);transition:border-color .2s,box-shadow .2s}
+input::placeholder,textarea::placeholder{color:#9AA9B8}input:focus,textarea:focus,select:focus{outline:0;border-color:#7899B8;box-shadow:0 0 0 3px rgba(99,134,170,.13)}textarea{min-height:130px;resize:vertical}select option{color:#20344F;background:#fff}
+label{font-weight:800;font-size:13px;color:#38516C;display:block;margin-top:14px}.chk{display:flex;gap:8px;align-items:center;font-weight:500}.chk input{width:auto;margin:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}.chip{border:1px solid #DCE6EF;background:#fff;color:#48627D;border-radius:99px;padding:7px 13px;cursor:pointer;font:700 12px Manrope;transition:all .18s}.chip:hover,.chip.on{background:#EAF2F9;color:#203F5E;transform:translateY(-1px);border-color:#B9CCDE}
+.tag{display:inline-flex;align-items:center;font-size:10px;line-height:1.4;letter-spacing:.07em;text-transform:uppercase;font-weight:800;padding:5px 9px;border-radius:99px;background:#EAF2F9;color:#496B8D}.tag.g{background:#EEF3F8;color:#5E7893}.tag.r{background:#FCEEEE;color:#A75F65}
+.ava{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;font:800 12px Manrope;color:#fff;border:2px solid #fff;margin-right:-8px;flex:none;background:#6386AA}
+.hero{display:grid;grid-template-columns:1.2fr 1fr;gap:44px;align-items:center;min-height:68vh}.floaters{position:relative;height:190px;margin-top:26px}
+.fl{position:absolute;padding:13px 17px;border-radius:15px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);animation:float 6s ease-in-out infinite}.fl b{display:block;color:#496B8D}.fl.a{left:0;top:0}.fl.b{left:200px;top:70px;animation-delay:-2s}.fl.c{left:30px;top:130px;animation-delay:-4s}
+.mv{display:grid;grid-template-columns:minmax(0,1fr) 350px;gap:22px;align-items:start}
+.chat{display:flex;flex-direction:column;height:min(76vh,850px);min-height:540px;overflow:hidden}.chead{display:flex;gap:14px;align-items:center;padding:17px 20px;border-bottom:1px solid var(--line);background:#FBFDFF}.chead .em{font-size:30px}
+.msgs{flex:1;overflow:auto;padding:20px;display:flex;flex-direction:column;gap:12px;scroll-behavior:smooth;background:#FCFDFE}.empty{margin:auto;text-align:center;color:var(--mute);max-width:280px}
+.b{max-width:78%;padding:11px 15px;border-radius:16px 16px 16px 5px;background:#EEF4F9;border:1px solid #E2EAF1;color:#304B67;animation:pop .25s ease;word-wrap:break-word}.b time{display:block;font-size:10px;color:#91A0AF;text-align:right;margin-top:4px}.who{display:block;font-size:11px;font-weight:800;color:#52799F}
+.b.me{align-self:flex-end;border-radius:16px 16px 5px 16px;background:#203F5D;color:#fff;border-color:#203F5D}.b.me .who{display:none}.b.me time{color:#D3DFEA}
+.b.ai{align-self:center;max-width:92%;border:1px solid #D8E5F0;background:#fff;box-shadow:0 3px 12px rgba(32,52,79,.045);animation:pop .25s ease}.b.ai .who{color:#52799F}
+.pay{align-self:center;display:flex;gap:12px;align-items:center;padding:13px 17px;border-radius:15px;background:#F0F5FA;border:1px solid #DCE7F0;animation:pop .3s ease;max-width:92%;color:var(--txt)}.pay .coin{font-size:25px;animation:spin 2.6s ease-in-out infinite}.pay span{color:var(--mute);font-size:12px}
+.payd{max-height:0;overflow:hidden;transition:max-height .45s ease;border-top:0 solid var(--line);background:#F8FAFC}.payd.open{max-height:420px;border-top-width:1px}.payd>div{padding:14px 16px}
+.comp{display:flex;gap:9px;padding:13px;border-top:1px solid var(--line);background:#fff;align-items:center}.comp input{margin:0}.comp .btn{flex:none}
+.ring{display:grid;place-items:center;padding:24px;position:relative}.ring svg{width:170px;max-width:100%;transform:rotate(-90deg)}.trk,.bar{fill:none;stroke-width:9}.trk{stroke:#E8EEF4}.bar{stroke:url(#gr);stroke-linecap:round;transition:stroke-dashoffset 1.2s ease}
+.mid{position:absolute;text-align:center}.mid b{font:700 2rem Fraunces,serif;display:block;color:var(--txt)}.mid span{font-size:11px;color:var(--mute)}
+.row{display:flex;gap:10px;align-items:center;padding:9px 0}.row .grow{flex:1;min-width:0}.mini{height:6px;border-radius:9px;background:#E8EEF4;overflow:hidden;margin-top:5px}.mini i{display:block;height:100%;background:linear-gradient(90deg,#6386AA,#9AB2C9);transition:width 1s}
+.opt{border:1px solid var(--line);border-radius:15px;padding:15px;margin:12px 0;background:#fff;transition:border-color .2s,background .2s}.opt:hover{border-color:#B8CCDE;background:#FAFCFE}
+.prod{display:flex;gap:12px;align-items:center;padding:11px;border:1px solid var(--line);border-radius:13px;margin:8px 0;background:#fff;transition:transform .2s}.prod:hover{transform:translateY(-1px)}.prod img{width:54px;height:54px;object-fit:contain;background:#F6F8FA;border-radius:10px}.prod>div{flex:1;font-size:13px;min-width:0}.prod.best{border-color:#B9CCDE;background:#F7FAFD}
+.why{border-left:3px solid #7899B8;padding:9px 12px;background:#F1F6FA;border-radius:8px;font-size:13px;color:#48627D}
+.load{display:grid;place-items:center;gap:16px;min-height:50vh;color:var(--mute)}.orb{width:54px;height:54px;border-radius:50%;background:var(--g);animation:pulse 1.4s infinite;box-shadow:0 8px 24px rgba(32,52,79,.16)}
+.shimrow{height:52px;border-radius:12px;margin:8px 0;background:linear-gradient(90deg,#F1F5F8 25%,#E4ECF3 50%,#F1F5F8 75%);background-size:200% 100%;animation:shim 1.3s infinite}
+#toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,24px);background:#20344F;color:#fff;border:1px solid #304E6C;padding:12px 18px;border-radius:13px;opacity:0;pointer-events:none;transition:all .3s ease;max-width:90vw;z-index:30;box-shadow:0 12px 32px rgba(32,52,79,.2)}#toast.on{opacity:1;transform:translate(-50%,0)}
+#toasts{position:fixed;top:78px;right:18px;z-index:40;display:flex;flex-direction:column;gap:10px;width:min(370px,92vw)}
+.tt{display:flex;gap:12px;align-items:flex-start;padding:13px 16px 15px;border-radius:14px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-hover);animation:slideIn .35s ease both;cursor:pointer;position:relative;overflow:hidden;font-weight:600;color:var(--txt)}.tt.out{animation:slideOut .3s ease both}.tt i{font-style:normal;font-size:21px}.tt:after{content:"";position:absolute;left:0;bottom:0;height:3px;background:#7899B8;animation:life 5s linear forwards}
+.bell{position:relative;display:inline-grid;place-items:center;flex:0 0 38px;width:38px;height:38px;padding:0;line-height:1;background:#fff;border:1px solid var(--line);border-radius:50%;cursor:pointer;font-size:17px;color:var(--txt);transition:transform .2s,border-color .2s;margin-right:8px;vertical-align:middle}.bell:hover{transform:translateY(-1px);border-color:#AFC3D7}
+.bell b{position:absolute;top:-5px;right:-5px;min-width:17px;text-align:center;background:#6386AA;color:#fff;border:2px solid #fff;border-radius:99px;font-size:10px;line-height:14px;padding:0 4px;display:none;pointer-events:none}.bell.has b{display:block}.bell.ring{animation:ring .7s}
+.nrow{display:flex;gap:14px;padding:16px 18px;border-bottom:1px solid var(--line);cursor:pointer;transition:background .2s}.nrow:hover{background:#F6F9FC}.nrow.new{border-left:3px solid #6386AA;background:#F1F6FA}
+.dgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:20px}.opt2{transition:transform .25s,border-color .25s,box-shadow .25s}.opt2:hover{transform:translateY(-3px);border-color:#B9CCDE;box-shadow:var(--shadow-hover)}.opt2 .e{font-size:36px;margin-bottom:7px;display:inline-block;transition:transform .25s}.opt2:hover .e{transform:scale(1.08) rotate(-4deg)}
+#fx{position:fixed;inset:0;pointer-events:none;z-index:8}
+/* Pip planning studio */
+.pip-wrap{width:min(900px,100%);margin:18px auto 34px}.pip-shell{display:flex;flex-direction:column;height:min(76vh,820px);min-height:570px;overflow:hidden;border-radius:22px}.pip-top{display:flex;align-items:center;gap:13px;padding:17px 20px;border-bottom:1px solid var(--line);background:#FBFDFF}.pip-orb{width:42px;height:42px;display:grid;place-items:center;border-radius:14px;background:#EAF1F8;color:#345675;font-size:22px;box-shadow:inset 0 0 0 1px #DCE7F0}
+.pip-feed{flex:1;overflow:auto;padding:22px 24px;display:flex;flex-direction:column;gap:16px;scroll-behavior:smooth;background:#FCFDFE}.pip-line{display:flex;gap:10px;max-width:86%;align-items:flex-start}.pip-line.user{align-self:flex-end;flex-direction:row-reverse}.pip-face{width:31px;height:31px;flex:none;border-radius:11px;display:grid;place-items:center;background:#EAF1F8;color:#45698C;font-size:14px}.pip-line.user .pip-face{background:#203F5D;color:#fff}
+.pip-bubble{padding:13px 16px;border:1px solid #E1E9F0;border-radius:5px 16px 16px 16px;background:#fff;white-space:normal;overflow-wrap:anywhere;color:#344F6A;box-shadow:0 2px 8px rgba(32,52,79,.035)}.pip-line.user .pip-bubble{border-radius:16px 5px 16px 16px;background:#EDF3F8;border-color:#DCE6EF;color:#294663}.pip-bubble p{margin:0 0 8px}.pip-bubble p:last-child{margin-bottom:0}.pip-bubble ul{margin:7px 0;padding-left:20px}.pip-compose{padding:14px 16px;border-top:1px solid var(--line);display:flex;gap:10px;align-items:flex-end;background:#fff}.pip-compose textarea{min-height:48px;max-height:130px;resize:vertical;margin:0;border-radius:13px;background:#F9FBFD}.pip-compose .btn{min-height:48px;margin:0;white-space:nowrap}.pip-hint{padding:0 18px 13px;color:#8A9AAA;font-size:11px;background:#fff}
+.pip-typing{display:inline-flex;gap:4px;padding:8px}.pip-typing i{width:6px;height:6px;border-radius:50%;background:#7899B8;animation:pulse .8s infinite}.pip-typing i:nth-child(2){animation-delay:.15s}.pip-typing i:nth-child(3){animation-delay:.3s}
+.pip-plan-area{flex:0 0 auto;width:100%;height:220px;min-height:96px;max-height:48vh;overflow:auto;resize:vertical;border-top:1px solid var(--line);background:#F7FAFD;scrollbar-width:thin}.pip-plan-toolbar{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:8px;padding:11px 16px;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}.pip-plan-toolbar .resize-actions{display:flex;gap:6px}.pip-plan-toolbar button{border:1px solid #DCE6EF;border-radius:8px;background:#fff;color:#42617F;padding:4px 10px;cursor:pointer;font-weight:800}.pip-plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:13px;margin:4px 0 8px}.pip-plan{border:1px solid #DCE6EF;background:#fff;border-radius:15px;padding:16px;box-shadow:0 3px 12px rgba(32,52,79,.04)}.pip-plan h3{font-size:1.13rem;margin:8px 0}.pip-plan .pip-price{font:700 1.3rem Fraunces,serif;color:#42698E;margin:9px 0}.pip-plan ul{padding-left:19px;color:#71849A;font-size:12px}.pip-plan p{font-size:12px;color:#71849A}.pip-plan .btn{width:100%;margin:8px 0 0}.pip-shortcuts{display:flex;gap:7px;flex-wrap:wrap;padding:0 14px 10px}.pip-shortcuts .chip{font-size:12px}
+/* Small-screen layout */
+@media(max-width:900px){#view{padding:18px 20px 70px}.mv,.hero{grid-template-columns:1fr}.mv{gap:16px}.chat{height:68vh}.floaters{display:none}.hero{min-height:auto;padding:35px 0}.pip-wrap{margin-top:10px}}
+@media(max-width:640px){#view{padding:14px 14px 56px}nav{align-items:flex-start;flex-direction:column;gap:12px;padding-bottom:15px}nav>div{justify-content:flex-start;width:100%}#toasts{top:105px;right:10px;width:min(350px,94vw)}.pad{padding:18px}.grid{grid-template-columns:1fr;gap:14px}.chat{height:calc(100dvh - 190px);min-height:480px}.comp{gap:6px;padding:10px}.comp .btn{padding:9px 12px}.comp input{min-width:0}.mv{grid-template-columns:minmax(0,1fr)}.pip-shell{height:calc(100dvh - 175px);min-height:500px;border-radius:17px}.pip-line{max-width:96%}.pip-feed{padding:16px 13px;gap:12px}.pip-compose{align-items:stretch;padding:10px}.pip-compose .btn{padding:9px 13px}.pip-hint{font-size:10px}.pip-plan-area{max-height:42vh}.hero{gap:18px}.fl.b{left:120px}.ring{padding:16px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* Confirm your Moment screen */
+.cf-card{max-width:690px;margin:10px auto;padding:26px 24px 24px;background:var(--surface);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow)}
+.cf-eyebrow{font:800 12px Manrope,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.cf-title{font-size:clamp(1.5rem,3.4vw,1.9rem);margin:6px 0 4px}.cf-sub{margin:0 0 16px;color:var(--mute);font-size:13px}
+.cf-idea{padding:2px 12px 12px}.cf-idea h3{font:700 1.02rem Manrope,sans-serif;margin:10px 0 4px}.cf-idea p{margin:0 0 10px;color:var(--mute);font-size:13px}
+.cf-badge{display:inline-block;background:#DDF3E6;color:#1E7A46;border-radius:99px;padding:3px 10px;font:800 11px Manrope,sans-serif}
+.cf-price{font:700 1.35rem Manrope,sans-serif;color:var(--txt)}.cf-cap{font-size:13px;color:var(--mute);margin-top:6px}
+.cf-two{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0 12px}
+.cf-box{border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:#fff}.cf-box h4{margin:6px 0 2px;font:800 15px Manrope,sans-serif;color:var(--txt)}.cf-box small{display:block;color:var(--mute);font-size:11.5px}
+.cf-ico{color:#20344F;display:flex}
+.cf-rsel{margin-top:10px}.cf-rname{font:800 15px Manrope,sans-serif;margin-bottom:4px}
+.cf-linkbtn{background:none;border:0;padding:2px 0;margin:0 12px 0 0;color:var(--mute);font:600 13px Manrope,sans-serif;cursor:pointer}.cf-linkbtn:hover{color:var(--txt);text-decoration:underline}
+.cf-amt{display:flex;align-items:center;gap:4px;margin-top:10px;font:800 17px Manrope,sans-serif}.cf-amt input{margin:0;padding:6px 8px;font:800 17px Manrope,sans-serif;width:100%;max-width:140px;border-color:transparent;background:#F7FAFD}.cf-amt input:hover{border-color:#D8E3ED}.cf-cur{margin-top:4px}
+.cf-search{margin:10px 0 6px;padding:10px 12px;font-size:13px}
+.cf-inv{margin-bottom:12px}.cf-invhead{display:flex;justify-content:space-between;align-items:center}.cf-invhead span{color:var(--mute);font-size:13px}
+.cf-list{display:flex;flex-direction:column;gap:2px}.cf-hint{font-size:12px;padding:4px 2px}
+.cf-row{display:flex;align-items:center;gap:12px;width:100%;background:none;border:0;border-radius:10px;padding:9px 6px;text-align:left;cursor:pointer;font:inherit;color:var(--txt)}.cf-row:hover{background:#F5F9FC}
+.cf-av{display:grid;place-items:center;width:28px;color:#20344F}.cf-who{flex:1;min-width:0}.cf-who b{display:block;font:800 14px Manrope,sans-serif}.cf-who small{font-size:12.5px;color:var(--mute)}
+.cf-sel{background:#EEF3F8;color:#20344F;border-radius:99px;padding:3px 10px;font:800 11px Manrope,sans-serif}.cf-dot{width:14px;height:14px;border-radius:50%;border:2px solid #9AA9B8;margin-right:6px}.cf-row:hover .cf-dot{background:#20344F;border-color:#20344F}
+.cf-sur{display:flex;align-items:center;gap:12px;margin:4px 0 14px;padding:8px 4px;cursor:pointer;font-weight:500}.cf-lock{color:#20344F;display:flex}.cf-surtxt{flex:1}.cf-surtxt b{display:block;font:800 14px Manrope,sans-serif;color:var(--txt)}.cf-surtxt small{display:block;font-size:12.5px;color:var(--mute)}.cf-sur input{width:20px;height:20px;margin:0;accent-color:#20344F}
+.cf-go{width:100%;min-height:46px;margin:0;font-size:14px;background:#20344F}
+@media(max-width:560px){.cf-two{grid-template-columns:1fr}.cf-card{padding:20px 14px}}
+/* Pool sealed: planned items */
+.pitems{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px}
+.pitem{display:flex;justify-content:space-between;align-items:center;gap:10px;text-align:left;border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px;cursor:pointer;font:inherit;color:var(--txt);transition:border-color .18s,background .18s,transform .18s}
+.pitem:hover{border-color:#B9CCDE;background:#F5F9FC;transform:translateY(-1px)}.pitem .pn{font:700 13px Manrope,sans-serif}.pitem .pb{font:700 12px Manrope,sans-serif;color:var(--mute);white-space:nowrap}.pitem.done{background:#F0F8F3;border-color:#CBE6D6}.pitem.done .pb{color:#1E7A46}
+
+/* ===== Pastel aura theme + scrollable landing page (appended; remove this block to revert) ===== */
+:root{--ink:#F4F3F8;--line:rgba(120,112,175,.17);--surface:rgba(255,255,255,.8);--surface-soft:rgba(255,255,255,.55);--shadow:0 14px 40px rgba(110,100,170,.13);--shadow-hover:0 20px 48px rgba(110,100,170,.21)}
+body{background:#F4F3F8}
+body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:
+ radial-gradient(62% 58% at 0% 0%,#DED8F2 0%,rgba(222,216,242,0) 72%),
+ radial-gradient(52% 46% at 0% 48%,#E6D9F2 0%,rgba(230,217,242,0) 72%),
+ radial-gradient(62% 56% at 0% 100%,#F5DDD9 0%,rgba(245,221,217,0) 72%),
+ radial-gradient(40% 38% at 20% 92%,#F2E2DC 0%,rgba(242,226,220,0) 72%),
+ radial-gradient(58% 56% at 100% 0%,#CFE0F7 0%,rgba(207,224,247,0) 72%),
+ radial-gradient(62% 56% at 100% 100%,#DDF0F7 0%,rgba(221,240,247,0) 72%),
+ radial-gradient(46% 46% at 50% 50%,#F4F3F8 0%,rgba(244,243,248,0) 78%),#F4F3F8}
+.glass{background:var(--surface);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.lift:hover,.opt:hover,.opt2:hover,.pitem:hover{border-color:#CFC8EA}
+.cov{background:linear-gradient(135deg,#E6D9F2,#CFE0F7);border-bottom-color:var(--line)}
+nav{border-bottom-color:rgba(120,112,175,.17)}
+.chead{background:rgba(255,255,255,.6)}.msgs,.pip-feed{background:rgba(255,255,255,.42)}.payd{background:rgba(255,255,255,.55)}.pip-plan-area{background:rgba(247,246,252,.7)}.comp{background:rgba(255,255,255,.8)}
+.b{background:#F0ECFA;border-color:#E3DDF3}.b.ai{border-color:#DCD6F1}.pay{background:#F3F0FB;border-color:#E2DDF2}.why{background:#F3F0FB;border-left-color:#9188C9}.nrow.new{background:#F3F0FB}.nrow:hover{background:#F7F5FC}
+.trk{stroke:#E6E1F3}.mini{background:#E8E3F4}.shimrow{background:linear-gradient(90deg,#F1EEF8 25%,#E6E1F3 50%,#F1EEF8 75%);background-size:200% 100%}
+
+/* landing */
+.lp{padding-top:6px}
+.lp-sec{scroll-margin-top:96px}
+.isl{position:fixed;top:14px;left:0;right:0;margin:0 auto;width:min(1080px,calc(100% - 28px));z-index:50;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:9px 12px 9px 20px;border-radius:999px;background:rgba(255,255,255,.6);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);border:1px solid rgba(255,255,255,.9);box-shadow:0 10px 34px rgba(110,100,170,.17)}
+.isl .logo{font-size:1.25rem;white-space:nowrap}.isl .logo i{width:28px;height:28px;border-radius:10px;background:linear-gradient(135deg,#F5C9B8,#C9BEF0 55%,#A9C7F2)}
+.isl-links{display:flex;gap:2px;align-items:center}
+.isl-links button{background:none;border:0;padding:8px 14px;border-radius:99px;font:700 13px Manrope,sans-serif;color:#4B5877;cursor:pointer;transition:background .2s,color .2s}
+.isl-links button:hover{color:#20344F;background:rgba(255,255,255,.75)}.isl-links button.on{background:#fff;color:#20344F;box-shadow:0 3px 10px rgba(110,100,170,.14)}
+.isl .btn{border-radius:99px;min-height:38px;padding:9px 20px;background:#141a2c;white-space:nowrap}
+.lp-hero{position:relative;display:grid;grid-template-columns:1.3fr .8fr;gap:34px;align-items:center;min-height:calc(100vh - 40px);padding:104px 40px 48px;border-radius:40px;background:rgba(255,255,255,.26);border:1px solid rgba(255,255,255,.75);overflow:hidden}
+.lp-scene{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.lp-hl,.lp-login{position:relative;z-index:1}
+.lp-coin{animation:float 6s ease-in-out infinite}.lp-coin:nth-of-type(2){animation-delay:-2s}.lp-coin:nth-of-type(3){animation-delay:-4s}
+.lp-flow{stroke-dasharray:3 9;animation:lpdash 2.2s linear infinite}@keyframes lpdash{to{stroke-dashoffset:-48}}
+.lp-says{position:relative;padding:36px 40px 34px;border-radius:14px;background:linear-gradient(135deg,rgba(253,224,206,.95),rgba(226,218,246,.96));box-shadow:0 18px 44px rgba(130,110,170,.2)}
+.lp-says h1{font:800 clamp(2.2rem,4.4vw,3.6rem)/1.06 Manrope,system-ui,sans-serif;letter-spacing:-.03em;color:#171923;margin:0 0 18px}
+.lp-says p{display:flex;gap:12px;margin:0;color:#3A3F55;font-size:1.05rem;line-height:1.6;max-width:34em}
+.lp-curl{flex:none;width:34px;height:30px;margin-top:6px}.lp-tick{position:absolute;right:26px;top:16px;width:42px;height:30px}
+.lp-float{position:relative;margin-top:26px;height:230px;border-radius:26px;background:linear-gradient(135deg,rgba(250,214,196,.7),rgba(214,206,244,.75) 55%,rgba(196,218,248,.75));box-shadow:0 12px 34px rgba(130,110,170,.14);overflow:hidden}
+.mc{position:absolute;display:flex;align-items:center;gap:10px;padding:11px 15px;border-radius:14px;background:rgba(255,255,255,.88);box-shadow:0 10px 24px rgba(90,80,150,.16);font:700 13px Manrope,sans-serif;color:#2A3350;transform:rotate(var(--r));animation:mcf 6s ease-in-out infinite}
+@keyframes mcf{50%{transform:rotate(var(--r)) translateY(-7px)}}
+.mc b{display:block;font-weight:800;color:#20344F}.mc small{display:block;font-weight:600;color:#7A84A0;font-size:11px}
+.mc.a{left:22px;top:18px;--r:-4deg}.mc.b{left:150px;top:62px;--r:-3deg;min-width:240px;animation-delay:-1.5s}.mc.c{left:40px;top:136px;--r:-5deg;min-width:250px;animation-delay:-3s}.mc.d{right:18px;top:96px;--r:4deg;animation-delay:-4.5s}
+.mc-bar{height:6px;border-radius:9px;background:#E4DEF3;overflow:hidden;margin-top:5px;width:150px}.mc-bar i{display:block;height:100%;border-radius:9px;background:linear-gradient(90deg,#F2A98F,#9C8BE0)}
+.mc .ava{width:24px;height:24px;font-size:9px;margin-right:-6px}.mc .ava{background:#8F86C8!important}.mc .ava:nth-child(2){background:#E39A86!important}.mc .ava:nth-child(3){background:#6C9BD8!important}
+.lp-login{padding:32px 28px 26px;border-radius:24px;background:rgba(255,255,255,.92);border:1px solid #fff;box-shadow:0 18px 48px rgba(110,100,170,.2)}
+.lp-login h2{color:#20344F;font-size:1.7rem;margin:0 0 4px}.lp-login input{background:#E9EEFC;border-color:#DCE4F6}.lp-login input:focus{background:#fff}
+.lp-login .btn{margin-top:10px;min-height:42px}
+.lp-head{text-align:center;max-width:44em;margin:0 auto 34px}.lp-head h2{font-size:clamp(1.7rem,3.4vw,2.5rem);margin:10px 0 8px}.lp-head p{color:var(--mute);margin:0 auto}
+.lp-eyebrow{display:inline-block;font:800 11px Manrope,sans-serif;letter-spacing:.09em;text-transform:uppercase;padding:6px 13px;border-radius:99px;background:rgba(255,255,255,.75);color:#5D5A9A;border:1px solid rgba(255,255,255,.9)}
+.lp-block{padding:96px 0 8px}
+.lp-card{position:relative;padding:30px;border-radius:26px;background:rgba(255,255,255,.74);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.85);box-shadow:var(--shadow);transition:transform .25s ease,box-shadow .25s ease}
+.lp-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover)}
+.lp-card h3{font-size:1.3rem;margin:12px 0 8px}.lp-card p{margin:0;color:#56607C;font-size:.97rem}
+.lp-ico{display:grid;place-items:center;width:46px;height:46px;border-radius:15px;font-size:22px;background:linear-gradient(135deg,#FBE0D2,#DCD4F5)}
+.lp-2{display:grid;grid-template-columns:1fr 1fr;gap:22px}.lp-4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:22px}.lp-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.lp-4 .lp-card{padding:24px 22px}.lp-4 .lp-card h3{font-size:1.08rem}.lp-4 .lp-card p{font-size:.9rem}
+.lp-card.peach{background:linear-gradient(135deg,rgba(253,226,210,.92),rgba(255,255,255,.7))}.lp-card.lilac{background:linear-gradient(135deg,rgba(226,218,246,.95),rgba(255,255,255,.7))}
+.wf-wrap{padding:34px 20px 30px}
+.wf{display:grid;grid-template-columns:repeat(5,1fr)}
+.wf-step{position:relative;margin:0 16px;padding:20px 16px 20px;text-align:center;border-radius:20px;background:rgba(255,255,255,.85);border:1px solid var(--line);box-shadow:0 8px 22px rgba(110,100,170,.1)}
+.wf-step h3{font:800 .98rem Manrope,sans-serif;margin:10px 0 6px;color:#20344F}.wf-step p{margin:0;font-size:.84rem;line-height:1.55;color:#5E6884}
+.wf-n{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:50%;font:800 15px Manrope,sans-serif;color:#fff;background:linear-gradient(135deg,#20344F,#6C63B8);animation:pulse 2.6s ease-in-out infinite}
+.wf-step:nth-child(2) .wf-n{animation-delay:.5s}.wf-step:nth-child(3) .wf-n{animation-delay:1s}.wf-step:nth-child(4) .wf-n{animation-delay:1.5s}.wf-step:nth-child(5) .wf-n{animation-delay:2s}
+.wf-step:not(:last-child):after{content:"";position:absolute;right:-35px;top:50%;width:38px;height:26px;margin-top:-13px;z-index:2;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 38 26' fill='none' stroke='%236C63B8' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 13h30M24 4l10 9-10 9'/%3E%3C/svg%3E") center/contain no-repeat;animation:nudge 1.6s ease-in-out infinite}
+.wf-step:nth-child(2):after{animation-delay:.2s}.wf-step:nth-child(3):after{animation-delay:.4s}.wf-step:nth-child(4):after{animation-delay:.6s}
+@keyframes nudge{50%{transform:translateX(6px)}}@keyframes nudgeY{50%{transform:rotate(90deg) translateX(6px)}}
+.wf-note{margin:22px 0 0;text-align:center;font-size:.9rem;color:#5E6884}
+.pip-demo{display:flex;flex-direction:column;gap:10px;margin-top:20px;padding:18px;border-radius:20px;background:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.9)}
+.pd{max-width:88%;padding:10px 14px;font-size:.9rem;line-height:1.5;border-radius:16px 16px 16px 5px;background:#F0ECFA;color:#34406A}.pd.u{align-self:flex-end;border-radius:16px 16px 5px 16px;background:#20344F;color:#fff}
+.pd small{display:block;font:800 10px Manrope,sans-serif;letter-spacing:.07em;text-transform:uppercase;color:#7A6FC0;margin-bottom:2px}
+.pd-dots{display:inline-flex;gap:4px;padding:3px 0}.pd-dots i{width:6px;height:6px;border-radius:50%;background:#8F86C8;animation:pulse .9s infinite}.pd-dots i:nth-child(2){animation-delay:.15s}.pd-dots i:nth-child(3){animation-delay:.3s}
+.pip-orb{width:62px;height:62px;border-radius:50%;display:grid;place-items:center;font-size:28px;background:radial-gradient(circle at 30% 28%,#fff,#E3D9F6 45%,#B9CBF3);box-shadow:0 10px 28px rgba(120,100,190,.28);animation:float 5s ease-in-out infinite}
+.tech{display:flex;flex-direction:column;gap:16px}
+.tech .lp-card{padding:22px 24px}.tech h3{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 6px;font-size:1.15rem}
+.tech-for{display:inline-block;margin-top:10px;font:800 10.5px Manrope,sans-serif;letter-spacing:.07em;text-transform:uppercase;color:#5D5A9A;background:#EDE9FA;border-radius:99px;padding:4px 10px}
+.lp-3 .lp-card .lp-ico{width:50px;height:50px}
+.lp-cta{margin:96px 0 0;padding:44px 28px;text-align:center;border-radius:32px;background:linear-gradient(135deg,rgba(253,224,206,.9),rgba(226,218,246,.92) 55%,rgba(204,224,248,.9));box-shadow:var(--shadow)}
+.lp-cta h2{margin:0 0 8px}.lp-cta p{margin:0 auto 20px;color:#4B5877;max-width:32em}.lp-cta .btn{background:#141a2c;border-radius:99px;padding:12px 28px;margin:0 5px}.lp-cta .btn.ghost{background:#fff;color:#20344F}
+.lp-foot{text-align:center;margin-top:34px;color:var(--mute);font-size:.82rem}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;transition-delay:var(--d,0s)}.rv.on{opacity:1;transform:none}
+@media(max-width:1000px){.lp-4{grid-template-columns:1fr 1fr}.lp-3{grid-template-columns:1fr 1fr}}
+@media(max-width:900px){
+ .lp-hero{grid-template-columns:1fr;padding:96px 20px 28px;min-height:auto}.lp-2{grid-template-columns:1fr}
+ .wf{grid-template-columns:1fr;gap:40px}.wf-step{margin:0}
+ .wf-step:not(:last-child):after{right:auto;left:50%;top:auto;bottom:-38px;margin:0 0 0 -19px;transform:rotate(90deg);animation-name:nudgeY}
+}
+@media(max-width:720px){
+ .isl{flex-wrap:wrap;border-radius:28px;padding:10px 12px 8px 16px}.isl-links{order:3;width:100%;overflow-x:auto;justify-content:flex-start;scrollbar-width:none}.isl-links button{padding:7px 11px;white-space:nowrap}
+ .lp-hero{padding-top:128px}.lp-sec{scroll-margin-top:130px}.lp-says{padding:28px 22px}.lp-float{height:250px}.mc.b{left:60px;min-width:0}.mc.b>span:last-child{display:none}.mc.c{min-width:0}.mc.d{display:none}.lp-tick{display:none}
+ .lp-4,.lp-3{grid-template-columns:1fr}
+}
+
+/* ===== Brand icon, occasion cover images and responsive polish (appended; remove this block to revert) ===== */
+.logo-ico{display:block;flex:none;width:34px;height:34px;object-fit:contain;border-radius:10px;filter:drop-shadow(0 4px 10px rgba(32,52,79,.22))}
+.isl .logo-ico{width:30px;height:30px}
+.logo-ico.sm{display:inline-block;width:20px;height:20px;border-radius:6px;vertical-align:-5px;margin-right:8px;filter:none}
+.lp-ico.brand{background:none;overflow:hidden}.lp-ico.brand img{width:100%;height:100%;object-fit:contain;border-radius:12px;display:block}
+/* moment card caps */
+.cov{position:relative;width:100%;height:auto;aspect-ratio:16/9;max-height:none;overflow:hidden;font-size:clamp(40px,12vw,52px)}
+.cov img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:block;transition:transform .6s ease}
+.lift:hover .cov img{transform:scale(1.06)}
+.cov.has-img:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(32,52,79,0) 58%,rgba(32,52,79,.16));pointer-events:none}
+img[data-k=birthday]{object-position:50% 52%}img[data-k=wedding]{object-position:50% 42%}img[data-k=graduation]{object-position:52% 62%}img[data-k=housewarming]{object-position:55% 62%}img[data-k=emergency]{object-position:50% 50%}
+.lift>.chip[title=Delete]{display:grid;place-items:center;width:36px;height:36px;padding:0;background:rgba(255,255,255,.95);box-shadow:0 4px 12px rgba(32,52,79,.2)}
+/* moment header: fixed-size icon, title can shrink, members never squeeze it */
+.chead{flex-wrap:nowrap;min-width:0}
+.chead .em{flex:none;display:grid;place-items:center;width:52px;height:52px;font-size:30px;line-height:1;border-radius:14px;overflow:hidden}
+.chead .em.has-img{border:2px solid #fff;box-shadow:0 4px 12px rgba(32,52,79,.16)}
+.chead .em img{width:100%;height:100%;object-fit:cover;display:block}
+.chead>div:nth-child(2){min-width:0}.chead h3{overflow-wrap:anywhere}.chead>div:last-child{flex:none}
+.mv>*{min-width:0}
+/* landing demo cards */
+.mc-ph{flex:none;display:block;width:42px;height:42px;border-radius:11px;overflow:hidden;box-shadow:0 3px 8px rgba(90,80,150,.2)}.mc-ph img{width:100%;height:100%;object-fit:cover;display:block}
+.mc-ph img[data-k=housewarming]{object-position:68% 60%}.mc-ph img[data-k=graduation]{object-position:62% 62%}
+/* tablet: side cards sit two-up instead of stretching full width */
+@media(min-width:641px) and (max-width:900px){
+ #side{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:start}
+ #side>*{margin-top:0!important}
+ #side>.link{grid-column:1/-1;justify-self:start}
+ #side>.glass.pad:has(textarea){grid-column:1/-1}
+}
+/* phone */
+@media(max-width:640px){
+ nav{gap:10px;padding-bottom:14px}
+ nav>div{justify-content:space-between;gap:6px 8px}
+ nav .tag.aipill{margin-right:0!important}nav .bell{margin-right:0}nav .link{margin-left:0!important}
+ .logo-ico{width:32px;height:32px}
+ .chead{flex-wrap:wrap;gap:10px 12px;padding:14px}
+ .chead .em{width:46px;height:46px;font-size:26px}
+ .chead>div:nth-child(2){flex:1 1 140px!important}
+ .chead>div:last-child{flex:1 0 100%;padding-right:8px}
+ .chead .ava{width:30px;height:30px;font-size:11px}
+ .b{max-width:88%}
+ .cov{aspect-ratio:16/9}
+ #dec div[style*="grid-template-columns:2fr 1fr"]{grid-template-columns:1fr!important}
+ .dgrid{gap:14px}
+ .lp-foot{padding:0 8px}
+ .mc.b{left:52px;right:12px;min-width:0}.mc.c{right:36px}.mc>div{min-width:0}.mc-bar{width:min(150px,100%)}
+}
+@media(max-width:360px){nav>div{justify-content:flex-start}.chat{min-height:440px}.btn{padding:10px 14px}}
+
+/* ===== Moment cards: sensible width on every screen, readable text, gentle interactivity (appended) ===== */
+.grid{grid-template-columns:repeat(auto-fill,minmax(260px,340px));justify-content:start}
+@media(min-width:641px){.grid{grid-template-columns:repeat(auto-fill,minmax(300px,340px))}}
+@media(min-width:1100px){.grid{grid-template-columns:repeat(auto-fill,340px);max-width:1180px}}
+.grid>.lift{display:flex;flex-direction:column;min-width:0;border-radius:20px}
+.grid>.lift .pad{flex:1;padding:20px 22px 22px}
+.grid>.lift .pad h3{overflow-wrap:anywhere}
+.grid>.lift{animation:rise .55s ease both}
+.grid>.lift:nth-child(2){animation-delay:.06s}.grid>.lift:nth-child(3){animation-delay:.12s}.grid>.lift:nth-child(4){animation-delay:.18s}.grid>.lift:nth-child(5){animation-delay:.24s}.grid>.lift:nth-child(n+6){animation-delay:.3s}
+.lift{transition:transform .28s cubic-bezier(.2,.7,.2,1),box-shadow .28s ease,border-color .28s ease}
+.lift:hover{transform:translateY(-6px);box-shadow:0 22px 46px rgba(60,70,130,.22);border-color:#B9C6E6}
+.lift:active{transform:translateY(-2px)}
+.lift:focus-within{border-color:#8CA9C5}
+.lift h3{transition:color .2s}.lift:hover h3{color:#2E5A86}
+.mini i{animation:growbar 1.1s cubic-bezier(.2,.7,.2,1) both}
+@keyframes growbar{from{width:0}}
+.btn.gold{transition:transform .2s,box-shadow .2s,background .2s}.btn.gold:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(32,52,79,.16)}
+.chip{transition:transform .18s,background .18s,border-color .18s,box-shadow .18s}.chip:hover{box-shadow:0 6px 14px rgba(32,52,79,.12)}
+.lift>.chip[title=Delete]:hover{background:#FFF0F0;border-color:#E9B4B4;transform:scale(1.08)}
+/* readability: darker text shades on the light theme */
+:root{--mute:#465A71;--txt:#16283F}
+body{color:#16283F}
+p,.sub{color:#33465D}.sub,.mute{color:#465A71}
+.mute{color:#465A71!important}
+.b time,.b.me time{color:#5B6E83}.b.me time{color:#DCE6F0}
+.pip-hint,.cf-cap,.cf-sub,.cf-who small,.cf-surtxt small,.cf-box small,.cf-hint,.cf-linkbtn,.fl b,.pay span,.mid span,.cf-eyebrow{color:#465A71}
+.who,.b.ai .who{color:#2F5C88}
+input::placeholder,textarea::placeholder{color:#62758A}
+label{color:#22364E}
+.tag{color:#2F5578}.tag.g{color:#3F5A75}.tag.r{color:#8E3F46}
+.mc small{color:#4F5B78}.mc-bar{background:#D9D3EE}
+.lp-card p,.lp-says p,.wf-step p,.wf-note,.lp-cta p,.lp-head p,.lp-foot{color:#36435F}
+.pd{color:#26335A}.pd small{color:#5A4FA8}
+.lp-eyebrow,.tech-for{color:#473F8C}
+.isl-links button{color:#34415E}
+.pitem .pb,.row .mute{color:#465A71}
+.why{color:#31506F}
+.nrow .mute{color:#465A71!important}
+.cf-idea p{color:#465A71}
+</style></head>
+<body><div id="view"></div><div id="toasts"></div><canvas id="fx"></canvas>
+<script>
+const $=s=>document.querySelector(s),V=$('#view');
+let T=localStorage.t||'',ME=null,CFG={},D=null,SR=null,REC=null,US=[],LAST=0,SIG='',CUR=0,CURH='',VIEW='',NP=null,NMAX=-1,NUN=0,NITEMS=[],DSIG='',AIS=null,MEM={},MR=[],POLL=null,IDEAS=null,PPD=false,PIP_HISTORY=[],PIP_CONTEXT={},PIP_PLANS=[],PIP_BUSY=false;
+const money=n=>'$'+Number(n).toFixed(2),rnd=a=>a[Math.floor(Math.random()*a.length)];
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const PAYL=['Payment completed successfully.'];
+const PAYL_CALM=['Your contribution was recorded successfully.'];
+const payLine=d=>(d&&d.kind=='emergency')?PAYL_CALM[0]:PAYL[0];
+const boomIf=d=>{if(!d||d.kind!='emergency')boom()};
+const LOAD=['Weaving your moment together…','Asking the coins to line up…','Warming up the group chat…','Polishing the pool…'];
+const toast=(t,icon='✨')=>{const c=$('#toasts'),e=document.createElement('div');e.className='tt';e.innerHTML=`<i>${icon}</i><div>${esc(t)}</div>`;const kill=()=>{e.classList.add('out');setTimeout(()=>e.remove(),400)};e.onclick=kill;c.appendChild(e);setTimeout(kill,5000);while(c.children.length>4)c.firstChild.remove()};
+const run=f=>async(...a)=>{try{await f(...a)}catch(e){toast('A small knot in the thread: '+e.message)}};
+const api=async(p,m='GET',b)=>{const r=await fetch('/api'+p,{method:m,headers:{'Content-Type':'application/json',Authorization:T},body:b?JSON.stringify(b):undefined});
+ const j=await r.json().catch(()=>({}));if(!r.ok)throw new Error(typeof j.detail==='string'?j.detail:'a field needs a little more love');return j};
+const go=h=>{V.innerHTML=h;V.classList.remove('in');void V.offsetWidth;V.classList.add('in');scrollTo(0,0);setPill();requestAnimationFrame(()=>document.querySelectorAll('.bar[data-o]').forEach(b=>b.style.strokeDashoffset=b.dataset.o))};
+const loading=()=>go(`<div class="load"><div class="orb"></div><p>${rnd(LOAD)}</p></div>`);
+const hue=s=>[...String(s)].reduce((a,c)=>a*31+c.charCodeAt(0),7)%360;
+const ava=n=>`<span class="ava" style="background:hsl(${hue(n)} 60% 45%)" title="${esc(n)}">${esc(String(n).split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase())}</span>`;
+const emo=m=>m.kind=='emergency'?'🆘':/birth/i.test(m.occasion)?'🎂':/house|home/i.test(m.occasion)?'🏡':/grad/i.test(m.occasion)?'🎓':/baby/i.test(m.occasion)?'👶':/wed|marr/i.test(m.occasion)?'💍':'🎁';
+const occImg=m=>{const o=m.occasion||'';if(m.kind==='emergency'||/\b(emergency|medical|surgery|hospital|urgent|relief|fund|support)\b/i.test(o))return 'emergency';if(/\bbirthday\b/i.test(o))return 'birthday';if(/\bhousewarming\b|\bnew\s+(home|house|flat|apartment|place)\b|\bmoving.?in\b/i.test(o))return 'housewarming';if(/\bgraduat/i.test(o))return 'graduation';if(/\b(wedding|marriage|married|engagement|engaged|bride|groom)\b/i.test(o))return 'wedding';return null};
+const capHtml=m=>{const k=occImg(m);return k?`<img src="/images/${k}.jpg" data-k="${k}" alt="" loading="lazy" decoding="async">`:`<span>${emo(m)}</span>`};
+const tm=t=>new Date(t.replace(' ','T')+'Z').toLocaleTimeString([],{hour:'numeric',minute:'2-digit'});
+function boom(){const c=$('#fx'),x=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;const P=[...Array(140)].map(()=>({x:innerWidth/2,y:innerHeight*.65,vx:(Math.random()-.5)*18,vy:-Math.random()*18-4,s:5+Math.random()*7,c:`hsl(${Math.random()*360} 90% 62%)`,r:Math.random()*6}));let f=0;(function t(){x.clearRect(0,0,c.width,c.height);P.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.45;p.r+=.2;x.fillStyle=p.c;x.save();x.translate(p.x,p.y);x.rotate(p.r);x.fillRect(-p.s/2,-p.s/2,p.s,p.s*.6);x.restore()});++f<120?requestAnimationFrame(t):x.clearRect(0,0,c.width,c.height)})()}
+
+const setPill=()=>{document.querySelectorAll('.aipill').forEach(e=>{e.className='tag aipill'+(AIS&&!AIS.ok?' r':'');e.textContent=!AIS?'Pip is waking…':AIS.ok?'✨ Pip is online':'⚠ Pip is offline';e.title=(AIS&&AIS.error)||''});const b=$('#aibanner');if(b&&AIS&&!AIS.ok)b.innerHTML=`<div class="glass pad" style="margin:14px 0;border-color:#ff8f8f"><b>Pip's AI isn't connected, so you only get plain templates.</b><p class="mute" style="margin:4px 0">${esc(AIS.error)}<br>Get a free key at aistudio.google.com (Gemini) or console.groq.com, add it to .env as GEMINI_API_KEY or GROQ_API_KEY, and restart the server.</p></div>`};
+async function boot(){fetch('/api/ai/status').then(r=>r.json()).then(r=>{AIS=r;setPill()}).catch(()=>{});CFG=await api('/config');if(T){try{ME=await api('/me')}catch{T=''}}ME?route():authView(0)}
+function route(){if(!NP)startN();const h=location.hash,m=h.match(/^#m(\d+)(\/decide)?/);h=='#notifications'?notifView():h=='#profile'?profileView():m?(m[2]?decideView(+m[1]):openM(+m[1])):home()}
+const nav=()=>`<nav><div class="logo" onclick="home()"><img class="logo-ico" src="/images/momentpay-icon.png" alt="">MomentPay</div><div><span class="tag aipill" style="margin-right:12px"></span><button type="button" class="bell ${NUN?'has':''}" onclick="notifView()" title="Notifications" aria-label="Notifications">🔔<b>${NUN>9?'9+':NUN}</b></button>${ava(ME.name)}<button class="link" style="margin-left:14px" onclick="profileView()">Profile</button><button class="link" style="margin-left:14px" onclick="logout()">Log out</button></div></nav>`;
+function logout(noPP){clearInterval(POLL);clearInterval(NP);NP=null;NUN=0;localStorage.t=T='';ME=null;if(!noPP&&localStorage.ppu)ppSignOut();authView(0)}
+
+var LPO=null,LPS=null;
+const lpGo=id=>{const e=document.getElementById(id);if(e)e.scrollIntoView({behavior:'smooth',block:'start'})};
+const lpStart=()=>authView(1);
+function lpInit(){
+ try{LPO&&LPO.disconnect()}catch(e){}
+ if(LPS)removeEventListener('scroll',LPS);
+ const rv=[...document.querySelectorAll('.lp .rv')];
+ if(!('IntersectionObserver' in window)){rv.forEach(e=>e.classList.add('on'))}
+ else{LPO=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');LPO.unobserve(e.target)}}),{threshold:.12});rv.forEach(e=>LPO.observe(e))}
+ const ids=['lp-home','about','workflow','meetpip','usecases'];
+ LPS=()=>{const bs=document.querySelectorAll('.isl-links button');if(!bs.length){removeEventListener('scroll',LPS);return}let cur=0;ids.forEach((id,i)=>{const e=document.getElementById(id);if(e&&e.getBoundingClientRect().top<innerHeight*.4)cur=i});bs.forEach((b,i)=>b.classList.toggle('on',i==cur))};
+ addEventListener('scroll',LPS,{passive:true});LPS();
+}
+function authView(reg){clearInterval(POLL);D=null;go(`<header class="isl"><div class="logo" onclick="lpGo('lp-home')"><img class="logo-ico" src="/images/momentpay-icon.png" alt="">MomentPay</div>
+<div class="isl-links"><button onclick="lpGo('lp-home')">Home</button><button onclick="lpGo('about')">About</button><button onclick="lpGo('workflow')">Workflow</button><button onclick="lpGo('meetpip')">MeetPip</button><button onclick="lpGo('usecases')">Usecases</button></div>
+<button class="btn" onclick="lpStart()">Get Started</button></header>
+<main class="lp">
+<section class="lp-hero lp-sec" id="lp-home">
+<svg class="lp-scene" viewBox="0 0 1200 760" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><radialGradient id="lpg" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#FFF4D2"/><stop offset="1" stop-color="#EFC36A"/></radialGradient></defs>
+<circle cx="600" cy="380" r="330" fill="#fff" opacity=".22"/><circle cx="600" cy="380" r="210" fill="#fff" opacity=".28"/><circle cx="600" cy="380" r="110" fill="#fff" opacity=".35"/>
+<path class="lp-flow" d="M520 110 C 540 220, 580 290, 600 330" fill="none" stroke="#9C8BE0" stroke-width="2.5" stroke-linecap="round"/><path class="lp-flow" d="M700 650 C 680 540, 630 450, 604 420" fill="none" stroke="#F2A98F" stroke-width="2.5" stroke-linecap="round"/><path class="lp-flow" d="M60 470 C 200 470, 380 430, 490 390" fill="none" stroke="#8DB5EE" stroke-width="2.5" stroke-linecap="round"/>
+<g class="lp-coin"><circle cx="520" cy="96" r="26" fill="url(#lpg)" stroke="#E0B158" stroke-width="2"/><circle cx="520" cy="96" r="17" fill="none" stroke="#E0B158" stroke-opacity=".7"/><text x="520" y="103" text-anchor="middle" font-family="Manrope,sans-serif" font-weight="800" font-size="19" fill="#B98A2E">$</text></g>
+<g class="lp-coin"><circle cx="700" cy="654" r="26" fill="url(#lpg)" stroke="#E0B158" stroke-width="2"/><circle cx="700" cy="654" r="17" fill="none" stroke="#E0B158" stroke-opacity=".7"/><text x="700" y="661" text-anchor="middle" font-family="Manrope,sans-serif" font-weight="800" font-size="19" fill="#B98A2E">$</text></g>
+<g class="lp-coin"><circle cx="62" cy="470" r="22" fill="url(#lpg)" stroke="#E0B158" stroke-width="2"/><text x="62" y="477" text-anchor="middle" font-family="Manrope,sans-serif" font-weight="800" font-size="17" fill="#B98A2E">$</text></g>
+<path d="M1110 620 q6 26 32 32 q-26 6 -32 32 q-6 -26 -32 -32 q26 -6 32 -32z" fill="#fff" opacity=".85"/></svg>
+<div class="lp-hl">
+<div class="lp-says"><svg class="lp-tick" viewBox="0 0 42 30" fill="none" stroke="#2A2F45" stroke-width="2.2" stroke-linecap="round"><path d="M4 18 L14 5 M16 24 L28 9 M28 27 L40 16"/></svg>
+<h1>Some moments are too big for one wallet.</h1>
+<p><svg class="lp-curl" viewBox="0 0 34 30" fill="none" stroke="#2A2F45" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4 C 3 18, 14 26, 30 22 M23 17 L30 22 L22 27"/></svg><span>Gather your people, give what you can, and let Pip weave the rest: the right words, the right gift, and fair-share refunds on whatever is left.</span></p></div>
+<div class="lp-float"><div class="mc a">${ava('Welcome Back')}<div><b>Welcome back</b><small>Sign in</small></div></div>
+<div class="mc b"><span class="mc-ph"><img src="/images/housewarming.jpg" data-k="housewarming" alt=""></span><div><b>Priya's housewarming</b><div class="mc-bar"><i style="width:80%"></i></div><small>$240 of $300</small></div><span style="display:inline-flex;margin-left:auto;padding-left:6px">${ava('Rahul S')}${ava('Meera K')}${ava('Arun V')}</span></div>
+<div class="mc c"><span class="mc-ph"><img src="/images/graduation.jpg" data-k="graduation" alt=""></span><div><b>A graduation surprise</b><div class="mc-bar"><i style="width:82%"></i></div><small>$410 of $500</small></div></div>
+<div class="mc d">💸 <span>Rahul just gave $20</span></div></div>
+</div>
+<section class="lp-login" id="authcard"><h2>${reg?'Join the circle':'Welcome back'}</h2><p class="mute" style="margin:0 0 8px">${reg?'Two minutes, and your people can find you.':'Your moments kept the lights on for you.'}</p>
+${reg?'<input id="n" placeholder="Your name">':''}<input id="e" type="email" placeholder="Email">${reg?'<input id="pe" type="email" placeholder="Your PayPal sandbox email (receives money owed to you)">':''}<input id="p" type="password" placeholder="Password">
+<button class="btn" onclick="auth(${reg})">${reg?'Create my account':'Step inside'}</button><br><button class="link" onclick="authView(${reg?0:1})">${reg?'Already one of us? Log in':'New here? Create an account'}</button></section>
+</section>
+
+<section class="lp-block lp-sec" id="about"><div class="lp-head rv"><span class="lp-eyebrow">About</span><h2>A shared pool for moments too big for one wallet</h2><p>MomentPay turns scattered group-chat requests into one clear, fair and friendly way to give together.</p></div>
+<div class="lp-2"><div class="lp-card peach rv"><div class="lp-ico brand"><img src="/images/momentpay-icon.png" alt=""></div><h3>What is MomentPay?</h3><p>Someone starts a moment, like a housewarming, a farewell gift or a medical emergency, and invites their people. Everyone gives whatever they can through PayPal, and the pool grows in a live group chat. Pip, our AI companion, helps with the words, the plan and the gift. Whatever is left over goes back to contributors in proportion to what each person gave.</p></div>
+<div class="lp-card lilac rv" style="--d:.1s"><div class="lp-ico">⏳</div><h3>Why is it needed now?</h3><p>Group giving still runs on screenshots, one-off transfer requests and one person fronting the money, then chasing everyone for it. Friends and families are spread across cities and countries, costs keep climbing, and emergencies cannot wait for a spreadsheet. MomentPay replaces the chaos with one pool, one chat and payments that are verified before they count.</p></div></div>
+<div class="lp-4"><div class="lp-card rv"><div class="lp-ico">⚖️</div><h3>Fair by design</h3><p>Any amount counts. Leftovers are refunded in proportion to what each person gave.</p></div>
+<div class="lp-card rv" style="--d:.08s"><div class="lp-ico">💬</div><h3>Everyone in the loop</h3><p>Contributions, purchases, payouts and refunds appear live in the chat and in notifications.</p></div>
+<div class="lp-card rv" style="--d:.16s"><div class="lp-ico">🤍</div><h3>Calm when it matters</h3><p>Emergency funds switch to a steady, supportive tone with no party language, just practical next steps.</p></div>
+<div class="lp-card rv" style="--d:.24s"><div class="lp-ico">🎁</div><h3>Surprise-safe</h3><p>Recipients of a surprise moment see nothing until money or a gift reaches them.</p></div></div></section>
+
+<section class="lp-block lp-sec" id="workflow"><div class="lp-head rv"><span class="lp-eyebrow">Workflow</span><h2>From “someone should organise this” to done</h2><p>Five simple steps, and you stay in control of the money all the way through.</p></div>
+<div class="lp-card wf-wrap rv"><div class="wf">
+<div class="wf-step"><span class="wf-n">1</span><h3>Start a moment</h3><p>Pick the occasion or an emergency, set a target and choose who it is for. Pip drafts the invite in the tone you like.</p></div>
+<div class="wf-step"><span class="wf-n">2</span><h3>Gather your people</h3><p>Create the group. Everyone gets an invite and a live chat where Pip welcomes them.</p></div>
+<div class="wf-step"><span class="wf-n">3</span><h3>Give with PayPal</h3><p>Each friend approves in PayPal. Only a captured payment is recorded, so the pool is always real.</p></div>
+<div class="wf-step"><span class="wf-n">4</span><h3>Close &amp; decide</h3><p>Send the money, ask the recipient, return leftovers, or let Pip shop for the perfect gift.</p></div>
+<div class="wf-step"><span class="wf-n">5</span><h3>Share the joy</h3><p>Purchases, payouts and fair-share refunds show up in the chat, and Pip helps with a thank-you.</p></div>
+</div><p class="wf-note">No surprises: every step is visible to the group as it happens.</p></div></section>
+
+<section class="lp-block lp-sec" id="meetpip"><div class="lp-head rv"><span class="lp-eyebrow">MeetPip</span><h2>Meet Pip, the planning friend inside every moment</h2><p>Pip writes the invite, welcomes the group, nudges people kindly, answers <b>@pip</b> questions, plans budgets and suggests gifts. Behind Pip, three technologies work together, each doing the one job it does best.</p></div>
+<div class="lp-2"><div class="lp-card lilac rv"><div style="display:flex;align-items:center;gap:16px"><div class="pip-orb">✨</div><div><h3 style="margin:0">Pip</h3><p>Warm, practical and never pushy.</p></div></div>
+<div class="pip-demo"><div class="pd"><small>Pip</small>Welcome, everyone! Priya's housewarming is at $240 of $300, and any amount helps.</div><div class="pd u">@pip what gift would fit what's left?</div><div class="pd"><small>Pip</small><span class="pd-dots"><i></i><i></i><i></i></span></div></div></div>
+<div class="tech">
+<div class="lp-card rv"><h3><span class="lp-ico" style="width:40px;height:40px;font-size:19px">🧠</span>Gemini <span class="tech-for">The storyteller &amp; planner</span></h3><p>Pip's main brain. It writes invite messages in four tones, welcomes the group, answers @pip questions and builds budgeted plans with a clear USD cost breakdown.</p></div>
+<div class="lp-card rv" style="--d:.08s"><h3><span class="lp-ico" style="width:40px;height:40px;font-size:19px">🛟</span>OpenAI <span class="tech-for">The safety net</span></h3><p>When Gemini is busy or rate-limited, Pip switches to OpenAI's gpt-oss-120b (served through Groq) automatically, so the conversation never goes quiet.</p></div>
+<div class="lp-card rv" style="--d:.16s"><h3><span class="lp-ico" style="width:40px;height:40px;font-size:19px">🛍️</span>Channel3 <span class="tech-for">The shopper</span></h3><p>Live product search across real stores. Pip scores every result for relevance, rating, discount and price, then explains why it picked what it did.</p></div>
+</div></div></section>
+
+<section class="lp-block lp-sec" id="usecases"><div class="lp-head rv"><span class="lp-eyebrow">Usecases</span><h2>For every moment worth gathering around</h2><p>Joyful, auspicious or urgent, MomentPay adapts its tone and tools to the occasion.</p></div>
+<div class="lp-3">
+<div class="lp-card peach rv"><div class="lp-ico">🪔</div><h3>Auspicious occasions</h3><p>Housewarmings, weddings, baby showers and festivals. Pool together for gifts and celebrations while Pip keeps your culture and traditions in mind.</p></div>
+<div class="lp-card rv" style="--d:.08s"><div class="lp-ico">🎂</div><h3>Birthdays &amp; celebrations</h3><p>Turn a group chat into a real gift fund, with a warm message written in the tone you pick.</p></div>
+<div class="lp-card lilac rv" style="--d:.16s"><div class="lp-ico">🎓</div><h3>Graduations &amp; farewells</h3><p>Plan a surprise, keep it secret from the recipient and let Pip find a gift that fits the budget.</p></div>
+<div class="lp-card rv"><div class="lp-ico">🆘</div><h3>Emergency &amp; medical support</h3><p>A calm, compassionate flow with no party language. Send the money to the person who needs it, or return what is left.</p></div>
+<div class="lp-card peach rv" style="--d:.08s"><div class="lp-ico">✈️</div><h3>Trips &amp; shared plans</h3><p>Share a cost fairly, with a budget estimate and per-person amounts worked out for you.</p></div>
+<div class="lp-card lilac rv" style="--d:.16s"><div class="lp-ico">🙏</div><h3>Appreciation</h3><p>Thank a teacher, mentor or colleague together, with every contribution, big or small, counted.</p></div>
+</div>
+<div class="lp-cta rv"><h2>Ready to gather your people?</h2><p>Create your account in two minutes and start your first moment.</p><button class="btn" onclick="lpStart()">Get Started</button><button class="btn ghost" onclick="lpGo('lp-home')">Log in</button></div>
+<p class="lp-foot"><img class="logo-ico sm" src="/images/momentpay-icon.png" alt="">MomentPay · give together</p></section>
+</main>`);lpInit()}
+
+const auth=run(async reg=>{const r=await api(reg?'/register':'/login','POST',{name:$('#n')?.value||'',email:$('#e').value,paypal_email:$('#pe')?.value||'',password:$('#p').value});T=r.token;localStorage.t=T;ME=await api('/me');ppGuard();route()});
+
+const profileView=run(async()=>{clearInterval(POLL);CUR=0;VIEW='p';D=null;setH('profile');const p=await api('/profile');
+ go(nav()+`<button class="link" onclick="home()">← Back</button><h1 style="font-size:2.4rem;margin:6px 0 14px">Your profile</h1><div class="dgrid">
+ <section class="glass pad"><h3>About you</h3><p class="mute" style="margin-top:2px">Your friends find you by name. Your PayPal email is where money owed to you arrives.</p>
+ <label>Name</label><input id="pf_n" value="${esc(p.name)}" maxlength="60">
+ <label>Login email</label><input id="pf_e" type="email" value="${esc(p.email)}">
+ <label>PayPal email</label><input id="pf_pe" type="email" value="${esc(p.paypal_email)}">
+ <label>Phone (optional)</label><input id="pf_ph" type="tel" value="${esc(p.phone)}" placeholder="+91 98765 43210">
+ <label>City (optional)</label><input id="pf_c" value="${esc(p.city)}" maxlength="60">
+ <label>A line about you (optional)</label><textarea id="pf_a" style="min-height:80px" maxlength="280">${esc(p.about)}</textarea>
+ <button class="btn" onclick="saveProfile()">Save changes</button></section>
+ <section class="glass pad" style="align-self:start"><h3>Delete account</h3><p class="mute">This removes your account and the moments you organised. It is blocked while money is still in play in any moment you are part of.</p>
+ <input id="pf_pw" type="password" placeholder="Your password to confirm"><button class="btn ghost" style="color:#ff9a9a;border-color:rgba(255,154,154,.45)" onclick="delAccount()">Delete my account</button></section></div>`)});
+const saveProfile=run(async()=>{await api('/profile','PUT',{name:$('#pf_n').value,email:$('#pf_e').value,paypal_email:$('#pf_pe').value,phone:$('#pf_ph').value,city:$('#pf_c').value,about:$('#pf_a').value});ME=await api('/me');toast('Profile saved.','✅');profileView()});
+const delAccount=run(async()=>{const pw=$('#pf_pw').value;if(!pw)throw new Error('type your password to confirm');if(!confirm('Delete your account for good? This cannot be undone.'))return;await api('/profile/delete','POST',{password:pw});logout(true);toast('Your account has been deleted. Take care.','👋')});
+
+const home=run(async()=>{clearInterval(POLL);CUR=0;VIEW='h';D=null;setH('');loading();const ms=await api('/moments');
+ go(nav()+`<div id="aibanner"></div><div style="display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:12px"><div><h1 class="big" style="font-size:clamp(2rem,4vw,3rem)">Good to see you, ${esc(ME.name.split(' ')[0])}.</h1><p class="sub">Your people, your moments, one warm place.</p></div><button class="btn gold" onclick="newView()">✨ Start a moment</button></div>`+
+ (ms.length?`<div class="grid">${ms.map(m=>`<div class="glass lift" style="position:relative" onclick="openM(${m.id})">${m.role=='Organiser'?`<button class="chip" style="position:absolute;top:10px;right:10px;z-index:2" title="Delete" onclick="event.stopPropagation();delM(${m.id})">🗑</button>`:''}<div class="cov${occImg(m)?' has-img':''}" style="--h:${hue(m.occasion)}">${capHtml(m)}</div><div class="pad"><span class="tag">${m.kind}</span> <span class="tag g">${m.status}</span>
+ <h3 style="margin-top:10px">${esc(m.occasion)}</h3><p class="mute" style="margin:2px 0 10px">${m.role} · ${money(m.collected)} of ${money(m.target)}</p><div class="mini"><i style="width:${Math.min(100,m.collected/m.target*100)}%"></i></div>
+ <p class="mute" style="margin:10px 0 0;font-size:13px">${esc(m.last||'Waiting for the first hello…')}</p></div></div>`).join('')}</div>`:
+ `<div class="glass pad" style="text-align:center;margin-top:30px;padding:60px 20px"><div style="font-size:54px;animation:float 4s infinite">🌊</div><h2>A quiet shore.</h2><p class="sub" style="margin:auto">Start a moment and let the tide bring your people in.</p></div>`))});
+
+const newView=run(async()=>{REC=null;US=[];MEM={};MR=[];PIP_HISTORY=[];PIP_CONTEXT={};PIP_PLANS=[];PIP_BUSY=false;pipView()});
+const pipView=()=>{go(nav()+`<button class="link" onclick="home()">← Back to shore</button>
+ <div class="pip-wrap"><div style="text-align:center;margin:8px 0 18px"><span class="tag">YOUR CREATIVE PLANNING PARTNER</span><h1 class="big" style="font-size:clamp(2rem,4vw,3rem);margin-top:10px">Let's make it meaningful.</h1><p class="sub" style="margin:8px auto">No forms. No checklist. Just talk to Pip, explore ideas and shape a moment together.</p></div>
+ <section class="glass pip-shell"><div class="pip-top"><div class="pip-orb">✨</div><div style="flex:1"><b>Pip</b><div class="mute" style="font-size:12px">Your MomentPay planning companion</div></div><span class="tag aipill">AI</span></div>
+ <div class="pip-feed" id="pipFeed"><div class="pip-line"><div class="pip-face">✨</div><div class="pip-bubble"><b style="color:var(--rose)">Pip</b><p>Hey ${esc(ME.name.split(' ')[0])}! 💛 What are we dreaming up today? Tell me whatever is on your mind — even if it is just a half-formed idea. We can brainstorm, change direction and figure it out together.</p></div></div></div>
+ <div id="pipPlanArea"></div><div class="pip-compose"><textarea id="pipInput" rows="1" placeholder="Tell Pip what's on your mind…" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();pipSend()}"></textarea><button class="btn" id="pipSendBtn" onclick="pipSend()">Send ↗</button></div><div class="pip-hint">Enter to send · Shift + Enter for a new line · Pip won't create a Moment until you confirm a plan.</div></section></div>`);PIP_HISTORY.forEach(x=>pipBubble(x.role,x.content));pipRenderPlans()};
+const pipScroll=()=>{const f=$('#pipFeed');if(f)f.scrollTop=f.scrollHeight};
+const pipBubble=(role,text)=>{const f=$('#pipFeed');if(!f)return;const line=document.createElement('div');line.className='pip-line '+(role==='user'?'user':'');const face=document.createElement('div');face.className='pip-face';face.textContent=role==='user'?'You':'✨';const bubble=document.createElement('div');bubble.className='pip-bubble';const who=document.createElement('b');who.style.color=role==='user'?'var(--teal)':'var(--rose)';who.textContent=role==='user'?'You':'Pip';const body=document.createElement('div');body.style.marginTop='5px';body.innerHTML=esc(text).replace(/\n/g,'<br>');bubble.append(who,body);line.append(face,bubble);f.appendChild(line);pipScroll()};
+const pipTyping=(on)=>{const old=$('#pipTyping');if(old)old.remove();if(on){const f=$('#pipFeed');if(!f)return;const el=document.createElement('div');el.id='pipTyping';el.className='pip-line';el.innerHTML='<div class="pip-face">✨</div><div class="pip-bubble"><span class="pip-typing"><i></i><i></i><i></i></span></div>';f.appendChild(el);pipScroll()}};
+const planMoney=(amount,currency='USD')=>{const code=/^[A-Z]{3}$/.test(String(currency||''))?currency:'USD';try{return new Intl.NumberFormat(undefined,{style:'currency',currency:code,maximumFractionDigits:code==='INR'?0:2}).format(Number(amount)||0)}catch{return `${code} ${Number(amount||0).toLocaleString()}`}};
+const planRange=p=>p.budget_min&&p.budget_max?`${planMoney(p.budget_min,p.currency)}–${planMoney(p.budget_max,p.currency)}`:`${planMoney(p.budget,p.currency)} approx.`;
+const pipRenderPlans=()=>{const area=$('#pipPlanArea');if(!area)return;if(!PIP_PLANS.length){area.innerHTML='';area.className='';return}area.className='pip-plan-area';area.innerHTML=`<div class="pip-plan-toolbar"><div><b>Ideas on the table</b><div class="mute" style="font-size:11px">Choose one when it feels right — or keep chatting.</div></div><div class="resize-actions"><button type="button" title="Make ideas panel shorter" aria-label="Make ideas panel shorter" onclick="resizePipPlans(-70)">−</button><button type="button" title="Make ideas panel taller" aria-label="Make ideas panel taller" onclick="resizePipPlans(70)">+</button></div></div><div style="padding:8px 14px 14px"><div class="pip-plans">${PIP_PLANS.map((p,i)=>`<article class="pip-plan"><span class="tag">OPTION ${i+1}</span><h3>${esc(p.title)}</h3><p>${esc(p.tagline||p.concept)}</p><div class="pip-price">${esc(planRange(p))}</div>${p.people_count&&p.per_person?`<p class="mute" style="font-size:12px;margin:4px 0">About ${esc(planMoney(p.per_person,p.currency))} per person · ${p.people_count} people</p>`:''}${p.budget_breakdown&&Object.keys(p.budget_breakdown).length?`<details style="margin:8px 0;font-size:13px"><summary style="cursor:pointer;color:var(--teal)">See cost breakdown</summary><div style="margin-top:7px">${Object.entries(p.budget_breakdown).map(([k,v])=>`<div style="display:flex;justify-content:space-between;gap:12px;padding:3px 0"><span>${esc(k)}</span><b>${esc(planMoney(v,p.currency))}</b></div>`).join('')}</div></details>`:''}${p.cost_note?`<p class="mute" style="font-size:11px">${esc(p.cost_note)}</p>`:''}${p.activities?.length?`<ul>${p.activities.slice(0,4).map(a=>`<li>${esc(a)}</li>`).join('')}</ul>`:''}<button class="btn sm" onclick="choosePipPlan(${i})">Build this moment →</button></article>`).join('')}</div></div>`};
+const resizePipPlans=delta=>{const area=$('#pipPlanArea');if(!area)return;const current=area.getBoundingClientRect().height||220;const next=Math.max(96,Math.min(Math.floor(window.innerHeight*.48),current+delta));area.style.height=next+'px'};
+const pipSend=run(async()=>{if(PIP_BUSY)return;const input=$('#pipInput');const message=input?.value.trim();if(!message)return;input.value='';pipBubble('user',message);PIP_HISTORY.push({role:'user',content:message});PIP_HISTORY=PIP_HISTORY.slice(-20);PIP_BUSY=true;const btn=$('#pipSendBtn');if(btn){btn.disabled=true;btn.textContent='Thinking…'}pipTyping(true);
+ try{const result=await api('/planner/chat','POST',{message,history:PIP_HISTORY.slice(0,-1),context:PIP_CONTEXT});pipTyping(false);if(!result.ok)throw new Error(result.error||'Pip could not respond.');pipBubble('assistant',result.reply||'I am here — tell me a little more.');PIP_HISTORY.push({role:'assistant',content:result.reply||''});if(Array.isArray(result.plans)&&result.plans.length){PIP_PLANS=result.plans;PIP_CONTEXT={...PIP_CONTEXT,plans:PIP_PLANS};pipRenderPlans()}else if(result.ready===false&&result.plans?.length===0){/* keep previous options visible while we refine */}PIP_CONTEXT={...PIP_CONTEXT,last_user_message:message};
+ }catch(e){pipTyping(false);PIP_HISTORY.pop();pipBubble('assistant',`I hit a small connection snag: ${e.message}. Please try again.`)}finally{PIP_BUSY=false;const b=$('#pipSendBtn');if(b){b.disabled=false;b.textContent='Send ↗'}$('#pipInput')?.focus()}});
+const choosePipPlan=idx=>{const plan=PIP_PLANS[idx];if(!plan)return;PIP_CONTEXT={...PIP_CONTEXT,selected_plan:plan};momentSetupView(plan)};
+const CF_ICO={gift:'<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M5 12v9h14v-9M7.5 8a2.5 2.5 0 0 1 0-5C10 3 12 8 12 8s2-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg>',wallet:'<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 7V5a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h14a1 1 0 0 1 1 1v3M20 12v7a1 1 0 0 1-1 1H5a2 2 0 0 1-2-2V6"/><path d="M16 14h4v-2h-4a1 1 0 0 0 0 2z"/></svg>',user:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6"/></svg>',lock:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>'};
+const CF_FX={USD:1,INR:1/88,EUR:1.08,GBP:1.27,AED:.2723,CAD:.73,AUD:.65,SGD:.74};
+const cfUsdGoal=p=>{const c=/^[A-Z]{3}$/.test(String(p.currency||''))?p.currency:'USD';const r=CF_FX[c];if(!r)return'';const lo=Number(p.budget_min),hi=Number(p.budget_max);const mid=lo>0&&hi>0?(lo+hi)/2:Number(p.budget)||0;return mid>0?String(Math.max(1,Math.round(mid*r))):''};
+const momentSetupView=plan=>{REC=null;US=[];MEM={};MR=[];const title=plan.title||'A special moment';const occasion=(PIP_HISTORY.find(m=>m.role==='user')?.content||title).slice(0,200);const description=[plan.concept||'',plan.activities?.length?'Activities: '+plan.activities.join('; '):'',plan.items?.length?'Things to arrange: '+plan.items.join('; '):'',plan.timeline?'Timeline: '+plan.timeline:''].filter(Boolean).join('\n\n');const costLines=plan.budget_breakdown?Object.entries(plan.budget_breakdown).map(([k,v])=>`${k}: ${planMoney(v,plan.currency)}`).join('\n'):'';const context=[plan.why_it_fits||'',costLines?'Estimated budget breakdown ('+plan.currency+'):\n'+costLines:'',plan.cost_note||''].filter(Boolean).join('\n\n');
+ go(nav()+`<button class="link" onclick="pipView()">← Back to Pip</button>
+ <section class="cf-card"><div class="cf-eyebrow">Your Moment</div><h2 class="cf-title">A little something special ✨</h2><p class="cf-sub">Everything looks good? Let's bring this idea to life.</p>
+ <div class="cf-idea"><span class="cf-badge">Pip's selected idea</span><h3>${esc(title)}</h3><p>${esc(plan.tagline||plan.concept||'A plan shaped with Pip')}</p><div class="cf-price">${esc(planRange(plan))}</div><div class="cf-cap">Estimated planning budget</div></div>
+ <div class="cf-two">
+  <div class="cf-box"><div class="cf-ico">${CF_ICO.gift}</div><h4>For whom?</h4><small>Choose the recipient</small><div id="rsel" class="cf-rsel"></div><div id="rres" class="cf-list"></div></div>
+  <div class="cf-box"><div class="cf-ico">${CF_ICO.wallet}</div><h4>Fundraising goal</h4><small>From your Pip conversation</small><div class="cf-amt"><span>$</span><input id="t" type="number" min="1" step="0.01" value="${esc(cfUsdGoal(plan))}" placeholder="0.00" aria-label="Fundraising goal in USD"></div><small class="cf-cur">USD · PayPal · tap the amount to edit</small></div>
+ </div>
+ <div class="cf-box cf-inv"><div class="cf-invhead"><h4>Invite your friends</h4><span>Select members</span></div><small>Who should join this group?</small>
+  <input id="mq" class="cf-search" placeholder="Search a friend by name…" oninput="msrch()" autocomplete="off"><div id="mres" class="cf-list"></div><div id="msel" class="cf-list"></div></div>
+ <label id="sw" class="cf-sur"><span class="cf-lock">${CF_ICO.lock}</span><span class="cf-surtxt"><b>Keep it a surprise</b><small>Your recipient won't be notified about the surprise.</small></span><input type="checkbox" id="s" onchange="surChg()"></label>
+ <input type="hidden" id="k" value="occasion"><input type="hidden" id="o" value="${esc(occasion)}"><input type="hidden" id="d" value="${esc(description)}"><input type="hidden" id="c" value="${esc(context)}">
+ <button class="btn cf-go" id="go" onclick="create()">Create this Moment →</button></section>`);cfRecPaint();memPaint()};
+const cfRecPaint=()=>{const el=$('#rsel');if(!el)return;if(REC){const x=REC==ME.id?ME.name+' (you)':(US.find(u=>u.id==REC)||{}).name||'Chosen recipient';el.innerHTML=`<div class="cf-rname">${esc(x)}</div><button type="button" class="cf-linkbtn" onclick="cfRecChange()">Choose another</button>`}else{el.innerHTML=`<input id="rq" class="cf-search" placeholder="Search friends by name or email" oninput="srch()" autocomplete="off"><button type="button" class="cf-linkbtn" onclick="pick(${ME.id})">It's for me</button>`}};
+const cfRecChange=()=>{REC=null;cfRecPaint();$('#rres').innerHTML='';$('#rq')?.focus();surChg()};
+const cfRow=(x,sel,fn)=>`<button type="button" class="cf-row${sel?' on':''}" onclick="${fn}(${x.id})"><span class="cf-av">${CF_ICO.user}</span><span class="cf-who"><b>${esc(x.name)}</b><small>${esc(x.email||'Available contact')}</small></span>${sel?'<span class="cf-sel">Selected</span>':'<span class="cf-dot"></span>'}</button>`;
+const srch=run(async()=>{const v=($('#rq')||{value:''}).value.trim();if(v.length<2){US=US.filter(u=>u.id==REC);$('#rres').innerHTML='<span class="mute cf-hint">Type at least 2 letters of their name.</span>';return}US=await api('/users?q_='+encodeURIComponent(v));$('#rres').innerHTML=US.map(x=>cfRow(x,false,'pick')).join('')||'<span class="mute cf-hint">No one by that name yet.</span>'});
+const msrch=run(async()=>{const v=$('#mq').value.trim();if(v.length<2){MR=[];$('#mres').innerHTML=v.length?'<span class="mute cf-hint">Type at least 2 letters of their name.</span>':'';return}MR=await api('/users?q_='+encodeURIComponent(v));$('#mres').innerHTML=MR.filter(x=>!MEM[x.id]&&!($('#s').checked&&x.id==REC)).map(x=>cfRow(x,false,'addMem')).join('')||'<span class="mute cf-hint">No one by that name yet.</span>'});
+const memPaint=()=>{const el=$('#msel');if(el)el.innerHTML=Object.entries(MEM).map(([i,n])=>`<button type="button" class="cf-row on" title="Tap to remove" onclick="delMem(${i})"><span class="cf-av">${CF_ICO.user}</span><span class="cf-who"><b>${esc(n)}</b><small>Tap to remove</small></span><span class="cf-sel">Selected</span></button>`).join('')||'<span class="mute cf-hint">Nobody added yet. Search above to invite friends.</span>'};
+const addMem=id=>{const x=MR.find(u=>u.id==id);if(x&&$('#s').checked&&id==REC){toast("🤫 It's a surprise, so the recipient can't be in the group.");return}if(x){MEM[id]=x.name;$('#mq').value='';$('#mres').innerHTML='';memPaint()}};
+const delMem=id=>{delete MEM[id];memPaint()};
+function pick(id){REC=id;cfRecPaint();$('#rres').innerHTML='';surChg()}
+const create=run(async()=>{if(!REC)throw new Error('choose who this is for');
+ const b={recipient_id:REC,kind:$('#k').value,occasion:$('#o').value,description:$('#d').value,context:$('#c').value,target:parseFloat($('#t').value),surprise:$('#s').checked,member_ids:Object.keys(MEM).map(Number)};
+ const btn=$('#go');btn.disabled=true;btn.textContent='Pip is weaving your words…';
+ try{const r=await api('/moments','POST',b);openM(r.id);if(!r.ai)setTimeout(()=>toast("Pip's AI is offline ("+r.err+'). This draft is only a plain template.'),1500)}catch(e){btn.disabled=false;btn.textContent='Ask Pip to write the message ✨';throw e}});
+
+const bub=m=>{if(m.kind=='pay'){const[i,t,l]=m.body.split('|');return`<div class="pay"><div class="coin">${i}</div><div><b>${esc(t)}</b><br><span>${esc(l||'Payment update recorded.')}</span></div></div>`}
+ if(m.kind=='ai')return`<div class="b ai"><span class="who">✨ Pip</span>${esc(m.body).replace(/\n/g,'<br>')}</div>`;
+ return`<div class="b ${m.uid==ME.id?'me':''}"><span class="who">${esc(m.name)}</span>${esc(m.body).replace(/\n/g,'<br>')}<time>${tm(m.ts)}</time></div>`};
+const openM=run(async id=>{clearInterval(POLL);CUR=id;VIEW='m';loading();setH('m'+id);try{D=await api('/moments/'+id)}catch(e){CUR=0;D=null;history.replaceState(null,'','#');CURH='';toast('That moment has drifted out of reach: '+e.message);return home()}LAST=0;SIG=sigOf(D);PPD=false;IDEAS=null;SR=null;
+ const chatOK=(D.is_organiser||D.is_member||D.is_recipient)&&D.status!='draft';
+ go(nav()+`<button class="link" onclick="home()">← All moments</button><div class="mv"><div><section class="glass chat"><div class="chead"><div class="em${occImg(D)?' has-img':''}">${capHtml(D)}</div><div style="flex:1"><h3 style="font-size:1.25rem">${esc(D.occasion)}</h3><span class="mute" style="font-size:13px">for ${esc(D.recipient_name)} · by ${esc(D.organiser_name)}</span></div><div style="display:flex;padding-right:8px">${[D.organiser_name,...D.crew].map(ava).join('')}</div></div>
+ <div class="msgs" id="msgs">${chatOK?'':`<div class="empty"><div style="font-size:44px;animation:float 4s infinite">💬</div><p>${D.status=='draft'?'Your group chat is still folded up. Send the message and it blooms open, with everyone inside.':'This chat belongs to the friends planning the moment.'}</p></div>`}</div>
+ <div class="payd" id="payd"><div><div class="chips">${[5,10,25,50].map(a=>`<button class="chip" onclick="$('#amt').value=${a}">$${a}</button>`).join('')}</div><input id="amt" type="number" min="1" placeholder="Any amount you like. Truly."><div id="pp"></div></div></div>
+ ${chatOK?`<div class="comp"><button class="btn gold sm" id="givebtn" onclick="togglePay()" style="display:none">💸 Give</button><input id="say" placeholder="Say something kind… or ask @pip anything" onkeydown="if(event.key=='Enter')sendChat()"><button class="btn sm" onclick="sendChat()">Send</button></div><div class="chips" style="padding:0 14px 12px">${D.is_organiser||D.is_recipient?`<button class="chip" onclick="suggestChat('thanks')">💛 Thank contributors</button>`:D.kind=='emergency'?`<button class="chip" onclick="suggestChat('support')">🤍 Send support</button>`:`<button class="chip" onclick="suggestChat('congratulate')">🎉 Congratulate recipient</button>`}</div>`:''}</section><div id="under" style="margin-top:18px"></div></div><aside id="side"></aside></div>`);
+ paintSide();if(D.status!='draft'){TICKMS=3000;scheduleTick()}});
+const togglePay=()=>{$('#payd').classList.toggle('open');if(!PPD){PPD=true;ppButtons(D.id)}};
+const sendChat=run(async()=>{
+    const input=$('#say');
+    const t=input.value.trim();
+    if(!t)return;
+
+    await api(`/moments/${D.id}/chat`,'POST',{text:t});
+
+    input.value='';
+    TICKMS=3000;
+    tick();
+});
+const suggestChat=run(async kind=>{
+    const b=document.querySelector('.chips button[onclick*="suggestChat"]');
+
+    if(b){
+        b.disabled=true;
+        b.textContent='Pip is writing…';
+    }
+
+    try{
+        const r=await api(`/moments/${D.id}/chat/suggest`,'POST',{kind});
+
+        $('#say').value=r.message;
+
+        await sendChat();
+
+        if(!r.ai){
+            toast('Pip used a thoughtful message template because AI is offline.');
+        }
+
+    }finally{
+        if(b){
+            b.disabled=false;
+            b.textContent=kind=='thanks'
+                ?'💛 Thank contributors'
+                :kind=='support'
+                ?'🤍 Send support'
+                :'🎉 Congratulate recipient';
+        }
+    }
+});
+const sigOf=d=>JSON.stringify([d.status,d.collected,d.leftover,d.recipient_choice,d.purchases.length,d.payouts.length]);
+let TICKMS=3000;
+function scheduleTick(){tick();POLL=setTimeout(scheduleTick,TICKMS)}
+async function tick(){if(!D||!$('#msgs')||document.hidden)return;let changed=false;try{const r=await api(`/pulse?moment=${D.id}&after=${LAST}`),ms=r.chat||[];if(r.top>NMAX||r.unread!=NUN)npoll();if(ms.length){changed=true;const b=$('#msgs'),near=b.scrollHeight-b.scrollTop-b.clientHeight<140;b.querySelector('.empty')?.remove();b.insertAdjacentHTML('beforeend',ms.map(bub).join(''));LAST=ms[ms.length-1].id;if(near||ms.some(m=>m.uid==ME.id))b.scrollTop=b.scrollHeight}
+ if(!ms.length&&LAST==0&&!$('#msgs .empty,#msgs .b,#msgs .pay'))$('#msgs').innerHTML='<div class="empty"><p>It\'s quiet in here. Be the first to say hello.</p></div>';
+ if(r.sig&&JSON.stringify(r.sig)!=SIG&&!$('#side').contains(document.activeElement)){changed=true;const d=await api('/moments/'+D.id);SIG=sigOf(d);D=d;paintSide()}}catch(e){}
+ // nothing new? check less often next time (up to every 9s); anything happening snaps it back to a brisk 3s.
+ TICKMS=changed?3000:Math.min(TICKMS*1.6,9000)}
+async function refresh(){D=await api('/moments/'+D.id);if(VIEW=='d'){if(D.leftover<=0||!['funded','asking','answered'].includes(D.status))return openM(D.id);paintDecide()}else{SIG=sigOf(D);paintSide();TICKMS=3000;tick()}}
+
+function paintSide(){const d=D,o=d.is_organiser,left=d.leftover,live=['funded','asking','answered'].includes(d.status),pct=Math.min(100,d.collected/d.target*100),C=2*Math.PI*54;
+ let under='';const gb=$('#givebtn');if(gb)gb.style.display=d.status=='active'&&!d.is_recipient?'':'none';
+ const realPct=Math.round(d.collected/d.target*100);
+ let h=`<div class="glass ring"><svg viewBox="0 0 120 120"><defs><linearGradient id="gr"><stop offset="0" stop-color="#6386AA"/><stop offset="1" stop-color="#20344F"/></linearGradient></defs><circle cx="60" cy="60" r="54" class="trk"/><circle cx="60" cy="60" r="54" class="bar" stroke-dasharray="${C}" style="stroke-dashoffset:${C}" data-o="${C*(1-pct/100)}"/></svg>
+ <div class="mid"><b>${realPct}%</b><span>${money(d.collected)} of ${money(d.target)}</span></div></div>`;
+ if(d.contributions.length)h+=`<div class="glass pad" style="margin-top:14px"><h3>Who's weaving this in</h3>${d.contributions.map(c=>`<div class="row">${ava(c.name)}<div class="grow" style="margin-left:12px"><b>${esc(c.name)}</b><div class="mini"><i style="width:${c.share}%"></i></div></div><span>${money(c.amount)}<br><span class="mute" style="font-size:12px">${c.share}%</span></span></div>`).join('')}</div>`;
+ if(d.status=='draft'&&o)h+=`<div class="glass pad" style="margin-top:14px"><h3>Pip's draft <span class="tag ${d.ai_ok?'':'r'}" style="font-size:11px">${d.ai_ok?'✨ written by AI':'⚠ template, AI offline'}</span></h3><p class="mute" style="margin:2px 0">Pick a voice, tweak the words, then open the chat.</p><div class="chips">${['warm','playful','heartfelt','urgent'].map(t=>`<button class="chip" onclick="regen('${t}')">${t}</button>`).join('')}</div>
+  <textarea id="msg">${esc(d.message)}</textarea><button class="btn" onclick="sendGroup()">Create group &amp; send 🚀</button><button class="btn ghost" onclick="copyMsg()">Copy for WhatsApp</button></div>`;
+ if(d.status=='active'&&o)h+=`<div class="glass pad" style="margin-top:14px"><p class="mute" style="margin-top:0">Happy with the pool? Close it and choose what happens next.</p><button class="btn ghost" onclick="act('close','The pool is sealed. Time to decide.')">Close the pool 🔒</button></div>`;
+ if(d.is_recipient&&!o&&d.status=='asking')h+=`<div class="glass pad" style="margin-top:14px"><h3>Your friends raised ${money(d.collected)} for you 💛</h3><p class="mute">Choose what would feel best.</p><button class="btn" onclick="answer('money')">Send me the money</button><input id="rs" placeholder="Or tell us what you'd love"><button class="btn ghost" onclick="answer('gift')">I'd love this instead</button></div>`;
+ if(o&&live&&left>0)h+=`<div class="glass pad" style="margin-top:14px;text-align:center"><div style="font-size:34px;animation:float 3s infinite">🎯</div><h3>${money(left)} ready to place</h3>${d.recipient_choice?`<p class="why">${d.recipient_choice=='money'?'The recipient asked for the money.':"They would love: "+esc(d.recipient_spec)}</p>`:''}<button class="btn" onclick="decideView(${d.id})">Choose what happens next →</button></div>`;
+ if(d.status=='done')h+=`<div class="glass pad" style="margin-top:14px;text-align:center"><div style="font-size:44px;animation:float 3s infinite">🌿</div><h3>All settled.</h3><p class="mute">Every thread tied off, every cent accounted for.</p></div>`;
+ if(d.purchases.length)under+=`<div class="glass pad"><h3>Bought</h3>${d.purchases.map(p=>`<div class="row"><div class="grow"><b>${esc(p.title)}</b><br><span class="mute" style="font-size:12px">${esc(p.store)} · ${esc(p.status)}${p.link?` · <a class="link" href="${esc(p.link)}" target="_blank" rel="noopener">view ↗</a>`:''}</span></div>${money(p.price)}</div>`).join('')}</div>`;
+ if(d.payouts.length)under+=`<div class="glass pad"><h3>Sent</h3>${d.payouts.map(p=>`<div class="row"><span class="grow">${p.kind=='refund'?'Returned to':'Sent to'} ${esc(p.name)} <span class="mute">(${p.status})</span></span>${money(p.amount)}</div>`).join('')}</div>`;
+ if(o)h+=`<button class="link" style="margin-top:14px;color:#ff9a9a" onclick="delM(${d.id})">🗑 Delete this moment</button>`;$('#side').innerHTML=h;{const un=$('#under');if(un)un.innerHTML=under?`<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;align-items:start">${under}</div>`:''}requestAnimationFrame(()=>document.querySelectorAll('.bar[data-o]').forEach(b=>b.style.strokeDashoffset=b.dataset.o))}
+const chipsIdeas=()=>IDEAS&&IDEAS.length?'<span class="mute" style="font-size:12px;width:100%">Pip\'s ideas:</span>'+IDEAS.map(i=>`<button class="chip" onclick="$('#spec').value='${esc(i)}'">${esc(i)}</button>`).join(''):'';
+let PLANITEMS=null,PLANCTX='',PLANBOUGHT={},SRCITEM=null;
+const itemsPanel=()=>{if(!(PLANITEMS&&PLANITEMS.length))return chipsIdeas();const done=PLANBOUGHT[D.id]||{};return`<div class="mute" style="font-size:12px;margin-bottom:8px">What you planned with Pip. Tap an item to search for it within its budget:</div><div class="pitems">${PLANITEMS.map((it,i)=>`<button type="button" class="pitem${done[it.label]?' done':''}" onclick="findItem(${i})"><span class="pn">${esc(it.label)}</span><span class="pb">${done[it.label]?'✓ Bought':'up to '+money(Math.min(it.budget,D.leftover))}</span></button>`).join('')}</div>`};
+const findItem=i=>{const it=PLANITEMS&&PLANITEMS[i];if(!it)return;SRCITEM=it.label;$('#spec').value=it.label;$('#bud').value=Math.min(it.budget,D.leftover).toFixed(2);find()};
+const regen=run(async t=>{$('#msg').style.opacity=.4;try{const r=await api(`/moments/${D.id}/regenerate`,'POST',{tone:t});D.message=r.message;D.ai_ok=r.ai;paintSide();if(!r.ai)toast("Pip's AI is offline: "+r.err)}finally{if($('#msg'))$('#msg').style.opacity=1}});
+const delM=run(async id=>{if(!confirm("Delete this moment and its group chat? This can't be undone."))return;await api('/moments/'+id,'DELETE');toast('Gently folded away. The moment is gone.');home()});
+const surChg=()=>{if($('#s').checked&&MEM[REC]){delete MEM[REC];memPaint();toast('🤫 Surprise mode: the recipient was removed from the group.')}};
+const copyMsg=()=>{navigator.clipboard.writeText($('#msg').value);toast('Copied. Paste it anywhere your friends live.')};
+const sendGroup=run(async()=>{await api(`/moments/${D.id}/message`,'PUT',{message:$('#msg').value});await api(`/moments/${D.id}/send`,'POST');boomIf(D);toast(D.kind=='emergency'?'Your group is live. Pip is sharing the word.':'Your group is live. Pip is saying hello…');openM(D.id)});
+const act=(p,msg)=>run(async()=>{await api(`/moments/${D.id}/${p}`,'POST',{});toast(msg);if(p=='close')return decideView(D.id);if(p=='payout'||p=='refund')boomIf(D);await refresh()})();
+const answer=c=>run(async()=>{await api(`/moments/${D.id}/answer`,'POST',{choice:c,spec:$('#rs')?.value||''});toast('Thank you. Your friends will be delighted to know.');await refresh()})();
+const find=run(async()=>{$('#res').innerHTML='<div class="shimrow"></div><div class="shimrow"></div>';try{const sp=$('#spec').value,from=sp.trim()===SRCITEM;SR=await api(`/moments/${D.id}/search`,'POST',{spec:sp,budget:parseFloat($('#bud').value)||0,context:from?PLANCTX:''});SR.srcItem=from?SRCITEM:null;$('#res').innerHTML=resHtml()}catch(e){$('#res').innerHTML='';throw e}});
+
+const buy=run(async i=>{const p=SR.candidates[i];await api(`/moments/${D.id}/buy`,'POST',{title:p.title,store:p.store,price:p.price,link:p.link||'',reasoning:i==SR.pick?SR.reasoning:'Chosen by the organiser'});boomIf(D);toast(payLine(D));if(SR.srcItem)(PLANBOUGHT[D.id]=PLANBOUGHT[D.id]||{})[SR.srcItem]=1;SR=null;await refresh()});
+const ppLoad=()=>new Promise(r=>{if(window.paypal)return r();const s=document.createElement('script');s.src=`https://www.paypal.com/sdk/js?client-id=${CFG.client_id}&currency=USD`;s.onload=()=>{localStorage.ppu='1';localStorage.ppu_owner=T;r()};document.head.appendChild(s)});
+function ppSignOut(){localStorage.removeItem('ppu');localStorage.removeItem('ppu_owner');try{const w=window.open('https://www.sandbox.paypal.com/signout','ppout','width=420,height=560');if(!w)return false;let done=false;const finish=()=>{if(done)return;done=true;try{w.close()}catch(e){}};w.addEventListener?.('load',finish);setTimeout(finish,3500);return true}catch(e){return false}}
+// If a different MomentPay account just logged in, clear any lingering PayPal session right away (not lazily on next click), so nobody ever sees a prior person's PayPal login.
+function ppGuard(){if(localStorage.ppu&&localStorage.ppu_owner&&localStorage.ppu_owner!==T)ppSignOut()}
+async function ppButtons(id){if(!CFG.client_id){toast('Add PAYPAL_CLIENT_ID to .env to wake up payments.');return}await ppLoad();
+ paypal.Buttons({style:{shape:'pill',color:'gold'},createOrder:async()=>(await api('/paypal/create-order','POST',{moment_id:id,amount:parseFloat($('#amt').value)||0})).id,
+ onApprove:async d=>{const r=await api('/paypal/capture-order','POST',{moment_id:id,order_id:d.orderID});boomIf(D);toast(payLine(D)+(r.to_organiser?" Sent to the organiser's PayPal account.":' Payment completed through MomentPay PayPal.'));$('#payd').classList.remove('open');ppSignOut();await refresh()},onError:e=>toast('The currents hesitated: '+String(e).slice(0,220))}).render('#pp')}
+const setH=h=>{location.hash=h;CURH=location.hash};
+const ago=t=>{const d=new Date(t.replace(' ','T')+'Z'),s=(Date.now()-d)/1000;return s<60?'just now':s<3600?Math.floor(s/60)+'m ago':s<86400?Math.floor(s/3600)+'h ago':d.toLocaleDateString()};
+const setBell=()=>document.querySelectorAll('.bell').forEach(b=>{b.classList.toggle('has',NUN>0);b.querySelector('b').textContent=NUN>9?'9+':NUN});
+async function npoll(){if(!ME)return;try{const r=await api('/notifications');NITEMS=r.items;NUN=r.unread;const top=r.items.length?r.items[0].id:0;
+ if(NMAX<0)NMAX=top;else{const fresh=r.items.filter(n=>n.id>NMAX&&!(VIEW=='m'&&n.moment_id==CUR)).reverse();fresh.forEach(n=>toast(n.body+(n.title?' · '+n.title:''),n.icon||'🔔'));
+  if(r.items.some(n=>n.id>NMAX))document.querySelectorAll('.bell').forEach(b=>{b.classList.remove('ring');void b.offsetWidth;b.classList.add('ring')});NMAX=Math.max(NMAX,top)}
+ setBell();if(VIEW=='n'&&$('#nlist'))notifPaint()}catch(e){}}
+const startN=()=>{clearInterval(NP);NMAX=-1;npoll();NP=setInterval(()=>{const live=(VIEW=='m'&&D&&D.status!='draft')||VIEW=='d';if(!document.hidden&&!live)npoll()},10000)};
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&ME){npoll();if(VIEW=='m')tick()}});
+const notifPaint=()=>{$('#nlist').innerHTML=NITEMS.length?NITEMS.map(n=>`<div class="nrow ${n.seen?'':'new'}" onclick="${n.moment_id?`openM(${n.moment_id})`:''}"><div style="font-size:26px">${n.icon||'🔔'}</div><div style="flex:1"><b>${esc(n.body)}</b><br><span class="mute" style="font-size:13px">${esc(n.title||'A moment')} · ${ago(n.ts)}</span></div></div>`).join(''):
+ '<div class="empty" style="padding:60px 20px;text-align:center;margin:auto"><div style="font-size:46px;animation:float 4s infinite">🔔</div><p class="mute">All quiet on the shore. When something stirs in your moments, it will chime in here.</p></div>'};
+const readAll=run(async()=>{await api('/notifications/read','POST',{});await npoll()});
+const notifView=run(async()=>{clearInterval(POLL);CUR=0;VIEW='n';D=null;setH('notifications');await npoll();
+ go(nav()+`<button class="link" onclick="home()">← Back</button><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px"><h1 style="font-size:2.4rem">Notifications</h1><button class="btn ghost sm" onclick="readAll()">Mark all as read</button></div><div class="glass" id="nlist" style="margin-top:14px;overflow:hidden"></div>`);notifPaint();setTimeout(()=>VIEW=='n'&&readAll(),2500)});
+
+const decideView=run(async id=>{clearInterval(POLL);CUR=id;VIEW='d';setH(`m${id}/decide`);loading();D=await api('/moments/'+id);
+ if(!D.is_organiser||!['funded','asking','answered'].includes(D.status)||D.leftover<=0)return openM(id);
+ SR=null;IDEAS=null;paintDecide();
+ POLL=setInterval(async()=>{if(VIEW!='d'||document.hidden||$('#dec')?.contains(document.activeElement))return;try{const r=await api('/pulse?moment='+id);if(r.top>NMAX||r.unread!=NUN)npoll();if(!r.sig||JSON.stringify([r.sig[0],r.sig[2],r.sig[3]])==DSIG)return;const d=await api('/moments/'+id);D=d;if(d.leftover<=0)return openM(id);paintDecide()}catch(e){}},3000)});
+function paintDecide(){const d=D,left=d.leftover,rc=d.recipient_choice,sv=$('#spec')?.value,bv=$('#bud')?.value;DSIG=JSON.stringify([d.status,d.leftover,rc]);
+ if(!IDEAS&&d.kind!='emergency'){IDEAS=[];PLANITEMS=null;api(`/moments/${d.id}/plan-items`).then(r=>{PLANITEMS=r.items||[];PLANCTX=r.plan||'';if(PLANITEMS.length){const e=$('#ideas');if(e)e.innerHTML=itemsPanel();return}return api(`/moments/${d.id}/ideas`).then(x=>{IDEAS=x;const e=$('#ideas');if(e)e.innerHTML=chipsIdeas()})}).catch(()=>{})}
+ const emer=d.kind=='emergency';
+ go(nav()+`<div id="dec"><button class="link" onclick="openM(${d.id})">← Back to the moment</button>
+ <div style="text-align:center;margin:8px 0 30px"><span class="tag g">pool sealed</span><h1 class="big" style="font-size:clamp(2.2rem,5vw,3.4rem);margin-top:8px">${money(left)} to place.</h1>
+ <p class="sub" style="margin:6px auto">For ${esc(d.recipient_name)}'s ${esc(d.occasion)}. Choose how it reaches them.</p>
+ ${rc=='money'?'<p class="why" style="display:inline-block">💛 They asked for the money.</p>':''}${rc=='gift'?`<p class="why" style="display:inline-block">💛 They would love: ${esc(d.recipient_spec)}</p>`:''}</div>
+ <div class="dgrid">
+ <div class="glass pad opt2"><div class="e">💸</div><h3>Send the money</h3><p class="mute">Straight to ${esc(d.recipient_name)}'s PayPal, in one tap.</p><button class="btn" onclick="act('payout','${emer?PAYL_CALM[0]:PAYL[0]}')">Send ${money(left)}</button></div>
+ ${emer?'':`<div class="glass pad opt2"><div class="e">💌</div><h3>Confirm with ${esc(d.recipient_name)}</h3>${d.surprise?'<p class="mute">🤫 Surprise mode keeps this locked. They are never told.</p>':
+   `<p class="mute">Let them choose between money and something they truly want.</p>${d.status=='funded'?`<button class="btn ghost" onclick="act('ask','Question sent with a bow on it.')">Ask them</button>`:'<p class="why">Waiting for their answer…</p>'}`}</div>`}
+ <div class="glass pad opt2"><div class="e">🌿</div><h3>Return what's left</h3><p class="mute">Shared by how much each person gave.</p>${d.preview.map(p=>`<div class="row"><span class="grow">${esc(p.name)}</span><b>${money(p.amount)}</b></div>`).join('')}<button class="btn ghost" onclick="act('refund','${emer?"Every cent returned to those who gave.":"Every cent found its way home."}')">Return ${money(left)}</button></div>
+ ${emer?'':`<div class="glass pad" style="grid-column:1/-1"><div style="display:flex;gap:12px;align-items:center"><div class="e" style="font-size:34px">🛍️</div><div><h3>Let Pip shop for it</h3><p class="mute" style="margin:0">Pip searches live stores for the things you planned together, within each item\'s share of the budget, checks each match and explains its pick.</p></div></div>
+  <div id="ideas" style="margin-top:12px">${itemsPanel()}</div>
+  <div style="display:grid;grid-template-columns:2fr 1fr;gap:10px"><input id="spec" placeholder="Or search anything else, e.g. scented candles, a good frying pan" value="${esc(rc=='gift'?d.recipient_spec:'')}"><input id="bud" type="number" placeholder="Budget (up to ${money(left)})"></div>
+  <button class="btn" onclick="find()">Search the stores ✨</button><div id="res"></div></div>`}</div></div>`);
+ if(!emer){if(sv!=null)$('#spec').value=sv;if(bv)$('#bud').value=bv;if(SR&&$('#res'))$('#res').innerHTML=resHtml()}}
+const prodHtml=(p,i)=>`<div class="prod ${i==SR.pick?'best':''}"><img src="${esc(p.image)}" alt=""><div><b>${esc(p.title)}</b><br><span class="mute">${esc(p.store)} · ${p.rating?`★${p.rating}${p.reviews?` (${p.reviews})`:''} · `:''}${p.discount?`<s>${money(p.list_price)}</s> `:''}${money(p.price)}${p.delivery?' · '+esc(p.delivery):''}${p.weak?' · weak match':''}</span>${p.link?`<br><a class="link" href="${esc(p.link)}" target="_blank" rel="noopener">View at store ↗</a>`:''}</div>${i>=0?`<button class="btn sm ${i==SR.pick?'gold':'ghost'}" onclick="buy(${i})">Buy</button>`:''}</div>`;
+const resHtml=()=>{const bd=`<span class="tag ${SR.source=='demo'?'g':''}">${SR.source=='channel3'?'🛒 Live store search · Channel3':SR.source=='google'?'🛒 Live Google Shopping':'🧪 Demo catalog'}</span> <span class="mute" style="font-size:13px">Budget ${money(SR.budget)}</span>`;
+ if(SR.over&&SR.over.length)return bd+`<p class="why">${esc(SR.note)}</p>`+SR.over.map(p=>prodHtml(p,-1)).join('');
+ if(!SR.candidates.length)return bd+`<p class="mute">${esc(SR.note||'Nothing matched.')}</p>`;
+ return bd+(SR.note?`<p class="mute" style="font-size:13px">${esc(SR.note)}</p>`:'')+`<p class="why"><b>✨ Why Pip chose this:</b> ${esc(SR.reasoning)}</p>`+SR.candidates.map((p,i)=>prodHtml(p,i)).join('')};
+addEventListener('hashchange',()=>{if(ME&&location.hash!==CURH){CURH=location.hash;route()}});
+boot();
+</script></body></html>
